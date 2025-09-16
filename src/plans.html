@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Nexus Servers — Plans and Pricing">
+    <title>Plans — Nexus Servers</title>
+    <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body class="plans">
+    <div class="aurora-container"></div>
+    <!-- Dynamic pattern layers -->
+  <div class="pattern-container">
+    <div class="noise-pattern"></div>
+    <div class="glow-spheres"></div>
+    <div class="diagonal-lines"></div>
+  </div>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus"></a>
+            <div class="nav-center">
+                <a href="index.html"><img src="assets/icons/home.svg" alt="Home">Home</a>
+                <a href="plans.html"><img src="assets/icons/plans.svg" alt="Plans">Plans</a>
+                <a href="about.html"><img src="assets/icons/email.svg" alt="About">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+  <main>
+  <div class="container">
+    <h1>Plans</h1>
+  <p class="lead">All plans include Papyrus.VIP, NVMe storage, DDoS protection and are located in Reno, Nevada.</p>
+  <p class="storage-note">* Storage values are hard limits.</p>
+
+    <!-- Two-column grouped layout: left = Eco, right = Premium -->
+    <div class="plans-grid" style="margin-top:8px;">
+      <div class="col col-left">
+        <!-- Eco CPU summary -->
+        <div class="plan-card cpu-card featured">
+          <div class="plan-header">
+            <div class="category">Eco CPU</div>
+            <div class="price">$0.50 / GB</div>
+          </div>
+          <h3>AMD EPYC 7551P</h3>
+          <p class="plan-meta">Cost-efficient hardware for lightweight servers and proxies.</p>
+        </div>
+
+        <!-- Eco plans -->
+        <div class="plan-card plan">
+          <h3>Dirt</h3>
+          <ul class="plan-specs">
+            <li>CPU: 1 vCore</li>
+            <li>RAM: 2 GB</li>
+            <li>Storage: 25 GB NVMe</li>
+            <li>Ports: 3 · Backups: 2 · Databases: 3</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-eco/dirt-minecraft-java-eco/checkout" target="_blank" rel="noopener">Buy — $1.00</a>
+        </div>
+
+        <div class="plan-card plan">
+          <h3>Sand</h3>
+          <ul class="plan-specs">
+            <li>CPU: 2 vCores</li>
+            <li>RAM: 4 GB</li>
+            <li>Storage: 50 GB NVMe</li>
+            <li>Ports: 3 · Backups: 3 · Databases: 4</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-eco/sand-minecraft-java-eco/checkout" target="_blank" rel="noopener">Buy — $2.00</a>
+        </div>
+
+        <div class="plan-card plan">
+          <h3>Netherrack</h3>
+          <ul class="plan-specs">
+            <li>CPU: 8 vCores</li>
+            <li>RAM: 16 GB</li>
+            <li>Storage: 150 GB NVMe</li>
+            <li>Ports: 5 · Backups: 4 · Databases: 5</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-eco/netherrack-minecraft-java-eco/checkout" target="_blank" rel="noopener">Buy — $8.00</a>
+        </div>
+      </div>
+
+      <div class="col col-right">
+        <!-- Premium CPU summary -->
+        <div class="plan-card cpu-card featured">
+          <div class="plan-header">
+            <div class="category">Premium CPU</div>
+            <div class="price">$2.50 / GB</div>
+          </div>
+          <h3>AMD Ryzen 9 9950X</h3>
+          <p class="plan-meta">Higher performance for heavily-modded packs and heavy terrain generation.</p>
+        </div>
+
+        <!-- Premium plans (consistent layout) -->
+        <div class="plan-card plan">
+          <h3>Copper</h3>
+          <ul class="plan-specs">
+            <li>CPU: 2 vCores</li>
+            <li>RAM: 4 GB</li>
+            <li>Storage: 50 GB NVMe</li>
+            <li>Ports: 3 · Backups: 3 · Databases: 4</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-premium/copper-minecraft-java-premium/checkout" target="_blank" rel="noopener">Buy — $10.00</a>
+        </div>
+
+        <div class="plan-card plan">
+          <h3>Gold</h3>
+          <ul class="plan-specs">
+            <li>CPU: 4 vCores</li>
+            <li>RAM: 8 GB</li>
+            <li>Storage: 100 GB NVMe</li>
+            <li>Ports: 3 · Backups: 3 · Databases: 4</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-premium/gold-minecraft-java-premium/checkout" target="_blank" rel="noopener">Buy — $20.00</a>
+        </div>
+
+        <div class="plan-card plan">
+          <h3>Netherite</h3>
+          <ul class="plan-specs">
+            <li>CPU: 8 vCores</li>
+            <li>RAM: 16 GB</li>
+            <li>Storage: 150 GB NVMe</li>
+            <li>Ports: 6 · Backups: 5 · Databases: 6</li>
+          </ul>
+          <a class="btn buy" href="https://billing.nexuservers.com/products/mc-premium/netherite-minecraft-jave-netherite/checkout" target="_blank" rel="noopener">Buy — $40.00</a>
+        </div>
+      </div>
+    </div>
+
+    <p><a class="back" href="index.html">← Back to Home</a></p>
+  </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="bottom-nav">
+        <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
+        <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
+        <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+      </div>
+      <p class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
