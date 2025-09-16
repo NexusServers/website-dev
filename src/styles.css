@@ -941,6 +941,15 @@ p.lead {
   max-width: 100% !important;
 }
 
+/* Game support text styling for plan cards */
+.plan-card .game-support {
+  font-size: 14px;
+  font-style: italic;
+  color: #9c83e7;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
 /* Tighten the top alignment on small screens too */
 @media(max-width:600px){
   .about main .container,

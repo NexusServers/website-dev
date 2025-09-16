@@ -4,14 +4,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#000000">
-    <meta name="description" content="Nexus Servers — Plans and Pricing">
-    <title>Plans — Nexus Servers</title>
+    <meta name="description" content="Affordable Minecraft server hosting plans from Nexus Servers. Premium Ryzen 9 9950X or budget-friendly EPYC options with NVMe storage, DDoS protection, and 24/7 support.">
+    <meta name="keywords" content="minecraft server plans, terraria server hosting, rust dedicated server, ark survival evolved hosting, satisfactory multiplayer server, valheim dedicated server, game server pricing, affordable game hosting, ryzen 9 hosting, premium server hosting, NVMe game hosting, EPYC server hosting, modded server plans, gaming community servers, low latency game hosting">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Minecraft Server Hosting Plans & Pricing - Nexus Servers">
+    <meta property="og:description" content="Choose from Premium (Ryzen 9 9950X) or Eco (EPYC 7551P) plans. All include NVMe storage, DDoS protection, instant setup, and are located in Reno, Nevada.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexuservers.com/plans.html">
+    <meta property="og:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
     <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
+    <link rel="canonical" href="https://nexuservers.com/plans.html">
+    <title>Minecraft Server Hosting Plans & Pricing - Nexus Servers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Minecraft Server Hosting Plans",
+      "description": "Minecraft server hosting plans with premium Ryzen 9 or budget-friendly EPYC options. All include NVMe storage, DDoS protection and 24/7 support.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Nexus Servers"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "1.00",
+        "highPrice": "40.00",
+        "offerCount": "6",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Dirt Plan",
+            "description": "2GB RAM, 1 vCore, 25GB NVMe storage",
+            "price": "1.00",
+            "priceCurrency": "USD",
+            "url": "https://nexuservers.com/plans.html#dirt"
+          },
+          {
+            "@type": "Offer",
+            "name": "Netherite Plan",
+            "description": "16GB RAM, 8 vCores, 150GB NVMe storage",
+            "price": "40.00",
+            "priceCurrency": "USD",
+            "url": "https://nexuservers.com/plans.html#netherite"
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body class="plans">
     <div class="aurora-container"></div>
@@ -23,32 +69,32 @@
   </div>
     <nav class="top-nav">
         <div class="nav-links">
-            <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus"></a>
+            <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
             <div class="nav-center">
-                <a href="index.html"><img src="assets/icons/home.svg" alt="Home">Home</a>
-                <a href="plans.html"><img src="assets/icons/plans.svg" alt="Plans">Plans</a>
-                <a href="about.html"><img src="assets/icons/email.svg" alt="About">About Us</a>
+                <a href="index.html"><img src="assets/icons/home.svg" alt="Home Icon">Home</a>
+                <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
+                <a href="about.html"><img src="assets/icons/email.svg" alt="About Us Icon">About Us</a>
             </div>
         </div>
     </nav>
 
   <main>
   <div class="container">
-    <h1>Plans</h1>
-  <p class="lead">All plans include Papyrus.VIP, NVMe storage, DDoS protection and are located in Reno, Nevada.</p>
-  <p class="storage-note">* Storage values are hard limits.</p>
+    <h1 style="text-align: center;">Nexus Game Hosting Plans</h1>
+    <p class="lead">All plans include NVMe storage, DDoS protection and are located in Reno, Nevada.</p>
+    <p class="storage-note">* Storage values are hard limits.</p>
 
     <!-- Two-column grouped layout: left = Eco, right = Premium -->
     <div class="plans-grid" style="margin-top:8px;">
       <div class="col col-left">
         <!-- Eco CPU summary -->
-        <div class="plan-card cpu-card featured">
+        <div class="plan-card cpu-card featured" id="eco-cpu">
           <div class="plan-header">
             <div class="category">Eco CPU</div>
             <div class="price">$0.50 / GB</div>
           </div>
           <h3>AMD EPYC 7551P</h3>
-          <p class="plan-meta">Cost-efficient hardware for lightweight servers and proxies.</p>
+          <p class="plan-meta">Cost-efficient hardware for lightweight Minecraft servers, Terraria, Valheim and server proxies.</p>
         </div>
 
         <!-- Eco plans -->
@@ -88,13 +134,13 @@
 
       <div class="col col-right">
         <!-- Premium CPU summary -->
-        <div class="plan-card cpu-card featured">
+        <div class="plan-card cpu-card featured" id="premium-cpu">
           <div class="plan-header">
             <div class="category">Premium CPU</div>
             <div class="price">$2.50 / GB</div>
           </div>
           <h3>AMD Ryzen 9 9950X</h3>
-          <p class="plan-meta">Higher performance for heavily-modded packs and heavy terrain generation.</p>
+          <p class="plan-meta">Higher performance for heavily-modded packs, Rust, ARK, Satisfactory, and heavy terrain generation in Minecraft.</p>
         </div>
 
         <!-- Premium plans (consistent layout) -->
