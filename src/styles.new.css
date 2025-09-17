@@ -1,0 +1,173 @@
+/* Core layout and GPU acceleration */
+:root {
+  --page-height: 100%;
+  --viewport-height: 100vh;
+  --scroll-margin: 150px;
+  --accent-cyan: #6b3fff;
+  --accent-pink: #ff6bf0;
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.7);
+}
+
+html {
+  height: var(--page-height);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: var(--bg-left);
+}
+
+body {
+  min-height: calc(var(--viewport-height) + var(--scroll-margin));
+  margin: 0;
+  padding: 0;
+  padding-bottom: var(--scroll-margin);
+  overflow-x: hidden;
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: var(--white);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Background System */
+.pattern-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--bg-left);
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.aurora-container {
+  position: fixed;
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  z-index: -3;
+  background-image: 
+    radial-gradient(40% 30% at 12% 24%, rgba(111,240,255,0.12) 0%, rgba(111,240,255,0.05) 18%, transparent 48%),
+    radial-gradient(60% 50% at 78% 74%, rgba(255,107,240,0.10) 0%, rgba(255,200,120,0.03) 28%, transparent 60%),
+    linear-gradient(135deg, 
+      var(--bg-left),
+      var(--bg-mid) 25%,
+      var(--bg-mid2) 75%,
+      var(--bg-right)
+    );
+  opacity: 1;
+  mix-blend-mode: normal;
+  transform: translateZ(0);
+  will-change: transform;
+  animation: subtleFloat 30s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.diagonal-lines {
+  position: fixed;
+  inset: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: 
+    repeating-linear-gradient(
+      145deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      145deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 25px
+    );
+  background-size: 200% 200%;
+  animation: moveLines 120s linear infinite;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  transform-origin: center center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.noise-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes subtleFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-2%, 2%, 0); }
+}
+
+@keyframes moveLines {
+  0% { background-position: 0 0 }
+  50% { background-position: 100% 100% }
+  100% { background-position: 200% 200% }
+}
+
+/* Theme System */
+.theme-light {
+  --bg-left: #2f4aa1;
+  --bg-mid: #6fd3ff;
+  --bg-mid2: #8a3fff;
+  --bg-right: #3f007a;
+  --card-border: rgba(255,255,255,0.08);
+  --card-bg: rgba(255,255,255,0.04);
+}
+
+.theme-dark {
+  --bg-left: #1b2350;
+  --bg-mid: #3a4ea6;
+  --bg-mid2: #663399;
+  --bg-right: #220b3b;
+  --card-border: rgba(255,255,255,0.06);
+  --card-bg: rgba(255,255,255,0.03);
+}
+
+.theme-midnight-purple {
+  --bg-left: #09020a;
+  --bg-mid: #2b004b;
+  --bg-mid2: #4b0078;
+  --bg-right: #1a0028;
+  --card-border: rgba(255,255,255,0.05);
+  --card-bg: rgba(255,255,255,0.025);
+}
+
+.theme-black {
+  --bg-left: #000000;
+  --bg-mid: #07030a;
+  --bg-mid2: #200018;
+  --bg-right: #05020a;
+  --card-border: rgba(255,255,255,0.04);
+  --card-bg: rgba(255,255,255,0.02);
+}
+
+.theme-ultrablack {
+  --bg-left: #000000;
+  --bg-mid: #07030a;
+  --bg-mid2: #200018;
+  --bg-right: #05020a;
+  --card-border: rgba(255,255,255,0.03);
+  --card-bg: rgba(255,255,255,0.02);
+}

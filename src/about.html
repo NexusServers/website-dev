@@ -18,7 +18,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="compact.css">
+  <link rel="stylesheet" href="aurora.css">
+  <link rel="stylesheet" href="low-performance.css">
   <script src="scripts.js" defer></script>
+  <script src="aurora.js" defer></script>
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
   {
@@ -57,6 +62,18 @@
     <div class="glow-spheres"></div>
     <div class="diagonal-lines"></div>
   </div>
+  
+  <!-- Aurora Borealis effect -->
+  <div class="aurora-borealis">
+    <div class="aurora-band"></div>
+    <div class="aurora-band"></div>
+    <div class="aurora-band"></div>
+    <div class="aurora-band"></div>
+    <div class="aurora-glow"></div>
+    <div class="aurora-glow"></div>
+    <div class="aurora-glow"></div>
+  </div>
+  
   <nav class="top-nav">
     <div class="nav-links">
   <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
@@ -65,6 +82,7 @@
         <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
         <a href="about.html"><img src="assets/icons/email.svg" alt="About Us Icon">About Us</a>
       </div>
+      <div class="nav-placeholder"></div>
     </div>
   </nav>
 
@@ -100,12 +118,13 @@
   </main>
   <footer class="site-footer">
     <div class="container">
-      <div class="bottom-nav">
-        <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
-        <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
-        <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
-      </div>
-      <p class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</p>
+        <div class="footer-content">
+            <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
+            <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
+            <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+            <span class="footer-divider">·</span>
+            <span class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</span>
+        </div>
     </div>
   </footer>
 </body>

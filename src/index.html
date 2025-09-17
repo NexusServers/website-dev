@@ -4,23 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#000000">
-    <meta name="description" content="Nexus Servers offers premium Minecraft game hosting with low-cost plans, DDR5 memory, and NVMe storage. Fast, reliable servers with DDoS protection, instant setup, and 24/7 support.">
+    <meta name="description" content="Premium Minecraft & game hosting with Eco ($0.50/GB) and Premium ($2.00/GB) plans, DDR5 memory, and NVMe storage. Fast, reliable servers with DDoS protection, instant setup, and 24/7 support.">
     <meta name="keywords" content="minecraft server hosting, terraria server hosting, rust server hosting, ark server hosting, satisfactory server hosting, valheim server hosting, game hosting, dedicated server rental, vps game hosting, pterodactyl panel, DDoS protection, low cost game servers, NVMe hosting, ryzen 9 servers, premium game hosting, modded server hosting, multiplayer game servers">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Nexus Servers - Premium Minecraft & Game Server Hosting">
-    <meta property="og:description" content="Fast, reliable game hosting with DDR5 memory, NVMe storage, and DDoS protection. Low cost plans starting at $0.50/GB. Instant setup and 24/7 support.">
+    <meta property="og:description" content="Fast, reliable game hosting with DDR5 memory, NVMe storage, and DDoS protection. Eco from $0.50/GB and Premium at $2.00/GB. Instant setup and 24/7 support.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nexuservers.com/">
     <meta property="og:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
     <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
     <link rel="canonical" href="https://nexuservers.com/">
-    <title>Nexus Servers - Premium Minecraft & Game Server Hosting</title>
+    <title>Nexus Servers - Premium Game Hosting</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="compact.css">
+    <link rel="stylesheet" href="aurora.css">
+    <link rel="stylesheet" href="low-performance.css">
     <script src="scripts.js" defer></script>
+    <script src="aurora.js" defer></script>
     <!-- Structured data for SEO -->
     <script type="application/ld+json">
     {
@@ -47,32 +52,27 @@
       }
     }
     </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Minecraft Server Hosting",
-      "provider": {
-        "@type": "Organization",
-        "name": "Nexus Servers"
-      },
-      "serviceType": "Game Server Hosting",
-      "areaServed": "Worldwide",
-      "description": "Premium Minecraft server hosting with Ryzen 9 9950X and budget-friendly EPYC options. All plans include NVMe storage, DDoS protection, and 24/7 support.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.50",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "0.50",
-          "priceCurrency": "USD",
-          "unitText": "GB",
-          "billingIncrement": 1
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Minecraft Server Hosting",
+            "provider": {
+                "@type": "Organization",
+                "name": "Nexus Servers"
+            },
+            "serviceType": "Game Server Hosting",
+            "areaServed": "Worldwide",
+            "description": "Premium Minecraft server hosting with Ryzen 9 9950X and budget-friendly EPYC options. All plans include NVMe storage, DDoS protection, and 24/7 support.",
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "0.50",
+                "highPrice": "2.00",
+                "offerCount": "2"
+            }
         }
-      }
-    }
-    </script>
+        </script>
 </head>
 <body class="home">
     <div class="aurora-container"></div>
@@ -82,6 +82,18 @@
         <div class="glow-spheres"></div>
         <div class="diagonal-lines"></div>
     </div>
+    
+    <!-- Aurora Borealis effect -->
+    <div class="aurora-borealis">
+        <div class="aurora-band"></div>
+        <div class="aurora-band"></div>
+        <div class="aurora-band"></div>
+        <div class="aurora-band"></div>
+        <div class="aurora-glow"></div>
+        <div class="aurora-glow"></div>
+        <div class="aurora-glow"></div>
+    </div>
+    
     <nav class="top-nav">
         <div class="nav-links">
             <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
@@ -90,13 +102,14 @@
                 <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
                 <a href="about.html"><img src="assets/icons/email.svg" alt="About Us Icon">About Us</a>
             </div>
+            <div class="nav-placeholder"></div>
         </div>
     </nav>
     <main>
         <div class="container">
          <header class="hero">
              <h1>Nexus Servers - Premium Game Hosting</h1>
-             <p class="lead">Fast, reliable, low cost, and transparent game hosting for Minecraft, Terraria, Rust, ARK, and more with Papyrus.VIP DDoS protection</p>
+             <p class="lead">Pick CPU (Eco or Premium) → choose your game → pick a plan. Eco from $0.50/GB, Premium at $2.00/GB. Reno, NV location, NVMe storage, DDR5 memory, and Papyrus.VIP DDoS protection.</p>
              <div style="height:10px"></div>
              <div class="hero-buttons">
                  <a class="btn buy" href="plans.html" aria-label="View our hosting plans and pricing">View Plans</a>
@@ -142,88 +155,61 @@
                                                  <img decoding="async" src="assets/images/nexuslogo.png" alt="Nexus Servers logo">
                                              </a>
                                              <div class="prov-name">Nexus</div>
-                                             <div class="prov-stats"><div class="stat yes">$2.50/GB<br>$0.50/GB</div><div class="stat cpu">9950X<br>7551P</div></div>
                                          </th>
                                          <th class="prov prov-pyro">
                                              <a href="https://pyro.host/" target="_blank" rel="noopener" title="Pyro.host">
                                                  <img decoding="async" src="assets/images/pyro.png" alt="Pyro host logo" onerror="this.style.display='none'">
                                              </a>
                                              <div class="prov-name">Pyro.host</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$3/GB</div>
-                                                 <div class="stat cpu">9950X</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-pebble">
                                              <a href="https://pebblehost.com/" target="_blank" rel="noopener" title="PebbleHost">
                                                  <img decoding="async" src="https://pebblehost.com/src/img/logos/p.png" alt="PebbleHost logo">
                                              </a>
                                              <div class="prov-name">PebbleHost</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$2.25/GB<br>$1/GB</div>
-                                                 <div class="stat cpu">7900<br>i9-9900k</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-shockbyte">
                                              <a href="https://shockbyte.com/" target="_blank" rel="noopener" title="Shockbyte">
                                                  <img decoding="async" src="assets/images/shockbytelogo.jpg" alt="Shockbyte logo">
                                              </a>
                                              <div class="prov-name">Shockbyte</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$4/GB</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-wither">
                                              <a href="https://witherhosting.com/" target="_blank" rel="noopener" title="WitherHosting">
                                                  <img decoding="async" src="assets/images/witherhosting.png" alt="WitherHosting logo" onerror="this.onerror=null;this.src='https://witherhosting.com/img/logo_small.png'">
                                              </a>
                                              <div class="prov-name">WitherHosting</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$2/GB<br>$0.75/GB</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-bisect">
                                              <a href="https://www.bisecthosting.com/" target="_blank" rel="noopener" title="BisectHosting">
                                                  <img decoding="async" src="assets/images/bisect.png" alt="BisectHosting logo">
                                              </a>
                                              <div class="prov-name">BisectHosting</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$3/GB<br>$1/GB</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-bloom">
                                              <a href="https://bloom.host/" target="_blank" rel="noopener" title="Bloom.host">
                                                  <img decoding="async" src="assets/images/bloomhost.png" alt="Bloom.host logo" onerror="this.onerror=null;this.src='https://bloom.host/assets/images/logo-white.png'">
                                              </a>
                                              <div class="prov-name">Bloom.host</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$3/GB<br>$2/GB</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-heavynode">
                                              <a href="https://heavynode.com/" target="_blank" rel="noopener" title="HeavyNode">
                                                  <img decoding="async" src="assets/images/heavynode.png" alt="HeavyNode logo">
                                              </a>
                                              <div class="prov-name">HeavyNode</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$2/GB<br>$1/GB</div>
-                                             </div>
                                          </th>
                                          <th class="prov prov-apex">
                                              <a href="https://apexminecrafthosting.com/" target="_blank" rel="noopener" title="Apex Hosting">
                                                  <img decoding="async" src="assets/images/apexlogo.jpg" alt="Apex Hosting logo">
                                              </a>
                                              <div class="prov-name">Apex Hosting</div>
-                                             <div class="prov-stats">
-                                                 <div class="stat price">$6/GB<br>$3/GB</div>
-                                             </div>
                                          </th>
                                      </tr>
                                  </thead>
                                  <tbody>
                                      <tr>
                                          <td class="feat">Pricing</td>
-                                         <td class="center yes">$2.50/GB<br>$0.50/GB</td>
+                                         <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">$2.00/GB<br>$0.50/GB</td>
                                          <td class="center">$3/GB</td>
                                          <td class="center">$2.25/GB<br>$1/GB</td>
                                          <td class="center">$4/GB</td>
@@ -259,7 +245,7 @@
                                      </tr>
                                      <tr>
                                          <td class="feat">DDoS Protection</td>
-                                         <td class="center yes">300 Tbps</td>
+                                         <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">300 Tbps</td>
                                          <td class="center">20 Tbps</td>
                                          <td class="center">800 Gbps / 480 Gbps</td>
                                          <td class="center">Included</td>
@@ -305,12 +291,13 @@
 
      <footer class="site-footer">
          <div class="container">
-             <div class="bottom-nav">
+             <div class="footer-content">
                  <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
                  <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
                  <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+                 <span class="footer-divider">·</span>
+                 <span class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</span>
              </div>
-             <p class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</p>
          </div>
      </footer>
  </body>

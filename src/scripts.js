@@ -1,7 +1,9 @@
 // Theme toggle logic
 // Dynamic background effect
 function initDynamicBackground() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Skip effects if reduced motion is preferred or low-performance mode is active
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || 
+        document.body.classList.contains('low-performance')) return;
 
     const aurora = document.querySelector('.aurora-container');
     let lastScrollY = window.scrollY;
@@ -30,12 +32,17 @@ function initDynamicBackground() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize performance mode
+    initPerformanceMode();
+    
     // Initialize dynamic background
     initDynamicBackground();
 
     // Random ambient glow spheres
     const container = document.querySelector('.glow-spheres');
-    if (container && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (container && 
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 
+        !document.body.classList.contains('low-performance')) {
         const colors = [
             'rgba(170,70,255,0.45)',
             'rgba(200,100,255,0.38)',
@@ -111,3 +118,106 @@ document.addEventListener('DOMContentLoaded', function() {
         tick();
     }
 });
+
+// Performance mode functionality
+function initPerformanceMode() {
+    // Check if the user has previously set a preference
+    const savedPerformanceMode = localStorage.getItem('nexus-low-performance');
+    
+    // Apply saved preference if it exists
+    if (savedPerformanceMode === 'true') {
+        document.body.classList.add('low-performance');
+    }
+    
+    // Create the performance toggle button
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'performance-toggle';
+    toggleButton.textContent = document.body.classList.contains('low-performance') 
+        ? 'Enable Effects' 
+        : 'Low Performance Mode';
+    
+    // Add click handler
+    toggleButton.addEventListener('click', function() {
+        document.body.classList.toggle('low-performance');
+        const isLowPerformance = document.body.classList.contains('low-performance');
+        
+        // Save the preference
+        localStorage.setItem('nexus-low-performance', isLowPerformance);
+        
+        // Update button text
+        this.textContent = isLowPerformance ? 'Enable Effects' : 'Low Performance Mode';
+        
+        // Reinitialize effects if turning back on
+        if (!isLowPerformance) {
+            initDynamicBackground();
+        }
+    });
+    
+    // Add to the DOM
+    document.body.appendChild(toggleButton);
+    
+    // Also detect hardware capabilities and suggest low performance mode
+    detectHardwareCapabilities();
+}
+
+// Detect hardware capabilities and suggest low performance mode if needed
+function detectHardwareCapabilities() {
+    // Only suggest if not already set
+    if (localStorage.getItem('nexus-low-performance-suggested') === 'true') {
+        return;
+    }
+    
+    let performanceIssues = 0;
+    
+    // Check for hardware acceleration
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    
+    if (!gl) {
+        // WebGL not supported, likely no hardware acceleration
+        performanceIssues += 2;
+    } else {
+        // Check WebGL capabilities
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        if (debugInfo) {
+            const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+            // Check for software renderers or mobile GPUs
+            if (renderer.includes('SwiftShader') || 
+                renderer.includes('Software') || 
+                renderer.includes('Intel') ||
+                renderer.includes('ANGLE')) {
+                performanceIssues += 1;
+            }
+        }
+    }
+    
+    // Check device memory if available
+    if (navigator.deviceMemory && navigator.deviceMemory < 4) {
+        performanceIssues += 1;
+    }
+    
+    // Check for mobile devices
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        performanceIssues += 1;
+    }
+    
+    // Suggest low performance mode if enough issues detected
+    if (performanceIssues >= 2) {
+        // Wait a moment for page to load
+        setTimeout(() => {
+            if (confirm('We detected that your device might benefit from low performance mode for a smoother experience. Enable it?')) {
+                document.body.classList.add('low-performance');
+                localStorage.setItem('nexus-low-performance', 'true');
+                
+                // Update toggle button text if it exists
+                const toggle = document.querySelector('.performance-toggle');
+                if (toggle) {
+                    toggle.textContent = 'Enable Effects';
+                }
+            }
+            
+            // Mark as suggested
+            localStorage.setItem('nexus-low-performance-suggested', 'true');
+        }, 1500);
+    }
+}

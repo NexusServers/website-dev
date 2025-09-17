@@ -1,0 +1,23 @@
+/* Feature headings style overrides to ensure they stay compact */
+.feature-card h3, 
+.feature-grid h3 {
+  font-size: 17px !important;
+  line-height: 1.3 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Keep plan card titles compact */
+.plan-card h3 {
+  font-size: 19px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Keep CPU card titles sleek */
+.cpu-card h3 {
+  font-size: 18px !important;
+}
+
+/* Ensure consistent size for section titles */
+.section-title, section h2 {
+  font-size: 26px !important;
+}

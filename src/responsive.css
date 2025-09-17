@@ -1,0 +1,91 @@
+/* Responsive scaling styles for different viewport sizes */
+
+/* Base styles for all screen sizes */
+:root {
+  --base-font-size: 16px;
+  --heading-scale: 1;
+}
+
+body {
+  font-size: var(--base-font-size);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+/* Scale down from the original values a bit to keep 1080p closer to original */
+h1 {
+  font-size: calc(42px * var(--heading-scale));
+}
+
+h2 {
+  font-size: calc(28px * var(--heading-scale));
+}
+
+h3 {
+  font-size: calc(20px * var(--heading-scale));
+}
+
+/* Special smaller headings for feature cards to maintain sleek look */
+.feature-card h3 {
+  font-size: calc(18px * var(--heading-scale));
+}
+
+p, li, a {
+  font-size: calc(15px * var(--heading-scale));
+}
+
+.small, .footer-copy {
+  font-size: calc(13px * var(--heading-scale));
+}
+
+.lead {
+  font-size: calc(17px * var(--heading-scale));
+}
+
+.plan-specs li, .card p, .card-inner p, .feature-card p {
+  font-size: calc(14px * var(--heading-scale));
+}
+
+/* Medium screens (1080p) */
+@media (min-width: 1080px) and (max-width: 1439px) {
+  :root {
+    --base-font-size: 16px;
+    --heading-scale: 0.9; /* Further reduced for sleeker look */
+  }
+  
+  /* Additional specific overrides for feature headings */
+  .feature-card h3, .feature-grid h3 {
+    font-size: 17px !important; /* Force exact size for feature headings */
+  }
+}
+
+/* Large screens (1440p) */
+@media (min-width: 1440px) and (max-width: 2559px) {
+  :root {
+    --base-font-size: 17px; /* Reduced from 18px */
+    --heading-scale: 1.05; /* Reduced from 1.1 */
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Extra large screens (4K) */
+@media (min-width: 2560px) {
+  :root {
+    --base-font-size: 20px; /* Reduced from 22px */
+    --heading-scale: 1.15; /* Reduced from 1.25 */
+  }
+  
+  .container {
+    max-width: 1600px;
+  }
+  
+  .card, .comparison-section, .about-section {
+    border-radius: 12px;
+    padding: 32px;
+  }
+}

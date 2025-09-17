@@ -1,0 +1,133 @@
+/* Low Performance Mode Styles */
+body.low-performance .aurora-borealis,
+body.low-performance .aurora-container,
+body.low-performance .pattern-container,
+body.low-performance .glow-spheres,
+body.low-performance .diagonal-lines {
+  display: none !important;
+}
+
+body.low-performance {
+  background: linear-gradient(135deg, #05020b 0%, #0b0616 100%);
+  background-attachment: fixed;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Solid header background in low performance mode */
+body.low-performance .nav-links {
+  background: rgba(10, 5, 20, 0.9);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Simplified static glow effects instead of animated ones */
+body.low-performance .comparison-table tbody td.yes.nexus-highlight {
+  text-shadow: 0 0 10px rgba(140,70,255,0.7);
+  animation: none;
+}
+
+/* Remove any expensive CSS filters except for icon inversion */
+body.low-performance * {
+  backdrop-filter: none !important;
+}
+
+/* Keep icon colors */
+body.low-performance .site-footer img,
+body.low-performance .nav-links a:not(.nav-logo) img,
+body.low-performance .bottom-nav img,
+body.low-performance .footer-content img {
+  filter: invert(1) !important; /* Keep the white icons */
+}
+
+/* Explicitly prevent the logo from being inverted */
+body.low-performance .nav-logo img {
+  filter: none !important;
+}
+
+/* Remove other filters */
+body.low-performance *:not(img) {
+  filter: none !important;
+}
+
+/* Disable animations */
+@media (prefers-reduced-motion: reduce), (low-performance: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+  }
+}
+
+/* Simplified card styling */
+body.low-performance .card,
+body.low-performance .feature-card {
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+}
+
+body.low-performance .feature-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Performance toggle button */
+.performance-toggle {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: rgba(20, 20, 30, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.2px;
+  opacity: 0.75;
+}
+
+.performance-toggle:hover {
+  background: rgba(40, 40, 60, 0.4);
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Simplify plans configurator visuals in low-performance mode */
+body.low-performance .option-card,
+body.low-performance .option-chip {
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+body.low-performance .option-card {
+  background: rgba(255,255,255,0.025) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+body.low-performance .option-card::before,
+body.low-performance .option-card::after { display: none !important; }
+body.low-performance .option-card[aria-selected="true"] {
+  border-color: rgba(107,63,255,0.35) !important;
+}
+body.low-performance .option-chip[aria-selected="true"] {
+  background: rgba(107,63,255,0.10) !important;
+}
+
+body.low-performance .performance-toggle {
+  background: rgba(20, 20, 30, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body.low-performance .performance-toggle:hover {
+  background: rgba(40, 40, 60, 0.4);
+  color: rgba(255, 255, 255, 0.95);
+}
