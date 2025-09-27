@@ -1,0 +1,158 @@
+/* Compact game-card styles to reduce vertical space but keep the original "opaq" card look */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 4px; /* even tighter */
+}
+
+.game-block.compact {
+  padding: 10px 10px;
+  margin: 2px 0;
+  line-height: 1.08;
+  font-size: 0.95rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.006));
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(2,6,23,0.14);
+  backdrop-filter: blur(3px) saturate(1.02);
+  -webkit-backdrop-filter: blur(3px) saturate(1.02);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-title { font-size: 1.03rem; margin: 0; font-weight: 600; display:block; }
+.game-lead { margin: 0; color: var(--muted); font-size: 0.94rem; }
+.game-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.game-features li {
+  background: rgba(255,255,255,0.02);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+/* Footer row aligned right and tight; match main header button style but smaller */
+.game-footer {
+  display:flex;
+  align-items:center;
+  justify-content:center; /* center buttons */
+  gap:6px;
+  margin-top:4px;
+}
+.btn.btn-small {
+  padding:8px 12px;
+  font-size:0.86rem;
+}
+.btn.btn-small, .btn.btn-small:link, .btn.btn-small:visited {
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.btn.btn-small:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); }
+
+/* Make features stacked on very small screens */
+@media (max-width:560px) {
+  .game-features { flex-direction: column; gap:6px; }
+  .game-footer { justify-content: space-between; }
+}
+
+/* Minimal header layout for compact game cells */
+.game-header {
+  display:block;
+  text-align:center;
+}
+.game-header .game-center {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:6px 0;
+}
+.game-header .game-center .gc-left {
+  width:52px;
+  height:52px;
+  border-radius:8px;
+  object-fit:cover;
+  display:block;
+}
+.game-header .game-center .game-title { margin:0; display:block; font-weight:700; font-size:1.05rem; }
+.game-header .game-center .badge { font-size:12px; padding:4px 9px; border-radius:999px; background:var(--accent-gradient-alt); color:#fff; font-weight:600; margin-top:2px; }
+.game-header .game-center .starting { font-size:0.78rem; color:var(--muted); margin-top:2px; font-style:normal; opacity:0.9 }
+
+
+.price-buttons { display:flex; gap:8px; align-items:center; justify-content:center }
+.price-buttons .btn { white-space:nowrap; padding:10px 14px; font-size:0.95rem; width:150px; display:inline-flex; align-items:center; justify-content:center; color:var(--white); }
+
+/* Force compact button visuals with higher specificity to override site-wide .btn.alt rules */
+.game-block.compact .price-buttons .btn,
+.game-block.compact .price-buttons .btn.alt,
+.game-block.compact .price-buttons .btn.buy {
+  background: rgba(255,255,255,0.10) !important;
+  color: var(--white) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+.game-block.compact .price-buttons .btn:hover { background: rgba(255,255,255,0.14) !important; transform: translateY(-2px); }
+
+/* Ensure compact price buttons match site buy/alt styling */
+.price-buttons .btn.buy,
+.price-buttons .btn.alt {
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  box-shadow: none;
+  font-weight: 700;
+  text-decoration: none;
+}
+.price-buttons .btn.buy:hover,
+.price-buttons .btn.alt:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+
+@media (max-width:860px) {
+  .game-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+/* Tweak: reduce gap between "Starting from:" and the price buttons */
+.game-block.compact .starting {
+  margin: 0 0 2px !important; /* very small bottom gap */
+  font-size: 0.82rem !important;
+  line-height: 1 !important;
+  color: var(--muted) !important;
+}
+
+.game-block.compact .price-buttons {
+  margin-top: -4px !important; /* pull buttons up closer to the starting line */
+  gap: 6px !important; /* tighten spacing between buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-block.compact .price-buttons .btn.btn-small {
+  padding: 6px 10px !important; /* slightly smaller padding to match the tighter layout */
+  font-size: 0.92rem !important;
+}
+
+/* If you want it even tighter on desktop, uncomment the following and adjust the negative margin:
+@media (min-width: 900px) {
+  .game-block.compact .price-buttons { margin-top: -6px !important; }
+}
+*/

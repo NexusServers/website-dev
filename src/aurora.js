@@ -1,7 +1,8 @@
 // Aurora enhancement
 document.addEventListener('DOMContentLoaded', function() {
   // Skip if low performance mode is enabled
-  if (document.body.classList.contains('low-performance') || 
+  if (document.documentElement.classList.contains('low-performance') ||
+      document.body.classList.contains('low-performance') ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }

@@ -21,3 +21,45 @@
 .section-title, section h2 {
   font-size: 26px !important;
 }
+
+/* Homepage-specific sleeker typography */
+.home .hero h1 {
+  font-size: 2.4rem !important; /* slightly smaller than before for a sleeker look */
+  line-height: 1.06 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 8px !important;
+}
+
+.home .hero .lead {
+  font-size: 1rem !important; /* tighten the lead paragraph */
+  color: rgba(255,255,255,0.88) !important;
+  line-height: 1.35 !important;
+  max-width: 900px !important;
+  margin-bottom: 10px !important;
+}
+
+.home .hero .btn {
+  padding: 8px 14px !important;
+  font-size: 0.95rem !important;
+  border-radius: 8px !important;
+}
+
+/* Slightly smaller section headings to match plans.html */
+.home section h2 {
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.2px !important;
+}
+
+/* Compact feature bubble adjustments (already applied but tighten further) */
+.bubble-box.feature-bubble.compact h3 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+
+.bubble-box.feature-bubble.compact p {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+  color: rgba(255,255,255,0.85) !important;
+}

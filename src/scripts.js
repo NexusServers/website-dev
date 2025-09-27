@@ -3,6 +3,7 @@
 function initDynamicBackground() {
     // Skip effects if reduced motion is preferred or low-performance mode is active
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || 
+        document.documentElement.classList.contains('low-performance') ||
         document.body.classList.contains('low-performance')) return;
 
     const aurora = document.querySelector('.aurora-container');
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.querySelector('.glow-spheres');
     if (container && 
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 
+        !document.documentElement.classList.contains('low-performance') &&
         !document.body.classList.contains('low-performance')) {
         const colors = [
             'rgba(170,70,255,0.45)',
@@ -123,26 +125,29 @@ document.addEventListener('DOMContentLoaded', function() {
 function initPerformanceMode() {
     // Check if the user has previously set a preference
     const savedPerformanceMode = localStorage.getItem('nexus-low-performance');
-    
-    // Apply saved preference if it exists
-    if (savedPerformanceMode === 'true') {
+    // Only enable low-performance mode when the user explicitly set it to 'true'.
+    // This preserves full styles/nav for users who have not chosen low-performance.
+    if (savedPerformanceMode === 'true' && !document.body.classList.contains('low-performance')) {
         document.body.classList.add('low-performance');
+        document.documentElement.classList.add('low-performance');
     }
     
     // Create the performance toggle button
     const toggleButton = document.createElement('button');
     toggleButton.className = 'performance-toggle';
-    toggleButton.textContent = document.body.classList.contains('low-performance') 
-        ? 'Enable Effects' 
+    toggleButton.textContent = document.body.classList.contains('low-performance')
+        ? 'Enable Effects'
         : 'Low Performance Mode';
     
     // Add click handler
     toggleButton.addEventListener('click', function() {
         document.body.classList.toggle('low-performance');
+        document.documentElement.classList.toggle('low-performance');
         const isLowPerformance = document.body.classList.contains('low-performance');
         
         // Save the preference
-        localStorage.setItem('nexus-low-performance', isLowPerformance);
+        // Store explicit string values so the head inline script can read them before DOM loads
+        localStorage.setItem('nexus-low-performance', isLowPerformance ? 'true' : 'false');
         
         // Update button text
         this.textContent = isLowPerformance ? 'Enable Effects' : 'Low Performance Mode';

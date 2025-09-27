@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Learn about Nexus Servers, a transparent game hosting provider with owned hardware in Reno, Nevada. Featuring Pterodactyl panel, low prices, and premium support.">
-  <meta name="keywords" content="about nexus servers, game hosting company, terraria server provider, rust hosting company, ark server provider, satisfactory hosting, minecraft hosting company, owned hardware hosting, pterodactyl hosting, transparent game hosting, server hosting nevada, us-based game hosting, high-performance game servers, gaming community hosting, ddos protected hosting, nvme game servers">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="About Us - Nexus Servers Game Hosting">
-  <meta property="og:description" content="We own and operate our hardware to provide transparent, affordable game hosting with the Pterodactyl panel. Located in Reno, Nevada.">
+  <meta name="description" content="About Nexus Servers | Leading Game Hosting Provider | Owned Hardware in Reno, Nevada | Transparent Pricing, Pterodactyl Panel & Premium Support | Minecraft, Rust, ARK & Terraria Hosting">
+  <meta name="keywords" content="about nexus servers, game hosting company, terraria server provider, rust hosting company, ark server provider, satisfactory hosting, minecraft hosting company, owned hardware hosting, pterodactyl hosting, transparent game hosting, server hosting nevada, us-based game hosting, high-performance game servers, gaming community hosting, ddos protected hosting, nvme game servers, nexus servers, nexus game hosting, game server company">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="About Nexus Servers | Premium Game Hosting Provider">
+  <meta property="og:description" content="Learn why Nexus Servers provides the best game hosting experience. We own our hardware in Reno, Nevada, use the Pterodactyl panel, and offer transparent pricing with premium 24/7 support.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nexuservers.com/about.html">
   <meta property="og:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Nexus Servers">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Nexus Servers | Premium Game Hosting Provider">
+  <meta name="twitter:description" content="We own and operate our hardware to provide transparent, affordable game hosting with the Pterodactyl panel. Located in Reno, Nevada.">
+  <meta name="twitter:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
   <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
   <link rel="canonical" href="https://nexuservers.com/about.html">
-  <title>About Us - Nexus Servers Game Hosting</title>
+  <title>About Nexus Servers | Premium Game Hosting Provider | Minecraft, Rust, ARK & Terraria</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
@@ -22,6 +31,22 @@
   <link rel="stylesheet" href="compact.css">
   <link rel="stylesheet" href="aurora.css">
   <link rel="stylesheet" href="low-performance.css">
+  <script>
+    // Apply low-performance mode immediately to avoid flashing heavy visuals.
+    (function() {
+      try {
+        const saved = localStorage.getItem('nexus-low-performance');
+        if (saved !== 'false') {
+          document.documentElement.classList.add('low-performance');
+          if (document.body) document.body.classList.add('low-performance');
+          else document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+        }
+      } catch (e) {
+        document.documentElement.classList.add('low-performance');
+        document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+      }
+    })();
+  </script>
   <script src="scripts.js" defer></script>
   <script src="aurora.js" defer></script>
   <!-- Structured data for SEO -->
@@ -32,9 +57,14 @@
     "mainEntity": {
       "@type": "Organization",
       "name": "Nexus Servers",
-      "description": "Nexus Servers provides transparent game hosting with owned hardware in Reno, Nevada. We use the Pterodactyl panel to ensure low costs, control, and transparency.",
+      "description": "Nexus Servers provides premium game hosting with owned hardware in Reno, Nevada. We specialize in Minecraft, Rust, ARK, Terraria, and Satisfactory servers with NVMe SSDs and DDR5 RAM.",
       "url": "https://nexuservers.com/",
-      "logo": "https://nexuservers.com/assets/images/nexuslogo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nexuservers.com/assets/images/nexuslogo.png",
+        "width": "500",
+        "height": "500"
+      },
       "sameAs": [
         "https://discord.gg/ksMEH3uheK",
         "https://status.nexuservers.com/"
@@ -76,7 +106,7 @@
   
   <nav class="top-nav">
     <div class="nav-links">
-  <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
+      <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
       <div class="nav-center">
         <a href="index.html"><img src="assets/icons/home.svg" alt="Home Icon">Home</a>
         <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
@@ -88,33 +118,33 @@
 
   <main>
     <div class="container">
-    <h1>About Nexus Servers</h1>
-    <div class="motto">Always connected · Always powerful · Always transparent</div>
-    
-    <div class="about-section card">
-      <h2>Who we are</h2>
-      <p class="small">Nexus Servers uses the Pterodactyl panel for game hosting, specializing in Minecraft, Terraria, Rust, ARK, and Satisfactory servers. We own and operate our hardware to ensure low costs, control, and transparency. Our primary location is Reno, Nevada.</p>
-      <p class="small">What sets us apart:</p>
-      <ul class="small">
-        <li>No RAM overprovisioning - all resources are allocated as advertised</li>
-        <li>Papyrus.VIP DDoS protection for uninterrupted gameplay</li>
-        <li>Specialized in hosting popular multiplayer games</li>
-        <li>Full transparency about infrastructure and hardware</li>
-        <li>US-based hosting with low latency connectivity</li>
-      </ul>
-      <hr>
-      <h3>Contact Us</h3>
-      <p class="small">Email: <a class="link" href="mailto:support@nexuservers.com">support@nexuservers.com</a></p>
-      <p class="small">Discord: <a class="link" href="https://discord.gg/ksMEH3uheK" target="_blank">discord.gg/ksMEH3uheK</a></p>
-      <p class="small">Status: <a class="link" href="https://status.nexuservers.com/" target="_blank">status.nexuservers.com</a></p>
+      <h1>About Nexus Servers | Premium Game Hosting Provider | Minecraft, Rust, ARK & Terraria</h1>
+      <div class="motto">Always connected · Always powerful · Always transparent</div>
+      
+      <div class="about-section card">
+        <h2>Who we are</h2>
+        <p class="small">Nexus Servers uses the Pterodactyl panel for game hosting, specializing in Minecraft, Terraria, Rust, ARK, and Satisfactory servers. We own and operate our hardware to ensure low costs, control, and transparency. Our primary location is Reno, Nevada.</p>
+        <p class="small">What sets us apart:</p>
+        <ul class="small">
+          <li>No RAM overprovisioning - all resources are allocated as advertised</li>
+          <li>Papyrus.VIP DDoS protection for uninterrupted gameplay</li>
+          <li>Specialized in hosting popular multiplayer games</li>
+          <li>Full transparency about infrastructure and hardware</li>
+          <li>US-based hosting with low latency connectivity</li>
+        </ul>
+        <hr>
+        <h3>Contact Us</h3>
+        <p class="small">Email: <a class="link" href="mailto:support@nexuservers.com">support@nexuservers.com</a></p>
+        <p class="small">Discord: <a class="link" href="https://discord.gg/ksMEH3uheK" target="_blank">discord.gg/ksMEH3uheK</a></p>
+        <p class="small">Status: <a class="link" href="https://status.nexuservers.com/" target="_blank">status.nexuservers.com</a></p>
+      </div>
+
+      <div style="height:32px"></div>
+
+      <!-- Comparison moved to Home page -->
+
+      <p style="margin-top:18px"><a href="index.html" style="color:#fff;text-decoration:none">← Back to Home</a></p>
     </div>
-
-    <div style="height:32px"></div>
-
-  <!-- Comparison moved to Home page -->
-
-    <p style="margin-top:18px"><a href="index.html" style="color:#fff;text-decoration:none">← Back to Home</a></p>
-  </div>
   </main>
   <footer class="site-footer">
     <div class="container">

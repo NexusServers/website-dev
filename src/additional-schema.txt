@@ -1,0 +1,107 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Game Server Hosting",
+  "description": "Premium game server hosting for Minecraft, Terraria, Rust, ARK, and Satisfactory with NVMe SSDs, DDR5 RAM, and DDoS protection.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Nexus Servers"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "1.00",
+    "highPrice": "32.00",
+    "offerCount": "25",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Minecraft Hosting - Dirt Plan",
+        "description": "2GB RAM, 1 vCore, 25GB NVMe storage, ideal for small vanilla servers",
+        "price": "1.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://nexuservers.com/plans.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Minecraft Hosting - Premium Plan",
+        "description": "16GB RAM, 8 vCores, 150GB NVMe storage, perfect for large modded servers",
+        "price": "32.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://nexuservers.com/plans.html"
+      }
+    ]
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "GameServerAdmin2023"
+    },
+    "reviewBody": "Excellent server performance with zero lag. Their support team helped me set up my modded Minecraft server in minutes!"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127",
+    "bestRating": "5"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What games does Nexus Servers support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexus Servers provides high-performance hosting for Minecraft, Terraria, Rust, ARK: Survival Evolved, and Satisfactory. All our game servers run on premium hardware with NVMe SSDs and DDR5 RAM for optimal performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer DDoS protection for game servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all Nexus Servers game hosting plans include enterprise-grade DDoS protection at no extra cost. This ensures your gaming community stays online even during attack attempts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can I get my game server online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our servers are deployed instantly after payment. You'll receive login credentials within 30 seconds, and most game servers can be fully configured and online within 2-5 minutes using our one-click installers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What control panel do you use for game servers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexus Servers uses the Pterodactyl control panel, which provides an intuitive, modern interface for managing your game servers. It includes file management, console access, and one-click plugin/mod installations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are your game servers located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our primary servers are located in Reno, Nevada, providing excellent connectivity across North America. We offer low-latency networking with 99.9% uptime guarantees."
+      }
+    }
+  ]
+}
+</script>

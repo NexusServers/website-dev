@@ -23,127 +23,35 @@
     <link rel="stylesheet" href="compact.css">
     <link rel="stylesheet" href="aurora.css">
     <link rel="stylesheet" href="low-performance.css">
+  <script>
+    // Apply low-performance mode immediately to prevent flash.
+    // Default to low-performance unless the user explicitly set 'nexus-low-performance' to 'false'.
+    (function() {
+      try {
+        const saved = localStorage.getItem('nexus-low-performance');
+        if (saved !== 'false') {
+          document.documentElement.classList.add('low-performance');
+          // body may not exist yet in head - set a short observer to ensure class applied
+          if (document.body) {
+            document.body.classList.add('low-performance');
+          } else {
+            document.addEventListener('DOMContentLoaded', function() {
+              document.body.classList.add('low-performance');
+            });
+          }
+        }
+      } catch (e) {
+        // Storage may be blocked; fallback to applying low-performance
+        document.documentElement.classList.add('low-performance');
+        document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+      }
+    })();
+  </script>
     <script src="scripts.js" defer></script>
     <script src="aurora.js" defer></script>
-    <!-- Structured data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Minecraft Server Hosting Plans",
-      "description": "Minecraft server hosting plans with premium Ryzen 9 or budget-friendly EPYC options. All include NVMe storage, DDoS protection and 24/7 support.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Nexus Servers"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-  "lowPrice": "1.00",
-  "highPrice": "32.00",
-        "offerCount": "6",
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "Dirt Plan",
-            "description": "2GB RAM, 1 vCore, 25GB NVMe storage",
-            "price": "1.00",
-            "priceCurrency": "USD",
-            const PLAN_DATA = {
-              eco: {
-                minecraft: [
-                  { name: 'Dirt', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/mc-eco/dirt-minecraft-java-eco/checkout' },
-                  { name: 'Sand', price: '$2.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/sand-minecraft-java-eco/checkout' },
-                  { name: 'Cobblestone', price: '$3.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 75 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/cobblestone-minecraft-java-eco/checkout' },
-                  { name: 'Wood', price: '$4.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/wood-minecraft-java-eco/checkout' },
-                  { name: 'Stone', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-eco/stone-minecraft-java-eco/checkout' },
-                  { name: 'Netherrack', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-eco/netherrack-minecraft-java-eco/checkout' }
-                ],
-                terraria: [
-                  { name: 'Shortsword', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-Shortsword/checkout' },
-                  { name: 'Starfury', price: '$2.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-starfury/checkout' },
-                  { name: 'Nights Edge', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 75 GB NVMe*','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-nights_edge/checkout' },
-                  { name: 'Breaker Blade', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 100 GB NVMe*','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-breaker_blade/checkout' },
-                  { name: 'Terrablade', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 125 GB NVMe*','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-terrablade/checkout' }
-                ],
-                rust: [
-                  { name: 'Torch', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-torch/checkout' },
-                  { name: 'Rock', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 25 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-rock/checkout' },
-                  { name: 'Spear', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-spear/checkout' },
-                  { name: 'Axe', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-axe/checkout' },
-                  { name: 'Pickaxe', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-ppickaxe/checkout' }
-                ],
-                ark: [
-                  { name: 'Dodo', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-dodo/checkout' },
-                  { name: 'Raptor', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-raptor/checkout' },
-                  { name: 'Trike', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-trike/checkout' },
-                  { name: 'Rex', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-rex/checkout' },
-                  { name: 'Spino', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-spino/checkout' }
-                ],
-                satisfactory: [
-                  { name: 'Concrete', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-concrete/checkout' },
-                  { name: 'Iron Plate', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-iron_plate/checkout' },
-                  { name: 'Screws', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-screws/checkout' },
-                  { name: 'Wire', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-wire/checkout' },
-                  { name: 'Smart Plating', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-smart_plating/checkout' }
-                ]
-              },
-              premium: {
-                minecraft: [
-                  { name: 'Coal', price: '$4.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/mc-premium/coal-minecraft-java-premium/checkout' },
-                  { name: 'Copper', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/copper-minecraft-java-premium/checkout' },
-                  { name: 'Iron', price: '$12.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 75 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/iron-minecraft-java-premium/checkout' },
-                  { name: 'Gold', price: '$16.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/gold-minecraft-java-premium/checkout' },
-                  { name: 'Diamond', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-premium/diamond-minecraft-java-premium/checkout' },
-                  { name: 'Netherite', price: '$32.00', badge: 'Pro', badgeClass: 'pro', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 6 · Backups: 5 · Databases: 6'], url: 'https://billing.nexuservers.com/products/mc-premium/netherite-minecraft-java-premium/checkout' }
-                ],
-                terraria: [
-                  { name: 'Eye of Cthulhu', price: '$4.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-eye_of_cthulhu/checkout' },
-                  { name: 'Skeletron', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-skeletron/checkout' },
-                  { name: 'Wall of Flesh', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-wall_of_flesh/checkout' },
-                  { name: 'Plantera', price: '$24.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-plantera/checkout' },
-                  { name: 'Empress of Light', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 6 · Backups: 5 · Databases: 6'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-empress_of_light/checkout' }
-                ],
-                rust: [
-                  { name: 'Eoka', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-eoka/checkout' },
-                  { name: 'Nail Gun', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-nail_gun/checkout' },
-                  { name: 'Revolver', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-revolver/checkout' },
-                  { name: 'Tommy', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-tommy/checkout' },
-                  { name: 'AK', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-ak/checkout' }
-                ],
-                ark: [
-                  { name: 'Element', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-element/checkout' },
-                  { name: 'Wyvern', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-wyvern/checkout' },
-                  { name: 'Reaper', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-reaper/checkout' },
-                  { name: 'Rock Drake', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-rock_drake/checkout' },
-                  { name: 'Pheonix', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-pheonix/checkout' }
-                ],
-                satisfactory: [
-                  { name: 'Smelter', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-smelter/checkout' },
-                  { name: 'Constructor', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-constructor/checkout' },
-                  { name: 'Assembler', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-assembler/checkout' },
-                  { name: 'Foundry', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-foundry/checkout' },
-                  { name: 'Manufacturer', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-manufacturer/checkout' }
-                ]
-              }
-            };
-                specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 100 GB NVMe*','Ports: 5 · Backups: 4 · Databases: 5'],
-                url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-breaker_blade/checkout'
-              },
-              {
-                name: 'Terrablade', price: '$8.00',
-                specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 125 GB NVMe*','Ports: 5 · Backups: 4 · Databases: 5'],
-                url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-terrablade/checkout'
-              }
-            ],
-            rust: [
-              {
-                name: 'Torch', price: '$4.00',
-                specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe (Hard Cap)','Ports: 3 · Backups: 3 · Databases: 4'],
-                url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-torch/checkout'
-              <!DOCTYPE html>
-              <html lang="en">
-              <head>
+    <!-- Structured/SEO JSON-LD removed here to avoid duplication and malformed content.
+         The canonical JSON-LD block remains later in the document (one well-formed script near the end of <head>).
+    -->
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width,initial-scale=1">
                 <meta name="theme-color" content="#000000">
@@ -184,67 +92,67 @@
                     "highPrice": "48.00",
                     "offerCount": "52",
                     "offers": [
-                      {"@type":"Offer","name":"Dirt (Minecraft Eco)","price":"1.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/dirt-minecraft-java-eco/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 25 GB NVMe* • Ports: 3 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Sand (Minecraft Eco)","price":"2.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/sand-minecraft-java-eco/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 50 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Cobblestone (Minecraft Eco)","price":"3.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/cobblestone-minecraft-java-eco/checkout","description":"CPU: 3 vCores • RAM: 6 GB • Storage: 75 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Wood (Minecraft Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/wood-minecraft-java-eco/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 100 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Stone (Minecraft Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/stone-minecraft-java-eco/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Netherrack (Minecraft Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-eco/netherrack-minecraft-java-eco/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 150 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+          {"@type":"Offer","name":"Dirt (Minecraft Eco)","price":"1.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-dirt-eco-rno/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 10 GB NVMe* • Ports: 3 • Backups: 2 • Databases: 3"},
+        {"@type":"Offer","name":"Sand (Minecraft Eco)","price":"2.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-sand-eco-rno/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 20 GB NVMe* • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Cobblestone (Minecraft Eco)","price":"3.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-cobblestone-eco-rno/checkout","description":"CPU: 3 vCores • RAM: 6 GB • Storage: 30 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                        {"@type":"Offer","name":"Wood (Minecraft Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-wood-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                        {"@type":"Offer","name":"Stone (Minecraft Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-stone-eco-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 60 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                        {"@type":"Offer","name":"Netherrack (Minecraft Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-netherrack-eco-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 80 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
 
-                      {"@type":"Offer","name":"Coal (Minecraft Premium)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/coal-minecraft-java-premium/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 25 GB NVMe • Ports: 3 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Copper (Minecraft Premium)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/copper-minecraft-java-premium/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 50 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Iron (Minecraft Premium)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/iron-minecraft-java-premium/checkout","description":"CPU: 3 vCores • RAM: 6 GB • Storage: 75 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Gold (Minecraft Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/gold-minecraft-java-premium/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 100 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Diamond (Minecraft Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/diamond-minecraft-java-premium/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                {"@type":"Offer","name":"Netherite (Minecraft Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/mc-premium/netherite-minecraft-java-premium/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 150 GB NVMe • Ports: 6 • Backups: 5 • Databases: 6"},
+                      {"@type":"Offer","name":"Coal (Minecraft Premium)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-coal-prm-rno/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 20 GB NVMe • Ports: 3 • Backups: 2 • Databases: 3"},
+                      {"@type":"Offer","name":"Copper (Minecraft Premium)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-copper-prm-rno/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Iron (Minecraft Premium)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-iron-prm-rno/checkout","description":"CPU: 3 vCores • RAM: 6 GB • Storage: 60 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                        {"@type":"Offer","name":"Gold (Minecraft Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-gold-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 80 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                        {"@type":"Offer","name":"Diamond (Minecraft Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-diamond-prm-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 120 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                        {"@type":"Offer","name":"Netherite (Minecraft Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-netherite-prm-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 160 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
 
-                      {"@type":"Offer","name":"Shortsword (Terraria Eco)","price":"1.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-Shortsword/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 25 GB NVMe* • Ports: 3 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Starfury (Terraria Eco)","price":"2.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-starfury/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 50 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Nights Edge (Terraria Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-nights_edge/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 75 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Breaker Blade (Terraria Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-breaker_blade/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Terrablade (Terraria Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-terrablade/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+          {"@type":"Offer","name":"Shortsword (Terraria Eco)","price":"1.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-eco-rno/terraria-shortsword-eco-rno/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 10 GB NVMe* • Ports: 3 • Backups: 2 • Databases: 3"},
+          {"@type":"Offer","name":"Starfury (Terraria Eco)","price":"2.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-eco-rno/terraria-starfury-eco-rno/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 20 GB NVMe* • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Nights Edge (Terraria Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-eco-rno/terraria-nights-edge-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Breaker Blade (Terraria Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-eco-rno/terraria-breaker-blade-eco-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 60 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+          {"@type":"Offer","name":"Terrablade (Terraria Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-eco-rno/terraria-terrablade-eco-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 80 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
 
-                      {"@type":"Offer","name":"Eye of Cthulhu (Terraria Premium)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-eye_of_cthulhu/checkout","description":"CPU: 1 vCore • RAM: 2 GB • Storage: 25 GB NVMe • Ports: 3 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Skeletron (Terraria Premium)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-skeletron/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 50 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Wall of Flesh (Terraria Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-wall_of_flesh/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 100 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Plantera (Terraria Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-plantera/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Empress of Light (Terraria Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-empress_of_light/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 150 GB NVMe • Ports: 6 • Backups: 5 • Databases: 6"},
+                      {"@type":"Offer","name":"Eye of Cthulhu (Terraria Premium)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-premium-rno/terraria-eye-of-cthulhu-prm-rno/checkout","description":"CPU: 2 vCores • RAM: 4 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Skeletron (Terraria Premium)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-premium-rno/terraria-skeletron-prm-rno/checkout","description":"CPU: 3 vCores • RAM: 6 GB • Storage: 60 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Wall of Flesh (Terraria Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-premium-rno/terraria-wall-of-flesh-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 80 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Plantera (Terraria Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-premium-rno/terraria-plantera-prm-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 120 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Empress of Light (Terraria Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/terraria-premium-rno/terraria-empress-of-light-prm-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 160 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
 
-                      {"@type":"Offer","name":"Torch (Rust Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-torch/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Rock (Rust Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-rock/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 25 GB NVMe • Ports: 4 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Spear (Rust Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-spear/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Axe (Rust Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-axe/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Pickaxe (Rust Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-ppickaxe/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Torch (Rust Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-rno/rust-torch-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Rock (Rust Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-rno/rust-rock-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 4 • Backups: 3 • Databases: 5"},
+                      {"@type":"Offer","name":"Spear (Rust Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-rno/rust-spear-eco-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 60 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Axe (Rust Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-rno/rust-axe-eco-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 80 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Pickaxe (Rust Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-eco-rno/rust-pickaxe-eco-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 120 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"},
 
-                      {"@type":"Offer","name":"Eoka (Rust Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-eoka/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 5 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Nail Gun (Rust Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-nail_gun/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Revolver (Rust Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-revolver/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Tommy (Rust Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-tommy/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"AK (Rust Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-ak/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Eoka (Rust Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-rno/rust-eoka-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 80 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Nail Gun (Rust Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-rno/rust-nail-gun-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 100 GB NVMe • Ports: 4 • Backups: 3 • Databases: 5"},
+                      {"@type":"Offer","name":"Revolver (Rust Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-rno/rust-revolver-prm-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 120 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Tommy (Rust Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-rno/rust-tommy-prm-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 160 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"AK (Rust Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/rust-premium-rno/rust-ak-prm-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 240 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"},
 
-                      {"@type":"Offer","name":"Dodo (ARK Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco/ark-eco-dodo/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Raptor (ARK Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco/ark-eco-raptor/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 4 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Trike (ARK Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco/ark-eco-trike/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Rex (ARK Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco/ark-eco-rex/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Spino (ARK Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco/ark-eco-spino/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Dodo (ARK Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco-rno/ark-dodo-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Raptor (ARK Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco-rno/ark-raptor-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 4 • Backups: 3 • Databases: 5"},
+                      {"@type":"Offer","name":"Trike (ARK Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco-rno/ark-trike-eco-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 60 GB NVMe • Ports: 4 • Backups: 3 • Databases: 5"},
+                      {"@type":"Offer","name":"Rex (ARK Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco-rno/ark-rex-eco-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 80 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Spino (ARK Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-eco-rno/ark-spino-eco-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 120 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"},
 
-                      {"@type":"Offer","name":"Element (ARK Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium/ark-prm-element/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 5 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Wyvern (ARK Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium/ark-prm-wyvern/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Reaper (ARK Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium/ark-prm-reaper/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Rock Drake (ARK Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium/ark-prm-rock_drake/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Pheonix (ARK Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium/ark-prm-pheonix/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Element (ARK Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium-rno/ark-element-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 80 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Wyvern (ARK Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium-rno/ark-wyvern-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 100 GB NVMe • Ports: 4 • Backups: 3 • Databases: 4"},
+                      {"@type":"Offer","name":"Reaper (ARK Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium-rno/ark-reaper-prm-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 120 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Rock Drake (ARK Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium-rno/ark-rock-drake-prm-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 160 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+                      {"@type":"Offer","name":"Phoenix (ARK Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/ark-premium-rno/ark-phoenix-prm-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 240 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"},
 
-                      {"@type":"Offer","name":"Concrete (Satisfactory Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-concrete/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Iron Plate (Satisfactory Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-iron_plate/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 4 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Screws (Satisfactory Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-screws/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                      {"@type":"Offer","name":"Wire (Satisfactory Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-wire/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                {"@type":"Offer","name":"Smart Plating (Satisfactory Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-smart_plating/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+          {"@type":"Offer","name":"Concrete (Satisfactory Eco)","price":"4.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-concrete-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 40 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Iron Plate (Satisfactory Eco)","price":"5.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-iron-plate-eco-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Screws (Satisfactory Eco)","price":"6.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-screws-eco-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 60 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+          {"@type":"Offer","name":"Wire (Satisfactory Eco)","price":"8.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-wire-eco-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 80 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+        {"@type":"Offer","name":"Smart Plating (Satisfactory Eco)","price":"12.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-smart-plating-eco-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 120 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"},
 
-                      {"@type":"Offer","name":"Smelter (Satisfactory Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-smelter/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 25 GB NVMe • Ports: 5 • Backups: 2 • Databases: 3"},
-                      {"@type":"Offer","name":"Constructor (Satisfactory Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-constructor/checkout","description":"CPU: 6 vCores • RAM: 10 GB • Storage: 50 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                      {"@type":"Offer","name":"Assembler (Satisfactory Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-assembler/checkout","description":"CPU: 8 vCores • RAM: 12 GB • Storage: 75 GB NVMe • Ports: 5 • Backups: 3 • Databases: 4"},
-                {"@type":"Offer","name":"Foundry (Satisfactory Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-foundry/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 100 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
-                {"@type":"Offer","name":"Manufacturer (Satisfactory Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-manufacturer/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 125 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"}
+          {"@type":"Offer","name":"Smelter (Satisfactory Premium)","price":"16.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-smelter-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 8 GB • Storage: 80 GB NVMe • Ports: 3 • Backups: 3 • Databases: 4"},
+          {"@type":"Offer","name":"Constructor (Satisfactory Premium)","price":"20.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-constructor-prm-rno/checkout","description":"CPU: 4 vCores • RAM: 10 GB • Storage: 100 GB NVMe • Ports: 4 • Backups: 3 • Databases: 5"},
+          {"@type":"Offer","name":"Assembler (Satisfactory Premium)","price":"24.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-assembler-prm-rno/checkout","description":"CPU: 6 vCores • RAM: 12 GB • Storage: 120 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+        {"@type":"Offer","name":"Foundry (Satisfactory Premium)","price":"32.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-foundry-prm-rno/checkout","description":"CPU: 8 vCores • RAM: 16 GB • Storage: 160 GB NVMe • Ports: 5 • Backups: 4 • Databases: 5"},
+        {"@type":"Offer","name":"Manufacturer (Satisfactory Premium)","price":"48.00","priceCurrency":"USD","url":"https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-manufacturer-prm-rno/checkout","description":"CPU: 10 vCores • RAM: 24 GB • Storage: 240 GB NVMe • Ports: 6 • Backups: 4 • Databases: 6"}
                     ]
                   }
                 }
@@ -282,30 +190,41 @@
                 <main>
                   <div class="container">
                     <h1 style="text-align: center;">Nexus Game Hosting Plans</h1>
-                    <p class="lead">All plans include NVMe storage, DDoS protection and are located in Reno, Nevada.</p>
-                    <p class="storage-note">* Asterisk indicates a hard storage limit and applies only to Eco plans under 4 GB RAM.</p>
+                    <p class="lead">We currently have servers located in Reno, NV and Warsaw, Poland.</p>
+                <p class="storage-note">* Asterisk indicates a hard storage limit and applies to Eco plans with 4 GB RAM and below.</p>
 
-                    <div class="plan-configurator card" style="margin-top:8px;">
+                    <div class="plan-configurator card" style="margin-top:31px; padding-top:18px; padding-bottom:18px;">
+                      <!-- Promotional discount bubbles (static for now, will become interactive buttons later) -->
+                      <div class="discounts-container" aria-hidden="false" style="margin:10px 0 14px;">
+                        <div class="discount-bubble" data-discount="quarterly" aria-label="5 percent off for quarterly billing">
+                          <strong>-5% Off</strong>
+                          <small>Quarterly</small>
+                        </div>
+                        <div class="discount-bubble" data-discount="semiannual" aria-label="12 percent off for semi-annual billing">
+                          <strong>-12% Off</strong>
+                          <small>Semi-Annually</small>
+                        </div>
+                        <div class="discount-bubble" data-discount="yearly" aria-label="25 percent off for yearly billing">
+                          <strong>-25% Off</strong>
+                          <small>Yearly</small>
+                        </div>
+                      </div>
                       <div class="step">
-                        <div class="step-header">1. Choose CPU</div>
-                        <div class="options-row" role="tablist" aria-label="CPU">
-                          <button class="option-card" data-cpu="eco" aria-selected="true">
-                            <div class="option-title">Eco CPU</div>
-                            <div class="option-sub">AMD EPYC 7551P</div>
-                            <div class="option-price">$0.50 / GB</div>
-                            <div class="option-desc">Great for lightweight servers and proxies</div>
-                          </button>
-                          <button class="option-card" data-cpu="premium">
-                            <div class="option-title">Premium CPU</div>
-                            <div class="option-sub">AMD Ryzen 9 9950X</div>
-                            <div class="option-price">$2.00 / GB</div>
-                            <div class="option-desc">Best for heavy mods and generation</div>
-                          </button>
+                        <div class="step-header"><div class="step-box" role="heading" aria-level="2">Pick a location</div></div>
+                        <div class="locations-tabs" role="tablist" aria-label="Locations">
+                          <button class="location-tab active" type="button" data-loc="reno" aria-selected="true"><img class="loc-flag" src="assets/icons/us.svg" alt="US flag"/>Reno, NV</button>
+                          <button class="location-tab" type="button" data-loc="warsaw" aria-selected="false"><img class="loc-flag" src="assets/icons/pl.svg" alt="Poland flag"/>Warsaw, Poland</button>
+                        </div>
+                      </div>
+                      <div class="step">
+                        <div class="step-header"><div class="step-box" role="heading" aria-level="2">Choose CPU</div></div>
+                        <div class="options-row" role="tablist" aria-label="CPU" id="cpu-options">
+                          <!-- CPU option cards rendered dynamically per location -->
                         </div>
                       </div>
 
                       <div class="step">
-                        <div class="step-header">2. Choose Game</div>
+                        <div class="step-header"><div class="step-box" role="heading" aria-level="2">Choose Game</div></div>
                         <div class="options-row games" aria-label="Game">
                           <button class="option-chip" data-game="minecraft" aria-selected="true">
                             <span class="game-icon"><img src="assets/images/mcicon.png" alt="Minecraft" style="width:16px;height:16px;"></span>Minecraft
@@ -325,98 +244,132 @@
                           <button class="option-chip disabled" data-game="csgo" aria-disabled="true" title="Coming soon">
                             <span class="game-icon"><img src="assets/images/csgo.png" alt="CS:GO" style="width:16px;height:16px;" onerror="this.style.display='none'"></span>CS:GO
                           </button>
-                          <button class="option-chip disabled" data-game="gmod" aria-disabled="true" title="Coming soon">
+                          <button class="option-chip disabled" data-game="gmod" aria-disabled="true" data-global-disabled="true" title="Coming soon">
                             <span class="game-icon"><img src="assets/images/gmod.png" alt="Garry's Mod" style="width:16px;height:16px;" onerror="this.style.display='none'"></span>Garry's Mod
                           </button>
-                          <button class="option-chip disabled" data-game="more" aria-disabled="true" title="More games soon">More games soon</button>
+                          <button class="option-chip disabled" data-game="more" aria-disabled="true" data-global-disabled="true" title="More games soon">More games soon</button>
                         </div>
                       </div>
 
                       <div class="step">
-                        <div class="step-header">3. Pick a plan</div>
+                        <div class="step-header"><div class="step-box" role="heading" aria-level="2">Pick a plan</div></div>
                         <div id="plans-output" class="plans-list" aria-live="polite"></div>
                       </div>
                     </div>
 
                     <script>
                       (function(){
+                        // TODO (editor checklist):
+                        // - Source of truth: billing.nexuservers.com product pages.
+                        // - When updating plans: copy Name, Price, Specs (CPU/RAM/Storage/Ports/Backups/Databases), and Checkout URL exactly.
+                        // - Update both the inline `PLAN_DATA` and the head JSON-LD offers block to keep SEO and UI consistent.
+                        // - Verify no broken paths (typos like 'teraria' -> should be 'terraria').
+                        // - Run a quick smoke test: open `plans.html` and confirm each Buy button links to billing checkout URL and renders specs as separate list items.
+                        // Last updated: 2025-09-26
                         const PLAN_DATA = {
                           eco: {
                             minecraft: [
-                              { name: 'Dirt', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/mc-eco/dirt-minecraft-java-eco/checkout' },
-                              { name: 'Sand', price: '$2.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/sand-minecraft-java-eco/checkout' },
-                              { name: 'Cobblestone', price: '$3.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 75 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/cobblestone-minecraft-java-eco/checkout' },
-                              { name: 'Wood', price: '$4.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-eco/wood-minecraft-java-eco/checkout' },
-                              { name: 'Stone', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-eco/stone-minecraft-java-eco/checkout' },
-                              { name: 'Netherrack', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-eco/netherrack-minecraft-java-eco/checkout' }
+                              { name: 'Dirt', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 10 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-dirt-eco-rno/checkout' },
+                              { name: 'Sand', price: '$2.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 20 GB NVMe*','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-sand-eco-rno/checkout' },
+                              { name: 'Cobblestone', price: '$3.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 30 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-cobblestone-eco-rno/checkout' },
+                              { name: 'Wood', price: '$4.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-wood-eco-rno/checkout' },
+                              { name: 'Stone', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-stone-eco-rno/checkout' },
+                              { name: 'Netherrack', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-eco-rno/minecraft-netherrack-eco-rno/checkout' }
                             ],
                             terraria: [
-                              { name: 'Shortsword', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-Shortsword/checkout' },
-                              { name: 'Starfury', price: '$2.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-starfury/checkout' },
-                              { name: 'Nights Edge', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 75 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-nights_edge/checkout' },
-                              { name: 'Breaker Blade', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-breaker_blade/checkout' },
-                              { name: 'Terrablade', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-eco-servers/terraria-eco-terrablade/checkout' }
+                              { name: 'Shortsword', price: '$1.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 10 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/terraria-eco-rno/terraria-shortsword-eco-rno/checkout' },
+                              { name: 'Starfury', price: '$2.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 20 GB NVMe*','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/terraria-eco-rno/terraria-starfury-eco-rno/checkout' },
+                              { name: 'Nights Edge', price: '$4.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/terraria-eco-rno/terraria-nights-edge-eco-rno/checkout' },
+                              { name: 'Breaker Blade', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/terraria-eco-rno/terraria-breaker-blade-eco-rno/checkout' },
+                              { name: 'Terrablade', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/terraria-eco-rno/terraria-terrablade-eco-rno/checkout' }
                             ],
                             rust: [
-                              { name: 'Torch', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-torch/checkout' },
-                              { name: 'Rock', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 25 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-rock/checkout' },
-                              { name: 'Spear', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-spear/checkout' },
-                              { name: 'Axe', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-axe/checkout' },
-                              { name: 'Pickaxe', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-servers/rust-eco-ppickaxe/checkout' }
+                              { name: 'Torch', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-eco-rno/rust-torch-eco-rno/checkout' },
+                              { name: 'Rock', price: '$5.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 3 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-rno/rust-rock-eco-rno/checkout' },
+                              { name: 'Spear', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-rno/rust-spear-eco-rno/checkout' },
+                              { name: 'Axe', price: '$8.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-eco-rno/rust-axe-eco-rno/checkout' },
+                              { name: 'Pickaxe', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 120 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/rust-eco-rno/rust-pickaxe-eco-rno/checkout' }
                             ],
                             ark: [
-                              { name: 'Dodo', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-dodo/checkout' },
-                              { name: 'Raptor', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-raptor/checkout' },
-                              { name: 'Trike', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-trike/checkout' },
-                              { name: 'Rex', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-rex/checkout' },
-                              { name: 'Spino', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco/ark-eco-spino/checkout' }
+                              { name: 'Dodo', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-eco-rno/ark-dodo-eco-rno/checkout' },
+                              { name: 'Raptor', price: '$5.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 3 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco-rno/ark-raptor-eco-rno/checkout' },
+                              { name: 'Trike', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 4 · Backups: 3 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco-rno/ark-trike-eco-rno/checkout' },
+                              { name: 'Rex', price: '$8.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-eco-rno/ark-rex-eco-rno/checkout' },
+                              { name: 'Spino', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 120 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/ark-eco-rno/ark-spino-eco-rno/checkout' }
                             ],
                             satisfactory: [
-                              { name: 'Concrete', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-concrete/checkout' },
-                              { name: 'Iron Plate', price: '$5.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 4 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-iron_plate/checkout' },
-                              { name: 'Screws', price: '$6.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-screws/checkout' },
-                              { name: 'Wire', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satisfactory-eco-wire/checkout' },
-                              { name: 'Smart Plating', price: '$12.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco/satiscfactory-eco-smart_plating/checkout' }
+                              { name: 'Concrete', price: '$4.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-concrete-eco-rno/checkout' },
+                              { name: 'Iron Plate', price: '$5.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-iron-plate-eco-rno/checkout' },
+                              { name: 'Screws', price: '$6.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-screws-eco-rno/checkout' },
+                              { name: 'Wire', price: '$8.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-wire-eco-rno/checkout' },
+                              { name: 'Smart Plating', price: '$12.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 120 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/satisfactory-eco-rno/satisfactory-smart-plating-eco-rno/checkout' }
                             ]
                           },
                           premium: {
                             minecraft: [
-                              { name: 'Coal', price: '$4.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/mc-premium/coal-minecraft-java-premium/checkout' },
-                              { name: 'Copper', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/copper-minecraft-java-premium/checkout' },
-                              { name: 'Iron', price: '$12.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 75 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/iron-minecraft-java-premium/checkout' },
-                              { name: 'Gold', price: '$16.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/mc-premium/gold-minecraft-java-premium/checkout' },
-                              { name: 'Diamond', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/mc-premium/diamond-minecraft-java-premium/checkout' },
-                              { name: 'Netherite', price: '$32.00', badge: 'Pro', badgeClass: 'pro', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 6 · Backups: 5 · Databases: 6'], url: 'https://billing.nexuservers.com/products/mc-premium/netherite-minecraft-jave-netherite/checkout?plan=232' }
+                              { name: 'Coal', price: '$4.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 20 GB NVMe','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-coal-prm-rno/checkout' },
+                              { name: 'Copper', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-copper-prm-rno/checkout' },
+                              { name: 'Iron', price: '$12.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 60 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-iron-prm-rno/checkout' },
+                              { name: 'Gold', price: '$16.00', badge: 'Popular', badgeClass: 'popular', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 80 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-gold-prm-rno/checkout' },
+                              { name: 'Diamond', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 120 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-diamond-prm-rno/checkout' },
+                              { name: 'Netherite', price: '$32.00', badge: 'Pro', badgeClass: 'pro', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 160 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-premium-rno/minecraft-netherite-prm-rno/checkout' }
                             ],
                             terraria: [
-                              { name: 'Eye of Cthulhu', price: '$4.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 25 GB NVMe','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-eye_of_cthulhu/checkout' },
-                              { name: 'Skeletron', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 50 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-skeletron/checkout' },
-                              { name: 'Wall of Flesh', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 100 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-wall_of_flesh/checkout' },
-                              { name: 'Plantera', price: '$24.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-plantera/checkout' },
-                              { name: 'Empress of Light', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 150 GB NVMe','Ports: 6 · Backups: 5 · Databases: 6'], url: 'https://billing.nexuservers.com/products/teraria-premium-servers/terraria-prm-empress_of_light/checkout' }
+                              { name: 'Eye of Cthulhu', price: '$8.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/terraria-premium-rno/terraria-eye-of-cthulhu-prm-rno/checkout' },
+                              { name: 'Skeletron', price: '$12.00', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 60 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/terraria-premium-rno/terraria-skeletron-prm-rno/checkout' },
+                              { name: 'Wall of Flesh', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 80 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/terraria-premium-rno/terraria-wall-of-flesh-prm-rno/checkout' },
+                              { name: 'Plantera', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 120 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/terraria-premium-rno/terraria-plantera-prm-rno/checkout' },
+                              { name: 'Empress of Light', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 160 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/terraria-premium-rno/terraria-empress-of-light-prm-rno/checkout' }
                             ],
                             rust: [
-                              { name: 'Eoka', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-eoka/checkout' },
-                              { name: 'Nail Gun', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-nail_gun/checkout' },
-                              { name: 'Revolver', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-revolver/checkout' },
-                              { name: 'Tommy', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-tommy/checkout' },
-                              { name: 'AK', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-servers/rust-prm-ak/checkout' }
+                              { name: 'Eoka', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 80 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/rust-premium-rno/rust-eoka-prm-rno/checkout' },
+                              { name: 'Nail Gun', price: '$20.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 100 GB NVMe','Ports: 4 · Backups: 3 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-rno/rust-nail-gun-prm-rno/checkout' },
+                              { name: 'Revolver', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 120 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-rno/rust-revolver-prm-rno/checkout' },
+                              { name: 'Tommy', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 160 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/rust-premium-rno/rust-tommy-prm-rno/checkout' },
+                              { name: 'AK', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 240 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/rust-premium-rno/rust-ak-prm-rno/checkout' }
                             ],
                             ark: [
-                              { name: 'Element', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-element/checkout' },
-                              { name: 'Wyvern', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-wyvern/checkout' },
-                              { name: 'Reaper', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-reaper/checkout' },
-                              { name: 'Rock Drake', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-rock_drake/checkout' },
-                              { name: 'Pheonix', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium/ark-prm-pheonix/checkout' }
+                              { name: 'Element', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 80 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium-rno/ark-element-prm-rno/checkout' },
+                              { name: 'Wyvern', price: '$20.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 100 GB NVMe','Ports: 4 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/ark-premium-rno/ark-wyvern-prm-rno/checkout' },
+                              { name: 'Reaper', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 120 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium-rno/ark-reaper-prm-rno/checkout' },
+                              { name: 'Rock Drake', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 160 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/ark-premium-rno/ark-rock-drake-prm-rno/checkout' },
+                              { name: 'Phoenix', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 240 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/ark-premium-rno/ark-phoenix-prm-rno/checkout' }
                             ],
                             satisfactory: [
-                              { name: 'Smelter', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 25 GB NVMe','Ports: 5 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-smelter/checkout' },
-                              { name: 'Constructor', price: '$20.00', specs: ['CPU: 6 vCores','RAM: 10 GB','Storage: 50 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-constructor/checkout' },
-                              { name: 'Assembler', price: '$24.00', specs: ['CPU: 8 vCores','RAM: 12 GB','Storage: 75 GB NVMe','Ports: 5 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory-prm-assembler/checkout' },
-                              { name: 'Foundry', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 100 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satiscfactory-prm-foundry/checkout' },
-                              { name: 'Manufacturer', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 125 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium/satisfactory%20-prm-manufacturer/checkout' }
+                              { name: 'Smelter', price: '$16.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 80 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-smelter-prm-rno/checkout' },
+                              { name: 'Constructor', price: '$20.00', specs: ['CPU: 4 vCores','RAM: 10 GB','Storage: 100 GB NVMe','Ports: 4 · Backups: 3 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-constructor-prm-rno/checkout' },
+                              { name: 'Assembler', price: '$24.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 120 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-assembler-prm-rno/checkout' },
+                              { name: 'Foundry', price: '$32.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 160 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-foundry-prm-rno/checkout' },
+                              { name: 'Manufacturer', price: '$48.00', specs: ['CPU: 10 vCores','RAM: 24 GB','Storage: 240 GB NVMe','Ports: 6 · Backups: 4 · Databases: 6'], url: 'https://billing.nexuservers.com/products/satisfactory-premium-rno/satisfactory-manufacturer-prm-rno/checkout' }
                             ]
                           }
+                        };
+
+                        // Location-scoped plan dataset. Reno uses the existing PLAN_DATA.
+                        const LOC_PLAN_DATA = {
+                          reno: PLAN_DATA,
+                          warsaw: {
+                            // Minecraft Eco Servers - EU plans (copied from billing product page)
+                            'eco-eu': {
+                              minecraft: [
+                                { name: 'Dirt', price: '$2.00', specs: ['CPU: 1 vCore','RAM: 2 GB','Storage: 10 GB NVMe*','Ports: 3 · Backups: 2 · Databases: 3'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-dirt-eco-eu/checkout' },
+                                { name: 'Sand', price: '$4.00', specs: ['CPU: 2 vCores','RAM: 4 GB','Storage: 20 GB NVMe*','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-sand-eco-eu/checkout' },
+                                { name: 'Cobblestone', price: '$6.00', badge: 'Recommended', badgeClass: 'recommended', specs: ['CPU: 3 vCores','RAM: 6 GB','Storage: 30 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-cobblestone-eco-eu/checkout' },
+                                { name: 'Wood', price: '$8.00', specs: ['CPU: 4 vCores','RAM: 8 GB','Storage: 40 GB NVMe','Ports: 3 · Backups: 3 · Databases: 4'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-wood-eco-eu/checkout' },
+                                { name: 'Stone', price: '$12.00', specs: ['CPU: 6 vCores','RAM: 12 GB','Storage: 60 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-stone-eco-eu/checkout' },
+                                { name: 'Netherrack', price: '$16.00', specs: ['CPU: 8 vCores','RAM: 16 GB','Storage: 80 GB NVMe','Ports: 5 · Backups: 4 · Databases: 5'], url: 'https://billing.nexuservers.com/products/minecraft-eco-eu/minecraft-netherrack-eco-eu/checkout' }
+                              ]
+                            }
+                          }
+                        };
+
+                        // CPU metadata used to render the CPU option cards per cpu-key
+                        const CPU_METADATA = {
+                          eco: { title: 'Eco CPU', sub: 'AMD EPYC 7551P', price: '$0.50 / GB', desc: 'Great for lightweight servers and proxies' },
+                          // show the 'right' CPU with $1.00/GB as requested
+                          premium: { title: 'Premium CPU', sub: 'AMD Ryzen 9 9950X', price: '$1.00 / GB', desc: 'Best for heavy mods and generation' },
+                          // Warsaw EU CPU rendered using the same format and marked Premium visually
+                          'eco-eu': { title: 'Eco CPU', sub: 'Intel Core i7 7700k', price: '$1.00 / GB', desc: 'Great for lightweight servers' }
                         };
 
                         const state = { cpu: 'eco', game: 'minecraft' };
@@ -426,7 +379,16 @@
                         function renderPlans() {
                           const container = $('#plans-output');
                           container.innerHTML = '';
-                          const plans = PLAN_DATA[state.cpu] && PLAN_DATA[state.cpu][state.game] || [];
+                          // determine active location (defaults to reno)
+                          const locKey = document.documentElement.getAttribute('data-location') || 'reno';
+                          // prefer location-scoped plans if present, otherwise fallback to global PLAN_DATA
+                          let plans = [];
+                          const locRoot = LOC_PLAN_DATA[locKey];
+                          if (locRoot && locRoot[state.cpu] && Array.isArray(locRoot[state.cpu][state.game])) {
+                            plans = locRoot[state.cpu][state.game];
+                          } else if (PLAN_DATA[state.cpu] && Array.isArray(PLAN_DATA[state.cpu][state.game])) {
+                            plans = PLAN_DATA[state.cpu][state.game];
+                          }
                           if (!plans.length) {
                             container.innerHTML = '<p class="small" style="opacity:.8">Plans coming soon for this game.</p>';
                             return;
@@ -462,13 +424,50 @@
                           if (el) el.setAttribute('aria-selected','true');
                         }
 
-                        $$('.options-row[aria-label="CPU"] .option-card').forEach(btn => {
-                          btn.addEventListener('click', () => {
-                            state.cpu = btn.getAttribute('data-cpu');
-                            selectOption('.options-row[aria-label="CPU"]', 'cpu', state.cpu);
-                            renderPlans();
+                        // Render CPU option cards dynamically based on selected location
+                        function renderCPUOptions(locKey) {
+                          const container = $('#cpu-options');
+                          container.innerHTML = '';
+                          // determine cpu keys available for the location via LOC_PLAN_DATA
+                          const locPlans = LOC_PLAN_DATA[locKey] || {};
+                          const cpuKeys = Object.keys(locPlans).length ? Object.keys(locPlans) : ['eco','premium'];
+                          cpuKeys.forEach((cpuKey, idx) => {
+                            const meta = CPU_METADATA[cpuKey] || { title: cpuKey, sub: '', price: '', desc: '' };
+                            const btn = document.createElement('button');
+                            btn.className = 'option-card';
+                            btn.setAttribute('data-cpu', cpuKey);
+                            if (idx === 0) btn.setAttribute('aria-selected','true');
+                            // Build structured content so formatting matches the requested layout
+                            if (meta.label) {
+                              const lb = document.createElement('span');
+                              lb.className = 'cpu-badge';
+                              lb.textContent = meta.label;
+                              btn.appendChild(lb);
+                            }
+                            const title = document.createElement('div');
+                            title.className = 'option-title';
+                            title.textContent = meta.title;
+                            const sub = document.createElement('div');
+                            sub.className = 'option-sub';
+                            sub.textContent = meta.sub || '';
+                            const price = document.createElement('div');
+                            price.className = 'option-price';
+                            price.textContent = meta.price || '';
+                            const desc = document.createElement('div');
+                            desc.className = 'option-desc';
+                            desc.textContent = meta.desc || '';
+                            btn.appendChild(title);
+                            btn.appendChild(sub);
+                            btn.appendChild(price);
+                            btn.appendChild(desc);
+                            btn.addEventListener('click', () => {
+                              state.cpu = cpuKey;
+                              selectOption('.options-row[aria-label="CPU"]','cpu', state.cpu);
+                              renderPlans();
+                            });
+                            container.appendChild(btn);
                           });
-                        });
+                        }
 
                         $$('.options-row.games .option-chip').forEach(btn => {
                           btn.addEventListener('click', () => {
@@ -480,6 +479,66 @@
                         });
 
                         renderPlans();
+
+                        // Location switching: Reno (all), Warsaw (minecraft only)
+                        const LOCATIONS = {
+                          reno: { name: 'Reno, NV', games: ['minecraft','terraria','rust','ark','satisfactory','gmod','more'] },
+                          warsaw: { name: 'Warsaw, Poland', games: ['minecraft'] }
+                        };
+
+                        function setLocation(locKey) {
+                          const tabs = $$('.location-tab');
+                          tabs.forEach(t => {
+                            const is = t.getAttribute('data-loc') === locKey;
+                            t.classList.toggle('active', is);
+                            t.setAttribute('aria-selected', is ? 'true' : 'false');
+                          });
+                          document.documentElement.setAttribute('data-location', locKey);
+                          // enable/disable game chips based on location
+                          const allowed = (LOCATIONS[locKey] && LOCATIONS[locKey].games) || [];
+                          $$('.options-row.games .option-chip').forEach(chip => {
+                            const g = chip.getAttribute('data-game');
+                            // Respect global disable flag (permanently disabled entries like Gmod/More)
+                            if (chip.getAttribute('data-global-disabled') === 'true') {
+                              chip.classList.add('disabled');
+                              chip.setAttribute('aria-disabled','true');
+                              chip.title = chip.title || 'Coming soon';
+                              return;
+                            }
+                            if (!allowed.includes(g)) {
+                              chip.classList.add('disabled');
+                              chip.setAttribute('aria-disabled','true');
+                              chip.title = 'Coming soon in ' + (LOCATIONS[locKey] ? LOCATIONS[locKey].name : locKey);
+                            } else {
+                              chip.classList.remove('disabled');
+                              chip.removeAttribute('aria-disabled');
+                              chip.title = '';
+                            }
+                          });
+                          // ensure a valid game is selected
+                          if (!allowed.includes(state.game)) {
+                            state.game = allowed[0] || 'minecraft';
+                            selectOption('.options-row.games','game', state.game);
+                          }
+                          // render CPU options for this location and ensure a valid cpu is selected
+                          renderCPUOptions(locKey);
+                          const locPlan = LOC_PLAN_DATA[locKey] || LOC_PLAN_DATA['reno'];
+                          const availableCpuKeys = Object.keys(locPlan || {});
+                          if (availableCpuKeys.length) {
+                            if (!availableCpuKeys.includes(state.cpu)) {
+                              state.cpu = availableCpuKeys[0];
+                            }
+                            selectOption('.options-row[aria-label="CPU"]','cpu', state.cpu);
+                          }
+                          renderPlans();
+                        }
+
+                        $$('.location-tab').forEach(tab => {
+                          tab.addEventListener('click', () => setLocation(tab.getAttribute('data-loc')));
+                        });
+
+                        // initialize location
+                        setLocation('reno');
                       })();
                     </script>
 

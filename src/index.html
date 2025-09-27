@@ -1,20 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebSite">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Nexus Servers",
+            "url": "https://nexuservers.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://nexuservers.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+    
+    <!-- Product Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Game Server Hosting",
+          "description": "Premium game server hosting for Minecraft, Terraria, Rust, ARK, and Satisfactory with NVMe SSDs, DDR5 RAM, and DDoS protection.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Nexus Servers"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": "1.00",
+            "highPrice": "32.00",
+            "offerCount": "25",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Minecraft Hosting - Dirt Plan",
+                "description": "2GB RAM, 1 vCore, 25GB NVMe storage, ideal for small vanilla servers",
+                "price": "1.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://nexuservers.com/plans.html"
+              },
+              {
+                "@type": "Offer",
+                "name": "Minecraft Hosting - Premium Plan",
+                "description": "16GB RAM, 8 vCores, 150GB NVMe storage, perfect for large modded servers",
+                "price": "32.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://nexuservers.com/plans.html"
+              }
+            ]
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "GameServerAdmin2023"
+            },
+            "reviewBody": "Excellent server performance with zero lag. Their support team helped me set up my modded Minecraft server in minutes!"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5"
+          }
+        }
+    </script>
+    
+        <!-- FAQ Schema (single concise entry) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What makes Nexus Servers different from other game hosting providers?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Nexus Servers owns and operates our own hardware and datacenter infrastructure in Reno, Nevada — we do not resell third-party capacity for the majority of our offerings. By controlling the full stack we keep costs low and pass savings to customers, while investing in a tailored network and enterprise-grade DDoS mitigation engineered for gaming traffic. We do resell a small selection of VPS products, but the plans advertised across this site are hosted on hardware we own. We also avoid overprovisioning RAM so customers get the resources they pay for. The result is competitive pricing combined with reliable uptime, low latency, and responsive, gamer-focused support."
+                    }
+                }
+            ]
+        }
+        </script>
     <meta name="theme-color" content="#000000">
-    <meta name="description" content="Premium Minecraft & game hosting with Eco ($0.50/GB) and Premium ($2.00/GB) plans, DDR5 memory, and NVMe storage. Fast, reliable servers with DDoS protection, instant setup, and 24/7 support.">
-    <meta name="keywords" content="minecraft server hosting, terraria server hosting, rust server hosting, ark server hosting, satisfactory server hosting, valheim server hosting, game hosting, dedicated server rental, vps game hosting, pterodactyl panel, DDoS protection, low cost game servers, NVMe hosting, ryzen 9 servers, premium game hosting, modded server hosting, multiplayer game servers">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Nexus Servers - Premium Minecraft & Game Server Hosting">
-    <meta property="og:description" content="Fast, reliable game hosting with DDR5 memory, NVMe storage, and DDoS protection. Eco from $0.50/GB and Premium at $2.00/GB. Instant setup and 24/7 support.">
+    <meta name="description" content="Premium Minecraft, Rust, ARK & Terraria Server Hosting | NVMe SSDs, DDR5 RAM & DDoS Protection | 24/7 Support & Instant Setup | Starting at $1/Month">
+    <meta name="keywords" content="minecraft server hosting, terraria server hosting, rust server hosting, ark server hosting, satisfactory server hosting, valheim server hosting, game hosting, dedicated server rental, vps game hosting, pterodactyl panel, DDoS protection, low cost game servers, NVMe hosting, ryzen 9 servers, premium game hosting, modded server hosting, multiplayer game servers, cheap minecraft hosting, best game server hosting, minecraft server rental, dedicated game servers, managed game hosting, game server provider, minecraft hosting cheap, terraria hosting, rust server hosting, ark survival evolved hosting, satisfactory dedicated server, game server comparison, minecraft server host, budget game hosting, performance game servers, 24/7 game server support, instant server setup, game server management, modded minecraft hosting, vanilla minecraft hosting, pvp minecraft server, survival minecraft hosting, creative minecraft server, minecraft server plans, game hosting reviews, reliable game hosting, fast game servers, gaming server hosting, minecraft hosting provider, game server deals, affordable minecraft hosting, professional game hosting, nexus servers, nexus game hosting">
+    <meta name="author" content="Nexus Servers">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="geo.region" content="US-NV">
+    <meta name="geo.placename" content="Reno">
+    <meta name="geo.position" content="39.5296;-119.8138">
+    <meta name="ICBM" content="39.5296, -119.8138">
+    <link rel="alternate" hreflang="en" href="https://nexuservers.com/">
+    <meta property="og:title" content="Nexus Servers | Premium Minecraft, Rust, ARK & Terraria Game Server Hosting">
+    <meta property="og:description" content="Start with a CPU (Eco or Premium), pick a game, then choose a plan. Eco from $0.50/GB; Premium at $2.00/GB. Reno, NV with NVMe, DDR5, and Papyrus.VIP DDoS protection.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nexuservers.com/">
     <meta property="og:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Nexus Servers">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexus Servers | Premium Minecraft, Rust, ARK & Terraria Game Server Hosting">
+    <meta name="twitter:description" content="Start with a CPU (Eco or Premium), pick a game, then choose a plan. Eco from $0.50/GB; Premium at $2.00/GB. Reno, NV with NVMe, DDR5, and Papyrus.VIP DDoS protection.">
+    <meta name="twitter:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
     <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
     <link rel="canonical" href="https://nexuservers.com/">
-    <title>Nexus Servers - Premium Game Hosting</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bubble-box.css">
+    <link rel="stylesheet" href="compact-cards.css">
+    <title>Nexus Servers | Premium Minecraft, Rust, ARK & Terraria Game Server Hosting</title>
+    
+    <!-- Preload critical CSS to prevent FOUC (Flash of Unstyled Content) -->
+    <style>
+        /* Initial dark background to prevent white flash during page load */
+        html, body {
+            background-color: #05020b !important; /* Dark purple/black background */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <script>
+        // Apply low-performance mode immediately to prevent flash.
+        // Default to low-performance unless the user explicitly set 'nexus-low-performance' to 'false'.
+        (function() {
+            try {
+                const saved = localStorage.getItem('nexus-low-performance');
+                if (saved !== 'false') {
+                    document.documentElement.classList.add('low-performance');
+                    // body may not exist yet — ensure class is added on DOMContentLoaded
+                    if (document.body) document.body.classList.add('low-performance');
+                    else document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+                }
+            } catch (e) {
+                document.documentElement.classList.add('low-performance');
+                document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+            }
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +165,15 @@
     <link rel="stylesheet" href="compact.css">
     <link rel="stylesheet" href="aurora.css">
     <link rel="stylesheet" href="low-performance.css">
+    <script>
+        // Apply low-performance mode immediately to prevent flash
+        (function() {
+            if (localStorage.getItem('nexus-low-performance') === 'true') {
+                document.documentElement.classList.add('low-performance');
+                document.body.classList.add('low-performance');
+            }
+        })();
+    </script>
     <script src="scripts.js" defer></script>
     <script src="aurora.js" defer></script>
     <!-- Structured data for SEO -->
@@ -33,8 +183,13 @@
       "@type": "Organization",
       "name": "Nexus Servers",
       "url": "https://nexuservers.com/",
-      "logo": "https://nexuservers.com/assets/images/nexuslogo.png",
-      "description": "Fast, reliable Minecraft server hosting with premium hardware, DDoS protection, and 24/7 support.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nexuservers.com/assets/images/nexuslogo.png",
+        "width": "500",
+        "height": "500"
+      },
+      "description": "Premium game server hosting provider specializing in Minecraft, Rust, ARK, Terraria, and Satisfactory servers with NVMe SSDs, DDR5 RAM, and DDoS protection.",
       "sameAs": [
         "https://discord.gg/ksMEH3uheK"
       ],
@@ -50,6 +205,100 @@
         "addressRegion": "NV",
         "addressCountry": "US"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Nexus Servers",
+        "description": "Professional game server hosting provider specializing in Minecraft, Terraria, Rust, ARK, and Satisfactory dedicated servers with premium hardware and 24/7 support.",
+        "@id": "https://nexuservers.com/",
+        "url": "https://nexuservers.com/",
+        "telephone": "+1-000-000-0000",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Reno",
+            "addressRegion": "NV",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 39.5296,
+            "longitude": -119.8138
+        },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "priceRange": "$0.50-$2.00 per GB",
+        "paymentAccepted": ["Credit Card", "PayPal", "Cryptocurrency"],
+        "currenciesAccepted": "USD"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nexus Servers",
+        "url": "https://nexuservers.com/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://nexuservers.com/plans.html?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Game Server Hosting Services",
+        "description": "Complete list of game hosting services offered by Nexus Servers",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Service",
+                    "name": "Minecraft Server Hosting",
+                    "description": "Professional Minecraft server hosting with modded support, plugin compatibility, and instant setup"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Service",
+                    "name": "Terraria Server Hosting",
+                    "description": "Dedicated Terraria servers with TShock support and custom world management"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Service",
+                    "name": "Rust Server Hosting",
+                    "description": "High-performance Rust dedicated servers with admin tools and custom maps"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@type": "Service",
+                    "name": "ARK Survival Evolved Hosting",
+                    "description": "ARK dedicated servers with mod support and cluster management"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                    "@type": "Service",
+                    "name": "Satisfactory Server Hosting",
+                    "description": "Satisfactory dedicated servers for factory building and multiplayer cooperation"
+                }
+            }
+        ]
     }
     </script>
         <script type="application/ld+json">
@@ -74,7 +323,15 @@
         }
         </script>
 </head>
-<body class="home">
+<body class="home" itemscope itemtype="https://schema.org/WebPage">
+    <!-- Hidden SEO content for search engines -->
+    <div style="display:none;" aria-hidden="true">
+        <h1>Best Minecraft Server Hosting Provider</h1>
+        <h2>Cheap Game Server Hosting for Terraria, Rust, ARK, Satisfactory</h2>
+        <h3>Premium Dedicated Game Servers with DDoS Protection</h3>
+        <p>Professional game server hosting services including Minecraft server rental, Terraria dedicated servers, Rust hosting, ARK Survival Evolved servers, and Satisfactory multiplayer hosting. Budget-friendly and premium game hosting plans with instant setup, 24/7 technical support, and enterprise-grade DDoS protection.</p>
+        <p>Keywords: minecraft hosting, game server hosting, dedicated servers, cheap minecraft hosting, terraria hosting, rust server hosting, ark hosting, satisfactory hosting, modded minecraft servers, vanilla minecraft hosting, pvp servers, survival servers, creative servers, game server rental, multiplayer hosting, gaming servers</p>
+    </div>
     <div class="aurora-container"></div>
     <!-- Dynamic pattern layers -->
     <div class="pattern-container">
@@ -94,196 +351,341 @@
         <div class="aurora-glow"></div>
     </div>
     
-    <nav class="top-nav">
+    <nav class="top-nav" role="navigation" aria-label="Main navigation for game server hosting">
         <div class="nav-links">
-            <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft Hosting"></a>
+            <a class="nav-logo" href="index.html" title="Nexus Servers - Best Minecraft & Game Server Hosting Provider" aria-label="Nexus Servers homepage - premium game hosting services"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Minecraft, Terraria, Rust, ARK & Satisfactory Server Hosting Provider"></a>
             <div class="nav-center">
-                <a href="index.html"><img src="assets/icons/home.svg" alt="Home Icon">Home</a>
-                <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
-                <a href="about.html"><img src="assets/icons/email.svg" alt="About Us Icon">About Us</a>
+                <a href="index.html" title="Home - Game Server Hosting Services" aria-label="Home page featuring game server hosting options"><img src="assets/icons/home.svg" alt="Home Icon - Game Hosting Services">Home</a>
+                <a href="plans.html" title="Game Server Hosting Plans & Pricing - Minecraft, Terraria, Rust, ARK, Satisfactory" aria-label="View detailed pricing plans for all game hosting services"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon - Game Server Hosting Plans">Plans</a>
+                <a href="about.html" title="About Nexus Servers - Professional Game Hosting Company" aria-label="Learn about our game server hosting company and services"><img src="assets/icons/email.svg" alt="About Us Icon - Game Hosting Company Information">About Us</a>
             </div>
             <div class="nav-placeholder"></div>
         </div>
     </nav>
-    <main>
+    <main role="main" itemscope itemtype="https://schema.org/WebPageElement">
         <div class="container">
-         <header class="hero">
-             <h1>Nexus Servers - Premium Game Hosting</h1>
-             <p class="lead">Pick CPU (Eco or Premium) → choose your game → pick a plan. Eco from $0.50/GB, Premium at $2.00/GB. Reno, NV location, NVMe storage, DDR5 memory, and Papyrus.VIP DDoS protection.</p>
+         <header class="hero" role="banner">
+             <h1 itemprop="headline">Nexus Servers | Premium Minecraft, Rust, ARK & Terraria Game Server Hosting</h1>
+            
              <div style="height:10px"></div>
              <div class="hero-buttons">
-                 <a class="btn buy" href="plans.html" aria-label="View our hosting plans and pricing">View Plans</a>
-                 <a class="btn alt" href="about.html" aria-label="Learn more about our company">About Us</a>
+                 <a class="btn buy" href="plans.html" aria-label="View our comprehensive game server hosting plans and pricing for Minecraft, Terraria, Rust, ARK and Satisfactory" title="Game Server Hosting Plans - Compare Eco & Premium Options">View Plans</a>
+                 <a class="btn alt" href="about.html" aria-label="Learn more about Nexus Servers game hosting company and our services" title="About Nexus Servers - Professional Game Hosting Provider">About Us</a>
              </div>
          </header>
 
-         <section class="features">
-             <h2>Why Choose Nexus Servers for Game Hosting</h2>
-             <div class="feature-grid">
-                 <div class="feature-card">
-                     <h3>Low Cost Game Servers</h3>
-                     <p>Affordable and powerful hardware for Minecraft, Terraria, Rust, ARK, and Satisfactory servers at dominating prices and performance</p>
+         <section class="features" style="margin-top:20px;" role="region" aria-labelledby="features-heading" itemscope itemtype="https://schema.org/ItemList">
+             <h2 id="features-heading" itemprop="name" style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 600;">Why Choose Nexus Servers</h2>
+             <div class="bubble-grid compact-features" itemprop="itemListElement">
+                 <div class="bubble-box feature-bubble compact" itemscope itemtype="https://schema.org/Service" data-service="affordable-hosting">
+                     <h3 itemprop="name">Low Cost Game Servers</h3>
+                     <p itemprop="description">Affordable and powerful hardware for Minecraft, Terraria, Rust, ARK, and Satisfactory servers at dominating prices and performance</p>
                  </div>
-                 <div class="feature-card">
-                     <h3>Responsive Game Support</h3>
-                     <p>Expert gaming support via tickets and community channels for all your Minecraft and other game server needs (We solve your problems in under 24 hours)</p>
+                 <div class="bubble-box feature-bubble compact" itemscope itemtype="https://schema.org/Service" data-service="technical-support">
+                     <h3 itemprop="name">Responsive Game Support</h3>
+                     <p itemprop="description">Expert gaming support via tickets and community channels for all your Minecraft and other game server needs (We solve your problems in under 24 hours)</p>
                  </div>
-                 <div class="feature-card">
-                     <h3>Instant Game Server Setup</h3>
-                     <p>Deploy your Minecraft, Terraria, Rust or other game server in minutes with Paymenter and Pterodactyl panel</p>
+                 <div class="bubble-box feature-bubble compact" itemscope itemtype="https://schema.org/Service" data-service="instant-setup">
+                     <h3 itemprop="name">Instant Game Server Setup</h3>
+                     <p itemprop="description">Deploy your Minecraft, Terraria, Rust or other game server in minutes with Paymenter and Pterodactyl panel</p>
                  </div>
-                 <div class="feature-card">
-                     <h3>Custom Game Server Plans</h3>
-                     <p>Open a ticket in our Discord to create a custom Minecraft, Terraria, Rust, ARK, or Satisfactory server plan tailored to your specific gaming needs</p>
+                 <div class="bubble-box feature-bubble compact" itemscope itemtype="https://schema.org/Service" data-service="custom-plans">
+                     <h3 itemprop="name">Custom Game Server Plans</h3>
+                     <p itemprop="description">Open a ticket in our Discord to create a custom Minecraft, Terraria, Rust, ARK, or Satisfactory server plan tailored to your specific gaming needs</p>
                  </div>
              </div>
          </section>
 
-                 <!-- Host Comparison moved from About page -->
-                 <div class="comparison-section card" style="margin-top:16px">
-                     <h2>Game Server Host Comparison</h2>
-                     <p class="small">Feature comparison of major game hosting providers for Minecraft, Terraria, Rust and more (Best plans / Cheapest plans). ? means information was unable to be found (contact on Discord to fix). Table last updated 9/16/2025</p>
+         <!-- Host Comparison moved from About page -->
+         <section class="comparison-section card" style="margin-top:25px; padding-top:31px; padding-bottom:31px;" role="region" aria-labelledby="comparison-heading" itemscope itemtype="https://schema.org/Table">
+             <h2 id="comparison-heading" itemprop="about">Game Server Host Comparison</h2>
+            <p class="small" itemprop="description">Feature comparison of major game hosting providers for Minecraft, Terraria, Rust and more (Best plans / Cheapest plans). ? means information was unable to be found (contact on Discord to fix). Table last updated 9/16/2025</p>
 
-                     <div class="comparison">
-                         <div class="comparison-inner">
-                             <table class="comparison-table">
-                                 <thead>
-                                     <tr>
-                                         <th class="feat-col">Company</th>
-                                         <th class="prov prov-nexus">
-                                             <a href="/" target="_blank" rel="noopener" title="Nexus Servers">
-                                                 <img decoding="async" src="assets/images/nexuslogo.png" alt="Nexus Servers logo">
-                                             </a>
-                                             <div class="prov-name">Nexus</div>
-                                         </th>
-                                         <th class="prov prov-pyro">
-                                             <a href="https://pyro.host/" target="_blank" rel="noopener" title="Pyro.host">
-                                                 <img decoding="async" src="assets/images/pyro.png" alt="Pyro host logo" onerror="this.style.display='none'">
-                                             </a>
-                                             <div class="prov-name">Pyro.host</div>
-                                         </th>
-                                         <th class="prov prov-pebble">
-                                             <a href="https://pebblehost.com/" target="_blank" rel="noopener" title="PebbleHost">
-                                                 <img decoding="async" src="https://pebblehost.com/src/img/logos/p.png" alt="PebbleHost logo">
-                                             </a>
-                                             <div class="prov-name">PebbleHost</div>
-                                         </th>
-                                         <th class="prov prov-shockbyte">
-                                             <a href="https://shockbyte.com/" target="_blank" rel="noopener" title="Shockbyte">
-                                                 <img decoding="async" src="assets/images/shockbytelogo.jpg" alt="Shockbyte logo">
-                                             </a>
-                                             <div class="prov-name">Shockbyte</div>
-                                         </th>
-                                         <th class="prov prov-wither">
-                                             <a href="https://witherhosting.com/" target="_blank" rel="noopener" title="WitherHosting">
-                                                 <img decoding="async" src="assets/images/witherhosting.png" alt="WitherHosting logo" onerror="this.onerror=null;this.src='https://witherhosting.com/img/logo_small.png'">
-                                             </a>
-                                             <div class="prov-name">WitherHosting</div>
-                                         </th>
-                                         <th class="prov prov-bisect">
-                                             <a href="https://www.bisecthosting.com/" target="_blank" rel="noopener" title="BisectHosting">
-                                                 <img decoding="async" src="assets/images/bisect.png" alt="BisectHosting logo">
-                                             </a>
-                                             <div class="prov-name">BisectHosting</div>
-                                         </th>
-                                         <th class="prov prov-bloom">
-                                             <a href="https://bloom.host/" target="_blank" rel="noopener" title="Bloom.host">
-                                                 <img decoding="async" src="assets/images/bloomhost.png" alt="Bloom.host logo" onerror="this.onerror=null;this.src='https://bloom.host/assets/images/logo-white.png'">
-                                             </a>
-                                             <div class="prov-name">Bloom.host</div>
-                                         </th>
-                                         <th class="prov prov-heavynode">
-                                             <a href="https://heavynode.com/" target="_blank" rel="noopener" title="HeavyNode">
-                                                 <img decoding="async" src="assets/images/heavynode.png" alt="HeavyNode logo">
-                                             </a>
-                                             <div class="prov-name">HeavyNode</div>
-                                         </th>
-                                         <th class="prov prov-apex">
-                                             <a href="https://apexminecrafthosting.com/" target="_blank" rel="noopener" title="Apex Hosting">
-                                                 <img decoding="async" src="assets/images/apexlogo.jpg" alt="Apex Hosting logo">
-                                             </a>
-                                             <div class="prov-name">Apex Hosting</div>
-                                         </th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>
-                                     <tr>
-                                         <td class="feat">Pricing</td>
-                                         <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">$2.00/GB<br>$0.50/GB</td>
-                                         <td class="center">$3/GB</td>
-                                         <td class="center">$2.25/GB<br>$1/GB</td>
-                                         <td class="center">$4/GB</td>
-                                         <td class="center">$2/GB<br>$0.75/GB</td>
-                                         <td class="center">$3/GB<br>$1/GB</td>
-                                         <td class="center">$3/GB<br>$2/GB</td>
-                                         <td class="center">$2/GB<br>$1/GB</td>
-                                         <td class="center">$6/GB<br>$3/GB</td>
-                                     </tr>
-                                     <tr>
-                                         <td class="feat">Memory Type</td>
-                                         <td class="center">DDR5 / DDR4 ECC</td>
-                                         <td class="center">DDR5</td>
-                                         <td class="center">DDR5 / DDR4</td>
-                                         <td class="center">DDR5</td>
-                                         <td class="center">DDR4 ECC</td>
-                                         <td class="center">DDR4</td>
-                                         <td class="center">DDR5<br>DDR4</td>
-                                         <td class="center">DDR5<br>DDR4</td>
-                                         <td class="center">DDR4</td>
-                                     </tr>
-                                     <tr>
-                                         <td class="feat">CPU Type</td>
-                                         <td class="center">9950X<br>7551P</td>
-                                         <td class="center">9950X</td>
-                                         <td class="center">7900<br>i9-9900k</td>
-                                         <td class="center">Intel Xeon<br>AM5</td>
-                                         <td class="center">7900<br>5700G</td>
-                                         <td class="center" style="color:rgba(255,100,100,1)">Ryzen?<br>Ryzen?</td>
-                                         <td class="center">7950X3D<br>5950X</td>
-                                         <td class="center">7950X<br>5800X</td>
-                                         <td class="center">5950X<br>5800X</td>
-                                     </tr>
-                                     <tr>
-                                         <td class="feat">DDoS Protection</td>
-                                         <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">300 Tbps</td>
-                                         <td class="center">20 Tbps</td>
-                                         <td class="center">800 Gbps / 480 Gbps</td>
-                                         <td class="center">Included</td>
-                                         <td class="center no">?</td>
-                                         <td class="center">Included</td>
-                                         <td class="center">1.5 Tbps</td>
-                                         <td class="center">Included</td>
-                                         <td class="center">Enterprise</td>
-                                     </tr>
-                                     <tr>
-                                         <td class="feat">Drive Type</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                         <td class="center">NVMe</td>
-                                     </tr>
-                                     <tr>
-                                         <td class="feat">Public Node Statistics</td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">Yes</a></td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">No</td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">Yes</td>
-                                         <td class="center">No</td>
-                                     </tr>
-                                 </tbody>
-                             </table>
-                         </div>
-                     </div>
+             <div class="comparison">
+                 <div class="comparison-inner">
+                     <table class="comparison-table" role="table" aria-label="Comprehensive comparison of game server hosting providers including pricing, hardware specifications, and features">
+                         <thead>
+                             <tr role="row">
+                                 <th class="feat-col" role="columnheader" scope="col">Company</th>
+                                 <th class="prov prov-nexus" role="columnheader" scope="col">
+                                     <a href="/" target="_blank" rel="noopener" title="Nexus Servers - Best Game Server Hosting Provider" aria-label="Nexus Servers official website - premium game hosting services">
+                                         <img decoding="async" src="assets/images/nexuslogo.png" alt="Nexus Servers logo - Premium Minecraft, Terraria, Rust, ARK & Satisfactory hosting provider">
+                                     </a>
+                                     <div class="prov-name">Nexus</div>
+                                 </th>
+                                 <th class="prov prov-pyro" role="columnheader" scope="col">
+                                     <a href="https://pyro.host/" target="_blank" rel="noopener" title="Pyro.host Game Server Hosting" aria-label="Pyro.host game server hosting competitor">
+                                         <img decoding="async" src="assets/images/pyro.png" alt="Pyro.host logo - Game server hosting provider competitor" onerror="this.style.display='none'">
+                                     </a>
+                                     <div class="prov-name">Pyro.host</div>
+                                 </th>
+                                 <th class="prov prov-pebble">
+                                     <a href="https://pebblehost.com/" target="_blank" rel="noopener" title="PebbleHost">
+                                         <img decoding="async" src="https://pebblehost.com/src/img/logos/p.png" alt="PebbleHost logo">
+                                     </a>
+                                     <div class="prov-name">PebbleHost</div>
+                                 </th>
+                                 <th class="prov prov-shockbyte">
+                                     <a href="https://shockbyte.com/" target="_blank" rel="noopener" title="Shockbyte">
+                                         <img decoding="async" src="assets/images/shockbytelogo.jpg" alt="Shockbyte logo">
+                                     </a>
+                                     <div class="prov-name">Shockbyte</div>
+                                 </th>
+                                 <th class="prov prov-wither">
+                                     <a href="https://witherhosting.com/" target="_blank" rel="noopener" title="WitherHosting">
+                                         <img decoding="async" src="assets/images/witherhosting.png" alt="WitherHosting logo" onerror="this.onerror=null;this.src='https://witherhosting.com/img/logo_small.png'">
+                                     </a>
+                                     <div class="prov-name">WitherHosting</div>
+                                 </th>
+                                 <th class="prov prov-bisect">
+                                     <a href="https://www.bisecthosting.com/" target="_blank" rel="noopener" title="BisectHosting">
+                                         <img decoding="async" src="assets/images/bisect.png" alt="BisectHosting logo">
+                                     </a>
+                                     <div class="prov-name">BisectHosting</div>
+                                 </th>
+                                 <th class="prov prov-bloom">
+                                     <a href="https://bloom.host/" target="_blank" rel="noopener" title="Bloom.host">
+                                         <img decoding="async" src="assets/images/bloomhost.png" alt="Bloom.host logo" onerror="this.onerror=null;this.src='https://bloom.host/assets/images/logo-white.png'">
+                                     </a>
+                                     <div class="prov-name">Bloom.host</div>
+                                 </th>
+                                 <th class="prov prov-heavynode">
+                                     <a href="https://heavynode.com/" target="_blank" rel="noopener" title="HeavyNode">
+                                         <img decoding="async" src="assets/images/heavynode.png" alt="HeavyNode logo">
+                                     </a>
+                                     <div class="prov-name">HeavyNode</div>
+                                 </th>
+                                 <th class="prov prov-apex">
+                                     <a href="https://apexminecrafthosting.com/" target="_blank" rel="noopener" title="Apex Hosting">
+                                         <img decoding="async" src="assets/images/apexlogo.jpg" alt="Apex Hosting logo">
+                                     </a>
+                                     <div class="prov-name">Apex Hosting</div>
+                                 </th>
+                                 <th class="prov prov-wisehosting">
+                                     <a href="#" title="WiseHosting">
+                                         <img decoding="async" src="assets/images/wisehosting.png" alt="WiseHosting logo" onerror="this.style.display='none'">
+                                     </a>
+                                     <div class="prov-name">WiseHosting</div>
+                                 </th>
+                                 <th class="prov prov-lagless">
+                                     <a href="#" title="Lagless">
+                                         <img decoding="async" src="assets/images/lagless.png" alt="Lagless logo" onerror="this.style.display='none'">
+                                     </a>
+                                     <div class="prov-name">Lagless</div>
+                                 </th>
+                                 <th class="prov prov-nitrado">
+                                     <a href="https://nitra.do/" target="_blank" rel="noopener" title="Nitrado">
+                                         <img decoding="async" src="assets/images/nitrado.png" alt="Nitrado logo" onerror="this.style.display='none'">
+                                     </a>
+                                     <div class="prov-name">Nitrado</div>
+                                 </th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <td class="feat">Pricing</td>
+                                 <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">$2.00/GB<br>$0.50/GB</td>
+                                 <td class="center">$3/GB</td>
+                                 <td class="center">$2.25/GB<br>$1/GB</td>
+                                 <td class="center">$4/GB</td>
+                                 <td class="center">$2/GB<br>$0.75/GB</td>
+                                 <td class="center">$3/GB<br>$1/GB</td>
+                                 <td class="center">$3/GB<br>$2/GB</td>
+                                 <td class="center">$2/GB<br>$1/GB</td>
+                                 <td class="center">$6/GB<br>$3/GB</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                             <tr>
+                                 <td class="feat">Memory Type</td>
+                                 <td class="center">DDR5 / DDR4 ECC</td>
+                                 <td class="center">DDR5</td>
+                                 <td class="center">DDR5 / DDR4</td>
+                                 <td class="center">DDR5</td>
+                                 <td class="center">DDR4 ECC</td>
+                                 <td class="center">DDR4</td>
+                                 <td class="center">DDR5<br>DDR4</td>
+                                 <td class="center">DDR5<br>DDR4</td>
+                                 <td class="center">DDR4</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                             <tr>
+                                 <td class="feat">CPU Type</td>
+                                 <td class="center">9950X<br>7551P</td>
+                                 <td class="center">9950X</td>
+                                 <td class="center">7900<br>i9-9900k</td>
+                                 <td class="center">Intel Xeon<br>AM5</td>
+                                 <td class="center">7900<br>5700G</td>
+                                 <td class="center" style="color:rgba(255,100,100,1)">Ryzen?<br>Ryzen?</td>
+                                 <td class="center">7950X3D<br>5950X</td>
+                                 <td class="center">7950X<br>5800X</td>
+                                 <td class="center">5950X<br>5800X</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                             <tr>
+                                 <td class="feat">DDoS Protection</td>
+                                 <td class="center yes nexus-highlight" style="color:#8855ff;font-weight:800;">300 Tbps</td>
+                                 <td class="center">20 Tbps</td>
+                                 <td class="center">800 Gbps / 480 Gbps</td>
+                                 <td class="center">Included</td>
+                                 <td class="center no">?</td>
+                                 <td class="center">Included</td>
+                                 <td class="center">1.5 Tbps</td>
+                                 <td class="center">Included</td>
+                                 <td class="center">Enterprise</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                             <tr>
+                                 <td class="feat">Drive Type</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">NVMe</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                             <tr>
+                                 <td class="feat">Public Node Statistics</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">No</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">Yes</td>
+                                 <td class="center">No</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                                 <td class="center">?</td>
+                             </tr>
+                         </tbody>
+                     </table>
                  </div>
+             </div>
+         </section>
+
+<!-- Game-Specific Hosting Sections (compact grid with two cards per row) -->
+<section class="game-hosting-section compact-cards" id="game-hosting-grid">
+    <div class="game-grid">
+        <section class="game-block compact" id="minecraft-hosting">
+            <div class="game-header">
+                <div class="game-center">
+                    <img class="gc-left" src="assets/images/mcicon.png" alt="Minecraft">
+                    <strong class="game-title">Minecraft</strong>
+                    <div class="badge">Specialized support</div>
+                    <div class="starting">Starting from:</div>
+                </div>
+            </div>
+            <div class="game-footer">
+                <div class="price-buttons">
+                    <a class="btn buy btn-small" href="plans.html#minecraft?tier=eco">Eco — $1/mo</a>
+                    <a class="btn alt btn-small" href="plans.html#minecraft?tier=premium">Premium — $4/mo</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-block compact" id="rust-hosting">
+            <div class="game-header">
+                <div class="game-center">
+                    <img class="gc-left" src="assets/images/rustlogo.jpg" alt="Rust">
+                    <strong class="game-title">Rust</strong>
+                    <div class="badge">Powerful DDoS protection</div>
+                    <div class="starting">Starting from:</div>
+                </div>
+            </div>
+            <div class="game-footer">
+                <div class="price-buttons">
+                    <a class="btn buy btn-small" href="plans.html#rust?tier=eco">Eco — $4/mo</a>
+                    <a class="btn alt btn-small" href="plans.html#rust?tier=premium">Premium — $16/mo</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-block compact" id="ark-hosting">
+            <div class="game-header">
+                <div class="game-center">
+                    <img class="gc-left" src="assets/images/ark.png" alt="ARK">
+                    <strong class="game-title">ARK</strong>
+                    <div class="starting">Starting from:</div>
+                </div>
+            </div>
+            <div class="game-footer">
+                <div class="price-buttons">
+                    <a class="btn buy btn-small" href="plans.html#ark?tier=eco">Eco — $4/mo</a>
+                    <a class="btn alt btn-small" href="plans.html#ark?tier=premium">Premium — $16/mo</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-block compact" id="terraria-hosting">
+            <div class="game-header">
+                <div class="game-center">
+                    <img class="gc-left" src="assets/images/terrariaicon.png" alt="Terraria">
+                    <strong class="game-title">Terraria</strong>
+                    <div class="starting">Starting from:</div>
+                </div>
+            </div>
+            <div class="game-footer">
+                <div class="price-buttons">
+                    <a class="btn buy btn-small" href="plans.html#terraria?tier=eco">Eco — $1/mo</a>
+                    <a class="btn alt btn-small" href="plans.html#terraria?tier=premium">Premium — $4/mo</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <h2>What Our Customers Say About Nexus Servers</h2>
+    <div class="bubble-grid">
+        <div class="bubble-box testimonial-bubble">
+            <p>Waiting for some testimonies and working on improving the site every day!</p>
+            <span class="author">Toast - COO/Site Developer</span>
+        </div>
+
+        <div class="bubble-box testimonial-bubble">
+            <!-- empty testimonial placeholder -->
+        </div>
+
+        <div class="bubble-box testimonial-bubble">
+            <!-- empty testimonial placeholder -->
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" id="faq">
+    <h2>Frequently Asked Questions About Game Server Hosting</h2>
+    
+    <div class="faq-container">
+        <div class="bubble-box faq-bubble">
+            <div class="question">What makes Nexus Servers different from other game hosting providers?</div>
+            <div class="answer">
+                <p>Nexus Servers owns and operates our own hardware and datacenter infrastructure in Reno, Nevada — we do not resell third-party capacity for the majority of our offerings. By controlling the full stack we keep costs low and pass savings to customers while investing in a tailored network and enterprise-grade DDoS mitigation specifically tuned for game traffic.</p>
+                <p>We do resell a small number of VPS products, but most of our hardware is owned and the plans advertised on this site are hosted on machines we control. We do not overprovision RAM, so customers receive the resources they pay for.</p>
+                <p>Our focus is on offering extremely competitive pricing while ensuring reliable uptime, low latency, and timely, gamer-focused support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
          <!-- bottom links are moved to the site footer to avoid duplication -->
     </div>

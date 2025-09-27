@@ -1,4 +1,9 @@
 /* Low Performance Mode Styles */
+html.low-performance .aurora-borealis,
+html.low-performance .aurora-container,
+html.low-performance .pattern-container,
+html.low-performance .glow-spheres,
+html.low-performance .diagonal-lines,
 body.low-performance .aurora-borealis,
 body.low-performance .aurora-container,
 body.low-performance .pattern-container,
@@ -7,6 +12,7 @@ body.low-performance .diagonal-lines {
   display: none !important;
 }
 
+html.low-performance,
 body.low-performance {
   background: linear-gradient(135deg, #05020b 0%, #0b0616 100%);
   background-attachment: fixed;
@@ -15,6 +21,7 @@ body.low-performance {
 }
 
 /* Solid header background in low performance mode */
+html.low-performance .nav-links,
 body.low-performance .nav-links {
   background: rgba(10, 5, 20, 0.9);
   backdrop-filter: none !important;
@@ -23,17 +30,23 @@ body.low-performance .nav-links {
 }
 
 /* Simplified static glow effects instead of animated ones */
+html.low-performance .comparison-table tbody td.yes.nexus-highlight,
 body.low-performance .comparison-table tbody td.yes.nexus-highlight {
   text-shadow: 0 0 10px rgba(140,70,255,0.7);
   animation: none;
 }
 
 /* Remove any expensive CSS filters except for icon inversion */
+html.low-performance *,
 body.low-performance * {
   backdrop-filter: none !important;
 }
 
 /* Keep icon colors */
+html.low-performance .site-footer img,
+html.low-performance .nav-links a:not(.nav-logo) img,
+html.low-performance .bottom-nav img,
+html.low-performance .footer-content img,
 body.low-performance .site-footer img,
 body.low-performance .nav-links a:not(.nav-logo) img,
 body.low-performance .bottom-nav img,
@@ -42,11 +55,13 @@ body.low-performance .footer-content img {
 }
 
 /* Explicitly prevent the logo from being inverted */
+html.low-performance .nav-logo img,
 body.low-performance .nav-logo img {
   filter: none !important;
 }
 
 /* Remove other filters */
+html.low-performance *:not(img),
 body.low-performance *:not(img) {
   filter: none !important;
 }
@@ -62,12 +77,15 @@ body.low-performance *:not(img) {
 }
 
 /* Simplified card styling */
+html.low-performance .card,
+html.low-performance .feature-card,
 body.low-performance .card,
 body.low-performance .feature-card {
   background: rgba(255, 255, 255, 0.02);
   box-shadow: none;
 }
 
+html.low-performance .feature-card:hover,
 body.low-performance .feature-card:hover {
   transform: none;
   box-shadow: none;

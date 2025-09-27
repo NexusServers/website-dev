@@ -21,6 +21,14 @@
   /* Responsive font sizing */
   --base-font-size: 16px;
   --heading-scale: 1;
+  
+  /* Alternate purple accent palette (darker purple direction) */
+  --accent-purple-dark: #27103e; /* deeper, richer violet */
+  --accent-purple-mid:  #4f21b7; /* deep violet */
+  --accent-purple-light: #7a57f0; /* richer lavender */
+  /* Site-wide accent gradients for consistent theming */
+  --accent-gradient: linear-gradient(90deg, var(--accent-purple-mid), var(--accent-purple-dark));
+  --accent-gradient-alt: linear-gradient(90deg, var(--accent-purple-mid), var(--accent-purple-light));
 }
 
 html {
@@ -398,6 +406,96 @@ body {
   padding-right: 36px; /* Balance the padding */
 }
 
+/* Plans configurator: CPU option cards */
+.options-row[aria-label="CPU"] { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start }
+.option-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 12px 14px;
+  border-radius: 10px;
+  min-width: 180px;
+  max-width: 260px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap:6px;
+}
+.option-card[aria-selected="true"]{ box-shadow: 0 8px 32px rgba(107,63,255,0.12); border-color: rgba(107,63,255,0.18); transform: translateY(-2px) }
+.option-title { font-weight:700; font-size:14px; letter-spacing:0.2px }
+.option-sub { font-size:13px; color:var(--muted); opacity:0.9 }
+.option-price { font-weight:600; color:var(--accent-purple-mid); font-size:13px }
+.option-desc { font-size:13px; color:var(--muted); opacity:0.9 }
+.option-price { font-weight:600; color:var(--accent-purple-mid); font-size:13px }
+.cpu-badge { background:var(--accent-gradient-alt); color:#fff; font-size:11px; padding:4px 8px; border-radius:999px; float:right }
+
+/* Plan configurator step header buttons */
+.step-header { margin-bottom: 12px; }
+.step-btn {
+  display: inline-block;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.step-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.5); }
+.step-btn:focus { outline: 3px solid rgba(107,63,255,0.18); outline-offset: 2px; }
+.step-btn[aria-expanded="true"] {
+  background: var(--accent-gradient);
+  color: black;
+  border-color: rgba(255,255,255,0.02);
+  box-shadow: 0 14px 36px rgba(79,33,183,0.18);
+}
+
+
+/* Non-interactive step boxes (visual indicators) */
+.step-box {
+  display: inline-block;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  font-weight: 600;
+}
+
+/* Locations tabs */
+.locations-tabs { display:flex; gap:8px; margin-bottom:16px; }
+.location-tab { background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); padding:10px 14px; border-radius:12px; cursor:pointer; color:var(--white); font-weight:700; font-size:15px; min-width:130px; text-align:center }
+.location-tab.active { background: linear-gradient(90deg, rgba(79,33,183,0.14), rgba(122,87,240,0.06)); border-color: rgba(79,33,183,0.18); transform:translateY(-2px); box-shadow:0 20px 44px rgba(63,0,122,0.12) }
+.location-tab[aria-selected="true"] { box-shadow: 0 12px 28px rgba(0,0,0,0.32); }
+
+/* Discounts bubbles at top of configurator */
+.discounts-container { display:flex; gap:12px; justify-content:center; align-items:center }
+.discount-bubble { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:999px; padding:10px 14px; border:1px solid rgba(255,255,255,0.04); display:flex; flex-direction:column; align-items:center; min-width:86px; box-shadow:0 8px 26px rgba(0,0,0,0.22); position:relative; }
+.discount-bubble::after{ content:""; position:absolute; inset: -6px; border-radius:999px; background: radial-gradient(circle at 50% 30%, rgba(79,33,183,0.12), transparent 40%); pointer-events:none; opacity:0.95; filter:blur(6px); }
+.discount-bubble strong { font-size:18px; color:var(--white); display:block; text-shadow: 0 6px 18px rgba(79,33,183,0.18) }
+.discount-bubble small { font-size:11px; color:var(--muted); display:block }
+/* discount-label removed per request; bubbles now show '-X% Off' */
+
+@media(max-width:700px){
+  .location-tab{min-width:120px;padding:10px 12px;font-size:14px}
+  .discount-bubble{min-width:68px;padding:8px 10px}
+}
+
+/* Note: `.pick-location` class was removed from markup in favor of using the
+  shared `.step-box` inside a `.step-header`. Keep no dedicated rules here so
+  the header fully matches other step headers (Choose CPU / Choose Game / Pick a plan). */
+
+/* Flag image sizing for inline icons next to location name */
+.location-tab img.loc-flag{width:20px;height:auto;margin-right:8px;vertical-align:middle;border-radius:2px;display:inline-block}
+
+/* CPU badge for premium/special labels */
+.cpu-badge { display:inline-block; background: var(--accent-gradient-alt); color:#000; padding:6px 8px; border-radius:8px; font-weight:700; margin-right:8px; font-size:12px; }
+
+
 /* Placeholder for visual balance */
 .nav-placeholder {
   position: absolute;
@@ -426,7 +524,7 @@ body {
   box-shadow:0 8px 22px rgba(107,63,255,0.08)
 }
 .nav-links a:not(.nav-logo){position:relative}
-.nav-links a:not(.nav-logo)::after{ content:""; width:8px;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-pink)); position:absolute;right:-8px;opacity:0.9;top:50%;transform:translateY(-50%) scale(0.9); transition:transform .22s cubic-bezier(.2,.9,.3,1),opacity .22s}
+.nav-links a:not(.nav-logo)::after{ content:""; width:8px;height:8px;border-radius:999px;background:var(--accent-gradient); position:absolute;right:-8px;opacity:0.9;top:50%;transform:translateY(-50%) scale(0.9); transition:transform .22s cubic-bezier(.2,.9,.3,1),opacity .22s}
 .nav-links a:not(.nav-logo):hover::after{ transform:translateY(-50%) scale(1.25); opacity:1 }
 
 /* ensure main content clears the fixed nav and fills space */
@@ -486,8 +584,8 @@ p.lead {
 /* hero CTA */
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 0 6px}
 .hero-buttons{display:flex;gap:12px;justify-content:center;max-width:1024px;padding:0 32px;box-sizing:border-box}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-pink));color:#12001a;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(107,63,255,0.16);transition:transform .18s ease,box-shadow .18s ease;}
-.btn:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(107,63,255,0.18)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;background:var(--accent-gradient);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(79,33,183,0.16);transition:transform .18s ease,box-shadow .18s ease;}
+.btn:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(79,33,183,0.18)}
 .btn.alt{background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,0.08);box-shadow:none}
 .btn.alt:hover{background:rgba(255,255,255,0.09);transform:translateY(-4px);box-shadow:0 8px 28px rgba(107,63,255,0.12)}
 
@@ -657,7 +755,7 @@ p.lead {
 }
 .plans .price{font-weight:800;font-size:20px}
 .plans .add{margin-top:10px;align-self:flex-start}
-.plans .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#6b3fff,#ff6bf0);color:#fff;font-weight:600}
+.plans .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--accent-gradient-alt);color:#fff;font-weight:600}
 .plans .featured{border-color:rgba(255,215,120,0.12);box-shadow:0 18px 48px rgba(255,180,60,0.06);transform:translateY(-2px)}
 .plans .featured::after{content:"\2605";position:absolute;top:12px;right:12px;color:rgba(255,215,120,0.95);font-size:18px}
 .plans .plan-specs{font-size:13px;color:var(--muted);line-height:1.35}
@@ -684,9 +782,9 @@ p.lead {
 .option-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(255,255,255,0.018), transparent);opacity:0;transition:opacity .22s}
 .option-card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(2,6,23,0.34)}
 .option-card:hover::before{opacity:1}
-.option-card[aria-selected="true"]{border-color:rgba(107,63,255,0.45);box-shadow:0 16px 42px rgba(107,63,255,0.16)}
+.option-card[aria-selected="true"]{border-color:rgba(79,33,183,0.45);box-shadow:0 16px 42px rgba(79,33,183,0.16)}
 .option-card[aria-selected="true"]::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--accent-cyan),var(--accent-pink))}
+  background:var(--accent-gradient)}
 .option-card:focus-visible{outline:2px solid rgba(107,63,255,0.6);outline-offset:2px}
 
 .option-title{font-size:18px;font-weight:700;margin:0 0 6px;color:#ffffff}
@@ -706,6 +804,10 @@ p.lead {
 .option-chip[aria-selected="true"]{border-color:rgba(107,63,255,0.5);
   background:linear-gradient(180deg, rgba(107,63,255,0.14), rgba(107,63,255,0.08))}
 .option-chip.disabled{opacity:.45;cursor:not-allowed;transform:none}
+.option-chip.disabled:hover{transform:none;filter:grayscale(100%);}
+.option-chip.disabled .game-icon img{filter:grayscale(100%);opacity:.75}
+.option-chip[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none}
+.option-chip[aria-disabled="true"]:hover{transform:none}
 
 /* Plans output grid */
 .plans-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:12px;justify-items:center;max-width:990px;margin-left:auto;margin-right:auto}
@@ -770,10 +872,10 @@ p.lead {
 /* Glowing badges inside plan titles */
 .plan-configurator .plans-list .plan-card h3{display:flex;align-items:center;gap:8px}
 .plan-badge{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:999px;font-weight:700;font-size:11px;letter-spacing:.2px;
-  color:#12001a;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-pink));
-  box-shadow:0 8px 26px rgba(107,63,255,0.3), 0 0 18px rgba(255,107,240,0.35);}
+  color:#12001a;background:var(--accent-gradient-alt);
+  box-shadow:0 8px 26px rgba(79,33,183,0.3), 0 0 18px rgba(122,87,240,0.35);}
 .plan-badge.popular{background:linear-gradient(90deg,#89ff6b,#6bffcf)}
-.plan-badge.recommended{background:linear-gradient(90deg,#6b9fff,#a86bff)}
+.plan-badge.recommended{background:var(--accent-gradient)}
 .plan-badge.pro{background:linear-gradient(90deg,#ffd66b,#ff6b6b)}
 .plan-configurator .plans-list .plan-card .btn.buy{white-space:nowrap}
 
@@ -815,7 +917,7 @@ p.lead {
 .plans .plan{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:16px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
 .plans .price-large{font-size:28px;font-weight:700;margin:8px 0}
 .plans .specs{font-size:14px;color:rgba(255,255,255,0.85);margin:6px 0}
-.plans .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#6b3fff,#ff6bf0);color:#fff;font-weight:600;margin-top:10px}
+.plans .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--accent-gradient-alt);color:#fff;font-weight:600;margin-top:10px}
 .back{display:inline-block;margin-top:18px;color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.12)}
 @media(max-width:600px){.nav-logo img{height:28px}}
 
@@ -865,7 +967,7 @@ p.lead {
 }
 
 .about a.link {
-  color: var(--accent-cyan);
+  color: var(--accent-purple-mid);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -876,17 +978,17 @@ p.lead {
 
 /* New comparison module styles */
 .comparison{margin-top:12px}
-.comparison-inner{overflow:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:4px}
-.comparison-table{width:100%;border-collapse:collapse;min-width:620px;font-size:14px}
-.comparison-table thead th{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:middle;text-align:left}
-.comparison-table thead .feat-col{width:140px}
-.comparison-table thead .prov{width:100px;text-align:center}
-.comparison-table thead .prov img{display:block;margin:0 auto;height:32px;max-width:100px;object-fit:contain}
-.comparison-table thead .prov .prov-name{font-size:12px;margin-top:4px;color:var(--muted)}
-.comparison-table tbody td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);vertical-align:middle}
+.comparison-inner{overflow:visible;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:4px}
+.comparison-table{width:100%;border-collapse:collapse;min-width:0;font-size:13px}
+.comparison-table thead th{padding:6px 6px;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:middle;text-align:left}
+.comparison-table thead .feat-col{width:120px}
+.comparison-table thead .prov{width:84px;text-align:center}
+.comparison-table thead .prov img{display:block;margin:0 auto;height:24px;max-width:72px;object-fit:contain}
+.comparison-table thead .prov .prov-name{font-size:10px;margin-top:2px;color:var(--muted)}
+.comparison-table tbody td{padding:6px 6px;border-bottom:1px solid rgba(255,255,255,0.03);vertical-align:middle}
 .comparison-table tbody td.center{text-align:center}
 .comparison-table tbody td.feat{font-weight:600;color:#fff}
-.comparison-table tbody td.yes{color:var(--accent-cyan);font-weight:700;text-shadow:0 0 8px rgba(107,63,255,0.6)}
+.comparison-table tbody td.yes{color:var(--accent-purple-mid);font-weight:700;text-shadow:0 0 8px rgba(79,33,183,0.6)}
 .comparison-table tbody td.no{color:rgba(255,255,255,0.5)}
 
 .prov-stats{margin-top:6px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
@@ -896,20 +998,20 @@ p.lead {
 
 /* Provider columns styling */
 .comparison-table {
-  font-size: 14px;
+  font-size: 13px;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
 .comparison-table th.prov {
-  min-width: 88px;
-  padding: 8px 6px;
+  min-width: 76px;
+  padding: 6px 4px;
   vertical-align: top;
 }
 
 .comparison-table th.feat-col {
-  min-width: 140px;
-  padding: 8px 10px;
+  min-width: 120px;
+  padding: 6px 8px;
 }
 
 /* Highlight Nexus column */
@@ -919,21 +1021,21 @@ p.lead {
 }
 
 .prov-nexus img {
-  height: 36px;
+  height: 26px;
 }
 
 .comparison-table tbody td.center {
   transition: background .18s;
-  padding: 8px 6px;
-  font-size: 14px;
+  padding: 6px 4px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
 /* CPU Type cell spacing */
 .comparison-table tbody tr:nth-child(3) td.center {
   line-height: 1.2;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 /* Questionable info styling */
@@ -943,14 +1045,14 @@ p.lead {
 }
 
 .prov-nexus .prov-stats .stat.price {
-  color: var(--accent-pink);
+  color: var(--accent-purple-light);
   font-weight: 800;
 }
 
 /* Provider logos */
 .comparison-table thead .prov img {
-  height: 28px;
-  max-width: 80px;
+  height: 22px;
+  max-width: 72px;
   object-fit: contain;
   margin: 0 auto 3px;
   display: block;
@@ -969,7 +1071,7 @@ p.lead {
 
 /* Stats styling */
 .prov-stats {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .prov-stats .stat {
@@ -985,12 +1087,12 @@ p.lead {
 /* Price row spacing */
 .comparison-table tbody tr:first-child td.center {
   line-height: 1.1;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .prov-name {
-  font-size: 10px;
+  font-size: 9px;
   opacity: 0.9;
   margin: 2px 0;
 }
@@ -1002,16 +1104,14 @@ p.lead {
 }
 
 /* Responsive handling */
+/* Keep table fitting on desktop without horizontal slider */
 @media (max-width: 1200px) {
   .comparison-inner {
     overflow-x: auto;
     margin: 0 -8px;
     width: calc(100% + 16px);
   }
-  
-  .comparison-table {
-    min-width: 920px;
-  }
+  .comparison-table { min-width: 820px; }
 }
 
 .plan-card.featured {
@@ -1032,15 +1132,15 @@ p.lead {
 @media(max-width:1100px){
   .about .grid{grid-template-columns:1fr 420px}
   .comparison-table{min-width:640px}
-  .comparison-table thead .prov img{height:40px}
-  .comparison-table thead .prov{width:110px}
+  .comparison-table thead .prov img{height:28px}
+  .comparison-table thead .prov{width:88px}
 }
 @media(max-width:900px){
   .about .grid{grid-template-columns:1fr}
   .comparison-inner{overflow:auto}
-  .comparison-table{min-width:520px}
-  .comparison-table thead .prov img{height:32px}
-  .comparison-table thead .prov{width:88px}
+  .comparison-table{min-width:560px}
+  .comparison-table thead .prov img{height:24px}
+  .comparison-table thead .prov{width:80px}
 }
 
 /* inline SVG noise fallback styling */
@@ -1127,4 +1227,72 @@ p.lead {
   .container {
     max-width: 1600px;
   }
+}
+
+/* ------------------------------------------------------------------
+   Lagless-inspired pricing tweaks (Nexus color palette)
+   - tighter grid, elevated cards, clearer CTA, stronger recommended badge
+   - keeps existing CSS variables and color tokens
+------------------------------------------------------------------ */
+
+/* Tighter plans grid inspired by lagless.gg */
+.plans .plans-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.plans .plans-grid .col { align-items: stretch; }
+
+/* New visual for plan cards: glassmorphism + accent rim */
+.plans .plan-card { 
+  border-radius: 16px;
+  padding: 20px 26px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 18px 48px rgba(2,6,23,0.38);
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s, border-color .18s;
+  position: relative;
+  overflow: visible;
+}
+.plans .plan-card:hover { transform: translateY(-8px); box-shadow: 0 34px 96px rgba(63,0,122,0.14); border-color: rgba(107,63,255,0.16); }
+
+/* Accent rim to the left of the plan card, small glowing stripe */
+.plans .plan-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 6px;
+  border-radius: 6px 0 0 6px;
+  background: linear-gradient(180deg, var(--accent-purple-dark), var(--accent-purple-mid));
+  box-shadow: 0 8px 28px rgba(40,20,90,0.16);
+  transform: translateX(-8px) scaleX(0.98);
+  opacity: 0.98;
+}
+
+/* Price area reflow — big, clear numbers */
+.plans .plan-card .price { font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: -0.6px; }
+.plans .plan-card .price small { display:block; font-weight:600; color:var(--muted); font-size:12px }
+
+/* CTA emphasis */
+.plans .plan-card .btn.buy { 
+  background: linear-gradient(90deg, var(--accent-purple-mid), var(--accent-purple-dark));
+  color: #fff;
+  box-shadow: 0 18px 46px rgba(50,20,120,0.18);
+  padding: 12px 18px; border-radius: 12px; font-weight:800;
+}
+.plans .plan-card .btn.buy:hover { transform: translateY(-3px); box-shadow: 0 26px 68px rgba(107,63,255,0.18); }
+
+/* Recommended badge — larger, halo glow, pill with icon */
+.plan-badge.recommended{background:linear-gradient(90deg,var(--accent-purple-mid),var(--accent-purple-light));color:#fff;box-shadow:0 12px 36px rgba(60,20,120,0.2)}
+
+/* subtle subtext under title for player guidance */
+.plans .plan-card .plan-guidance { font-size: 13px; color: rgba(255,255,255,0.88); margin-top:6px }
+
+/* compact responsive behavior for smaller viewports */
+@media(max-width: 1100px) {
+  .plans .plans-grid { grid-template-columns: repeat(2, 1fr); }
+  .plans .plan-card::before { display: none; }
+}
+@media(max-width: 700px) {
+  .plans .plans-grid { grid-template-columns: 1fr; }
+  .plans .plan-card { padding: 16px; }
+  .plans .plan-card .price { font-size: 20px }
 }
