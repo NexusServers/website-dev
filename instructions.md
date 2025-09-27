@@ -307,6 +307,14 @@ Files changed:
 	 - `src/styles.css` — mobile grid overrides for plans and navbar behaviour.
 	 - `src/compact-cards.css` — centered stacked CTAs and tap-target sizing.
 
+	### 2025-09-27 — Mobile overflow fixes & hide navbar logo
+
+	- Hid the `.nav-logo` (Nexus logo) on mobile devices to reclaim horizontal real estate and keep navigation compact.
+	- Added safety CSS to prevent horizontal overflow caused by wide cards: images, `.plan-card`, `.option-card`, and `.game-block.compact` now respect `max-width:100%` and `box-sizing: border-box` on small screens; `html, body` overflow-x is set to hidden to prevent accidental horizontal scrolling.
+
+	Files changed:
+	 - `src/styles.css` — hide nav logo on small screens and add overflow/box-sizing safeguards.
+
 These changes focus on readability, touch targets, and performance for mobile users. If you'd like me to also make the nav open/close behavior controlled purely by CSS (checkbox hack) or wire a small JS toggle for `.nav-open`, I can implement that next and log it.
 
 

@@ -279,6 +279,15 @@ body {
 
   /* Make header CTAs larger and easier to tap */
   .home .hero .btn.buy, .home .hero .btn.alt { padding: 12px 16px; font-size: 16px; }
+
+  /* Hide the nav logo on mobile to reclaim space */
+  .nav-logo { display: none !important; }
+
+  /* Prevent horizontal overflow caused by wide cards or fixed min-widths */
+  html, body { overflow-x: hidden; }
+  img, .plan-card, .option-card, .game-block.compact { max-width: 100%; box-sizing: border-box; }
+  .option-card { min-width: 0 !important; max-width: 100% !important; }
+  .plans-list, .plan-configurator .plans-list, .plans .plans-grid { padding-left: 8px; padding-right: 8px; box-sizing: border-box; }
 }
 
 /* Ensure plans show one-per-row on small screens across the site */
