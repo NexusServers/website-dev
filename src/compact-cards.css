@@ -137,7 +137,9 @@
   /* Increase tap targets and make buttons full-width on very small screens */
   .price-buttons { flex-direction: column; gap: 10px; }
   .price-buttons .btn { min-width: 100% !important; padding: 12px 14px !important; font-size: 1rem !important; }
-  .game-footer { justify-content: stretch; }
+  .game-footer { justify-content: center; }
+  /* Ensure stacked buttons are centered inside the cell */
+  .game-block.compact .price-buttons { align-items: center; }
   .game-block.compact .price-buttons { margin-top: 6px !important; }
 }
 

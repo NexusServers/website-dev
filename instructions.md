@@ -297,6 +297,16 @@ Files changed:
 		- Increase hero CTA tap targets and slightly reduce base font on small screens for balance.
 	- `src/compact-cards.css` — Added mobile rules to stack `.game-grid` into one column, make CTA buttons full-width, and increase tap target padding/font-size for easier mobile interaction.
 
+	### 2025-09-27 — Mobile plans, navbar restore, and centered CTAs
+
+	- Force single-column plan listings on small screens so users see one plan per row (no side-by-side two-column layout) across the site and inside the configurator (`.plans-list`, `.plan-configurator .plans-list`, `.plans .plans-grid`). This improves discoverability when many plan cards are present.
+	- Restored the navbar links on mobile (disabled the hamburger), returning the original nav-center layout so the navigation is directly accessible on small devices.
+	- Centered the stacked Eco/Prm CTA buttons on the homepage in mobile mode so they align centrally rather than left-stacked when the price buttons become full-width.
+
+	Files changed:
+	 - `src/styles.css` — mobile grid overrides for plans and navbar behaviour.
+	 - `src/compact-cards.css` — centered stacked CTAs and tap-target sizing.
+
 These changes focus on readability, touch targets, and performance for mobile users. If you'd like me to also make the nav open/close behavior controlled purely by CSS (checkbox hack) or wire a small JS toggle for `.nav-open`, I can implement that next and log it.
 
 
