@@ -367,7 +367,7 @@
                         const CPU_METADATA = {
                           eco: { title: 'Eco CPU', sub: 'AMD EPYC 7551P', price: '$0.50 / GB', desc: 'Great for lightweight servers and proxies' },
                           // show the 'right' CPU with $1.00/GB as requested
-                          premium: { title: 'Premium CPU', sub: 'AMD Ryzen 9 9950X', price: '$1.00 / GB', desc: 'Best for heavy mods and generation' },
+                          premium: { title: 'Premium CPU', sub: 'AMD Ryzen 9 9950X', price: '$2.00 / GB', desc: 'Best for heavy mods and generation' },
                           // Warsaw EU CPU rendered using the same format and marked Premium visually
                           'eco-eu': { title: 'Eco CPU', sub: 'Intel Core i7 7700k', price: '$1.00 / GB', desc: 'Great for lightweight servers' }
                         };
@@ -538,7 +538,33 @@
                         });
 
                         // initialize location
-                        setLocation('reno');
+                        // If the page was opened with query params (e.g., ?game=minecraft&tier=premium), use them to pre-select the game and cpu tier
+                        (function applyQueryParams() {
+                          try {
+                            const params = new URLSearchParams(window.location.search);
+                            const g = params.get('game');
+                            const t = params.get('tier');
+                            // default to reno but allow game/tier selection
+                            setLocation('reno');
+                            if (g) {
+                              const chip = document.querySelector(`.options-row.games [data-game="${g}"]`);
+                              if (chip && chip.getAttribute('aria-disabled') !== 'true') {
+                                chip.click();
+                              }
+                            }
+                            if (t) {
+                              // map tier param values to cpu keys used in LOC_PLAN_DATA/PLAN_DATA
+                              const tierKey = t === 'premium' ? 'premium' : (t === 'eco-eu' ? 'eco-eu' : 'eco');
+                              // set state.cpu and re-render
+                              state.cpu = tierKey;
+                              selectOption('.options-row[aria-label="CPU"]','cpu', state.cpu);
+                              renderPlans();
+                            }
+                          } catch (e) {
+                            // fallback
+                            setLocation('reno');
+                          }
+                        })();
                       })();
                     </script>
 

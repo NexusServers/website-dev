@@ -126,31 +126,50 @@
     padding-top: 36px;
 }
 
+.testimonial-bubble {
+    font-style: italic;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    min-height: 140px; /* give room for the oversized quote mark */
+    box-sizing: border-box;
+}
 .testimonial-bubble::before {
     content: '"';
     position: absolute;
-    top: 0;
-    left: 20px;
+    top: 0; /* align to top-left like before */
+    left: 4px; /* nudge the quote slightly to the right for better alignment with text */
     font-size: 60px;
     line-height: 1;
     color: rgba(79, 33, 183, 0.18);
     font-family: Georgia, serif;
+    pointer-events: none;
 }
 
+/* translucent overlay to the left of the bubble so the decorative quote appears to have an extended highlight */
+.testimonial-bubble::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px; /* extend overlay past the left edge of the bubble */
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, rgba(79,33,183,0.06), rgba(79,33,183,0.00));
+    pointer-events: none;
+}
 .testimonial-bubble .author {
     font-style: normal;
     display: block;
-    text-align: right;
+    text-align: center;
     margin-top: 10px;
     font-weight: 700;
     font-size: 13px;
     color: var(--accent-purple-light);
 }
 
-/* FAQ bubble style */
-.faq-bubble {
-    margin-bottom: 16px;
-}
 
 .faq-bubble .question {
     font-weight: bold;

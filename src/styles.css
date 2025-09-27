@@ -219,6 +219,15 @@ body {
   mix-blend-mode: screen;
   opacity: 0;
   animation: moveLinesAlt2 22s linear infinite, linesFade 16s ease-in-out infinite 4s;
+.testimonial-bubble {
+  text-align: center;
+}
+.testimonial-bubble .author {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
   pointer-events: none;
 }
 
@@ -250,6 +259,39 @@ body {
     opacity: 0;
     transform: translateY(15px);
   }
+}
+
+/* Mobile / small-screen overrides */
+@media (max-width: 700px) {
+  /* Show a hamburger and collapse the center links into a vertical panel when opened */
+  .hamburger { display: inline-flex !important; }
+  .nav-links { justify-content: space-between; width:100%; padding:8px 10px; border-radius:10px; }
+  .nav-links .nav-center { display: none; }
+  .nav-open .nav-links .nav-center {
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 56px;
+    background: linear-gradient(180deg, rgba(8,6,12,0.92), rgba(12,8,18,0.96));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 10px;
+    gap: 8px;
+    border-radius: 10px;
+    z-index: 80;
+  }
+  .nav-links a:not(.nav-logo) { padding: 10px 12px; font-size: 16px; border-radius: 8px; }
+
+  /* Reduce heavy effects on small devices to save CPU and improve readability */
+  .aurora-container, .diagonal-lines, .glow-spheres, .noise-pattern { display: none !important; }
+
+  /* Improve readability and tap targets on small screens */
+  :root { --base-font-size: 15px; }
+  body { font-size: var(--base-font-size); }
+
+  /* Make header CTAs larger and easier to tap */
+  .home .hero .btn.buy, .home .hero .btn.alt { padding: 12px 16px; font-size: 16px; }
 }
 
 /* Subtle opacity pulsing for the auxiliary line layer */
@@ -753,6 +795,59 @@ p.lead {
   transform: translateY(-2px);
   background: rgba(255,255,255,0.09);
 }
+/* Premium button variant - richer, punchy, modern 'dope' style */
+.btn.premium {
+  background: linear-gradient(90deg, rgba(122,87,240,1) 0%, rgba(79,33,183,1) 60%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 40px rgba(79,33,183,0.22), 0 2px 6px rgba(0,0,0,0.6) inset;
+  padding: 10px 18px;
+  border-radius: 12px;
+  position: relative;
+  overflow: visible;
+}
+.btn.premium::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-12deg);
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.14), rgba(255,255,255,0.02) 40%, transparent 60%);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(79,33,183,0.14);
+}
+.btn.premium:hover{ transform: translateY(-3px); box-shadow: 0 22px 60px rgba(79,33,183,0.26); }
+
+/* Eco button variant - fresh green/teal format with subtle flair */
+.btn.eco {
+  --eco-light: #7be2b3;
+  --eco-mid:   #00b894;
+  --eco-dark:  #019875;
+  background: linear-gradient(90deg, var(--eco-light) 0%, var(--eco-mid) 50%, var(--eco-dark) 100%);
+  color: #04231a;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 8px 28px rgba(0,184,148,0.10), 0 2px 6px rgba(255,255,255,0.03) inset;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  position: relative;
+}
+.btn.eco::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-10deg);
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.18), rgba(255,255,255,0.02) 40%, transparent 60%);
+  box-shadow: 0 6px 14px rgba(0,184,148,0.10);
+}
+.btn.eco:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(0,184,148,0.16); }
+
 .plans .price{font-weight:800;font-size:20px}
 .plans .add{margin-top:10px;align-self:flex-start}
 .plans .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--accent-gradient-alt);color:#fff;font-weight:600}
