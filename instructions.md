@@ -317,4 +317,13 @@ Files changed:
 
 These changes focus on readability, touch targets, and performance for mobile users. If you'd like me to also make the nav open/close behavior controlled purely by CSS (checkbox hack) or wire a small JS toggle for `.nav-open`, I can implement that next and log it.
 
+### 2025-09-27 — Mobile left-offset fix
+
+- Fixed a small left-offset on narrow viewports by removing the desktop-centric nav centering offsets and ensuring containers fill the viewport:
+	- `src/styles.css` — in the `@media(max-width:600px)` block updated `.nav-links` to `width: 100%` and removed max-width, set `.nav-center` and `.container` paddings to smaller values, and added margin-left/right neutralization rules to prevent horizontal shifting on mobile.
+	- This should stop content from appearing shifted to the right on phones and ensure CTAs and plan cards sit flush with the left edge (with small 12px internal padding for breathing room).
+
+Files changed:
+ - `src/styles.css` — mobile `@media` overrides for `.nav-links`, `.nav-center`, `.container`, and neutralized margins.
+
 

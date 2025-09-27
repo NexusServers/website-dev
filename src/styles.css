@@ -734,17 +734,40 @@ p.lead {
 
 /* responsive tweaks */
 @media(max-width:600px){
-  .nav-logo { 
+  .nav-logo {
     left: 6px;
     padding: 4px;
   }
   .nav-logo img {
     height: 32px;
   }
+  /* make the nav links fill the viewport and remove extra centering offsets */
   .nav-links {
-    width: calc(100% - 24px);
+    width: 100%;
+    max-width: none;
     padding: 6px 8px;
+    box-sizing: border-box;
   }
+
+  /* remove the large desktop-only nav-center offsets on mobile */
+  .nav-center {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* ensure the main container does not introduce a left offset on small screens */
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box;
+  }
+
+  /* neutralize any stray margins that could shift content horizontally */
+  header, main, .container, .nav-links, .nav-center, .plans-list {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .hero {
     padding: 18px 0;
   }
