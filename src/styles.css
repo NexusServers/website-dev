@@ -542,6 +542,14 @@ body {
   .discount-bubble{min-width:68px;padding:8px 10px}
 }
 
+
+/* On small screens remove decorative pseudo-elements for CTAs to avoid visual offset/overflow */
+@media (max-width: 700px) {
+  .btn.eco::after,
+  .btn.premium::after {
+    display: none;
+  }
+}
 /* Note: `.pick-location` class was removed from markup in favor of using the
   shared `.step-box` inside a `.step-header`. Keep no dedicated rules here so
   the header fully matches other step headers (Choose CPU / Choose Game / Pick a plan). */

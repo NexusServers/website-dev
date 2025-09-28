@@ -326,4 +326,11 @@ These changes focus on readability, touch targets, and performance for mobile us
 Files changed:
  - `src/styles.css` — mobile `@media` overrides for `.nav-links`, `.nav-center`, `.container`, and neutralized margins.
 
+### 2025-09-27 — Hide CTA decorative accents on mobile
+
+- Some CTA decorative pseudo-elements (the small radial highlights on `.btn.premium` and `.btn.eco`) could cause the Eco button to look like it was pushed out of the card at small breakpoints. I hid these pseudo-elements on narrow viewports so buttons sit flush inside their cells.
+
+Files changed:
+ - `src/styles.css` — added `@media (max-width:700px)` to disable `.btn.eco::after` and `.btn.premium::after`.
+
 
