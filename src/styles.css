@@ -542,6 +542,16 @@ body {
   .discount-bubble{min-width:68px;padding:8px 10px}
 }
 
+/* Mobile: ensure discount bubbles are stacked, centered, and formatted cleanly */
+@media (max-width: 700px) {
+  .discounts-container { gap: 10px; justify-content: center; padding: 0 8px; box-sizing: border-box; }
+  .discount-bubble { min-width:unset; width: auto; padding: 8px 10px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .discount-bubble strong { font-size:16px; line-height:1; display:block; white-space:nowrap; }
+  .discount-bubble small { font-size:12px; display:block; margin-top:2px; text-transform:none; }
+  /* ensure the minus sign doesn't get wrapped or hidden */
+  .discount-bubble strong::before { content: ''; }
+}
+
 
 /* On small screens remove decorative pseudo-elements for CTAs to avoid visual offset/overflow */
 @media (max-width: 700px) {

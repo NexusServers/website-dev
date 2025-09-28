@@ -341,4 +341,12 @@ Files changed:
 Files changed:
  - `src/compact-cards.css` — mobile box-sizing, max-width and overflow safety.
 
+### 2025-09-27 — Discount bubble mobile formatting
+
+- Fixed discount bubble formatting on small screens so the promotional subtractions (`-5% Off`, `-12% Off`, `-25% Off`) display correctly and are centered:
+	- `src/styles.css` — updated mobile rules for `.discounts-container` and `.discount-bubble` to center content, stack the value and label, tighten font-size, and prevent wrapping of the minus sign.
+
+Files changed:
+ - `src/styles.css` — improved mobile formatting for discount bubbles.
+
 
