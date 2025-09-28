@@ -1,35 +1,85 @@
 // Theme toggle logic
 // Dynamic background effect
 function initDynamicBackground() {
-    // Skip effects if reduced motion is preferred or low-performance mode is active
+    // Decide effect intensity level (0 = off, 1 = low, 2 = medium, 3 = high)
+    const EFFECT_LEVEL = computeEffectLevel();
+    // expose for other scripts/CSS
+    document.documentElement.dataset.effectLevel = EFFECT_LEVEL;
+    document.documentElement.classList.remove('effects-low','effects-medium','effects-high');
+    if (EFFECT_LEVEL === 1) document.documentElement.classList.add('effects-low');
+    if (EFFECT_LEVEL === 2) document.documentElement.classList.add('effects-medium');
+    if (EFFECT_LEVEL >= 3) document.documentElement.classList.add('effects-high');
+
+    // Skip effects if reduced motion is preferred or low-performance mode is active or effect level is 0
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || 
         document.documentElement.classList.contains('low-performance') ||
-        document.body.classList.contains('low-performance')) return;
+        document.body.classList.contains('low-performance') ||
+        EFFECT_LEVEL === 0) return;
 
     const aurora = document.querySelector('.aurora-container');
+    // Throttle background updates: only update when scroll changes by a threshold or at most every 120ms
     let lastScrollY = window.scrollY;
-    let ticking = false;
-
+    let lastUpdate = 0;
     function updateBackground(scrollY) {
-        const translateY = scrollY * 0.1;
-        
-        // Smooth parallax effect for aurora only
-        aurora.style.transform = `translate3d(0, ${translateY * 0.6}px, 0)`;
+        const now = performance.now();
+        // small threshold prevents micro-updates
+        if (Math.abs(scrollY - lastScrollY) < 6 && (now - lastUpdate) < 120) return;
+        lastScrollY = scrollY;
+        lastUpdate = now;
+        // scale the translate factor down on lower levels
+        const baseFactor = (EFFECT_LEVEL >= 3) ? 0.12 : (EFFECT_LEVEL === 2 ? 0.07 : 0.03);
+        const translateY = scrollY * baseFactor;
+        if (aurora) aurora.style.transform = `translate3d(0, ${translateY}px, 0)`;
     }
 
     // Initial position
     updateBackground(window.scrollY);
 
-    // Scroll handler with requestAnimationFrame
+    // Scroll handler with a light-weight throttle
     window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                updateBackground(window.scrollY);
-                ticking = false;
-            });
-            ticking = true;
+        // only schedule if enough time passed
+        const now = performance.now();
+        if (now - lastUpdate > 120) {
+            window.requestAnimationFrame(() => updateBackground(window.scrollY));
         }
     }, { passive: true });
+}
+
+// Determine an effects intensity level based on device capabilities
+function computeEffectLevel() {
+    try {
+        const mem = navigator.deviceMemory || 4; // GB
+        const cores = navigator.hardwareConcurrency || 4;
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        // Start with high and clamp down based on signals
+        let level = 3;
+
+        // Very low memory or very low core counts -> disable
+        if (mem < 1.5 || cores <= 1) return 0;
+
+        // Mobile devices get a lower default
+        if (isMobile) level = Math.min(level, 2);
+
+        if (mem < 3) level = Math.min(level, 1);
+        if (mem >= 3 && mem < 6) level = Math.min(level, 2);
+        if (cores < 4) level = Math.min(level, 2);
+
+        // Battery saver hint (best-effort): reduce if battery low
+        if (navigator.getBattery) {
+            navigator.getBattery().then(b => {
+                if ((b.level !== undefined && b.level < 0.25) || b.charging === false && b.level < 0.35) {
+                    // apply a conservative downgrade
+                    document.documentElement.dataset.effectLevel = Math.min(parseInt(document.documentElement.dataset.effectLevel || level), 1);
+                    document.documentElement.classList.add('effects-low');
+                }
+            }).catch(() => {});
+        }
+
+        return level;
+    } catch (e) {
+        return 1; // safe default
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -52,72 +102,66 @@ document.addEventListener('DOMContentLoaded', function() {
             'rgba(140,80,255,0.40)'
         ];
 
-        function spawnSphere() {
-            const s = document.createElement('div');
-            s.className = 'glow-sphere';
+            // Performance-aware sphere spawning (limit count and prefer CSS animations)
+        // MAX spheres should be heavily constrained by EFFECT_LEVEL
+        const EFFECT_LEVEL = parseInt(document.documentElement.dataset.effectLevel || '1');
+        let MAX_ACTIVE_SPHERES = 0;
+        if (EFFECT_LEVEL >= 3) MAX_ACTIVE_SPHERES = Math.max(4, Math.min(10, Math.floor((navigator.deviceMemory || 8) / 2)));
+        else if (EFFECT_LEVEL === 2) MAX_ACTIVE_SPHERES = Math.max(2, Math.min(6, Math.floor((navigator.deviceMemory || 4) / 2)));
+        else if (EFFECT_LEVEL === 1) MAX_ACTIVE_SPHERES = 1;
+        else MAX_ACTIVE_SPHERES = 0; // EFFECT_LEVEL === 0 -> no spheres
+            let activeSpheres = 0;
 
-            // Random size (vw) mapped to px once rendered; cap extremes
-            const min = 120; // px
-            const max = 520; // px
-            let size = Math.round(min + Math.random() * (max - min));
-            // Rarely spawn a very large ambient sphere
-            if (Math.random() < 0.12) size = Math.round(560 + Math.random() * 420); // up to ~980px
+            function spawnSphere() {
+                if (activeSpheres >= MAX_ACTIVE_SPHERES) return;
 
-            // Random position (keep inside viewport with margin)
-            const margin = 40; // px
-            const x = Math.max(0, Math.min(window.innerWidth - size, Math.random() * (window.innerWidth - size)));
-            const y = Math.max(0, Math.min(window.innerHeight - size, Math.random() * (window.innerHeight - size)));
+                const s = document.createElement('div');
+                s.className = 'glow-sphere css-anim'; // use CSS-based animation
 
-            // Random duration and stagger
-            const duration = Math.round(9000 + Math.random() * 13000); // 9s - 22s
-            const delay = Math.round(Math.random() * 4000); // up to 4s
+                // Random size but constrained to reasonable values
+                const min = 80; // px
+                const max = 360; // px
+                let size = Math.round(min + Math.random() * (max - min));
 
-            // Color
-            const color = colors[(Math.random() * colors.length) | 0];
+                // Random position (keep inside viewport with margin)
+                const x = Math.max(0, Math.min(window.innerWidth - size, Math.random() * (window.innerWidth - size)));
+                const y = Math.max(0, Math.min(window.innerHeight - size, Math.random() * (window.innerHeight - size)));
 
-            s.style.left = `${x}px`;
-            s.style.top = `${y}px`;
-            s.style.width = `${size}px`;
-            s.style.height = `${size}px`;
-            const innerStop = (20 + Math.random() * 18).toFixed(0); // 20-38%
-            const outerStop = (50 + Math.random() * 14).toFixed(0); // 50-64%
-            s.style.background = `radial-gradient(circle, ${color} 0%, rgba(0,0,0,0) ${innerStop}%), radial-gradient(circle, ${color.replace('0.', '0.')} 0%, rgba(0,0,0,0) ${outerStop}%)`;
-            s.style.animationDuration = `${duration}ms`;
-            s.style.animationDelay = `${delay}ms`;
+                // Light-weight styling
+                s.style.left = `${x}px`;
+                s.style.top = `${y}px`;
+                s.style.width = `${size}px`;
+                s.style.height = `${size}px`;
+                const color = colors[(Math.random() * colors.length) | 0];
+                s.style.background = `radial-gradient(circle, ${color} 0%, rgba(0,0,0,0) 45%)`;
 
-            // Occasionally add drift
-            if (Math.random() < 0.6) {
-                s.animate(
-                    [
-                        { transform: 'translate(0,0)' },
-                        { transform: `translate(${(Math.random()*20-10).toFixed(1)}px, ${(Math.random()*20-10).toFixed(1)}px)` }
-                    ],
-                    { duration: duration, direction: 'alternate', iterations: 1, easing: 'ease-in-out' }
-                );
+                container.appendChild(s);
+                activeSpheres++;
+
+                // Remove after animation end; CSS sets a generous duration
+                const removeAfter = 10_000 + Math.random() * 10_000; // 10-20s
+                setTimeout(() => {
+                    s.remove();
+                    activeSpheres--;
+                }, removeAfter);
             }
 
-            container.appendChild(s);
+            // Spawn cadence: slower on lower-memory devices
+        // increase interval (spawn less often) for lower effect levels
+        let baseInterval = 2200;
+        if (EFFECT_LEVEL === 1) baseInterval = 6400;
+        if (EFFECT_LEVEL === 0) baseInterval = 999999; // effectively never
+        if (navigator.deviceMemory && navigator.deviceMemory < 4) baseInterval *= 1.5;
+            function tick() {
+                // 0-1 sphere per tick, favor fewer on low-end
+                if (Math.random() < 0.7) spawnSphere();
+                const next = baseInterval + Math.random() * baseInterval;
+                setTimeout(tick, next);
+            }
 
-            // Cleanup after animation
-            const total = duration + delay + 400; // buffer
-            setTimeout(() => {
-                s.remove();
-            }, total);
-        }
-
-        // Spawn cadence: modest to avoid overload
-        function tick() {
-            // Randomly spawn 0-2 spheres per tick
-            const count = (Math.random() < 0.6) ? 1 : 2;
-            for (let i = 0; i < count; i++) spawnSphere();
-            // 2-4 seconds between ticks
-            const next = 2000 + Math.random() * 2000;
-            setTimeout(tick, next);
-        }
-
-        // Start with a few initial spheres
-        for (let i = 0; i < 3; i++) spawnSphere();
-        tick();
+            // Start with a small number of spheres
+            for (let i = 0; i < 1; i++) spawnSphere();
+            tick();
     }
 });
 
@@ -125,9 +169,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function initPerformanceMode() {
     // Check if the user has previously set a preference
     const savedPerformanceMode = localStorage.getItem('nexus-low-performance');
-    // Only enable low-performance mode when the user explicitly set it to 'true'.
-    // This preserves full styles/nav for users who have not chosen low-performance.
-    if (savedPerformanceMode === 'true' && !document.body.classList.contains('low-performance')) {
+    // Default to low-performance mode unless the user explicitly opted out
+    // savedPerformanceMode values: 'true' (explicit low-perf), 'false' (explicit enable effects), null (no choice)
+    if (savedPerformanceMode !== 'false' && !document.body.classList.contains('low-performance')) {
+        // If user didn't explicitly opt out, enable low-performance by default
         document.body.classList.add('low-performance');
         document.documentElement.classList.add('low-performance');
     }
@@ -135,8 +180,8 @@ function initPerformanceMode() {
     // Create the performance toggle button
     const toggleButton = document.createElement('button');
     toggleButton.className = 'performance-toggle';
-    toggleButton.textContent = document.body.classList.contains('low-performance')
-        ? 'Enable Effects'
+    toggleButton.textContent = document.body.classList.contains('low-performance') 
+        ? 'Enable Effects' 
         : 'Low Performance Mode';
     
     // Add click handler

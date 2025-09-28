@@ -152,11 +152,17 @@
 }
 
 .game-block.compact .price-buttons {
-  margin-top: -4px !important; /* pull buttons up closer to the starting line */
   gap: 6px !important; /* tighten spacing between buttons */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Apply the negative pull only on larger screens; on mobile we want natural stacking/spacing */
+@media (min-width: 701px) {
+  .game-block.compact .price-buttons {
+    margin-top: -4px !important; /* pull buttons up closer to the starting line on desktop */
+  }
 }
 
 /* Removed manual per-game nudges — using flexbox space-between on the card for consistent footer alignment */
@@ -164,6 +170,33 @@
 .game-block.compact .price-buttons .btn.btn-small {
   padding: 6px 8px !important; /* slightly smaller padding to match the tighter layout */
   font-size: 0.88rem !important;
+}
+
+/* Ensure consistent centering and full-width buttons on small screens */
+@media (max-width: 700px) {
+  .game-block.compact {
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+
+  .game-block.compact .price-buttons {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    gap: 10px !important;
+  }
+
+  .price-buttons .btn,
+  .price-buttons .btn.btn-small {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 /* If you want it even tighter on desktop, uncomment the following and adjust the negative margin:
