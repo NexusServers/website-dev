@@ -193,11 +193,15 @@
   .price-buttons .btn,
   .price-buttons .btn.btn-small {
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
     text-align: center;
     justify-content: center;
   }
 }
+
+/* Safety: prevent any decorative pseudo-elements or accidental overflow from spilling out */
+.game-block.compact .price-buttons { overflow: hidden; }
 
 /* If you want it even tighter on desktop, uncomment the following and adjust the negative margin:
 @media (min-width: 900px) {

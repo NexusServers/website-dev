@@ -333,4 +333,12 @@ Files changed:
 Files changed:
  - `src/styles.css` — added `@media (max-width:700px)` to disable `.btn.eco::after` and `.btn.premium::after`.
 
+### 2025-09-27 — Prevent Eco button overflow on mobile
+
+- Fixed Eco CTA overflow where the eco button could visually extend past the right edge of the game card on small screens. Changes:
+	- `src/compact-cards.css` — set `.price-buttons` and `.btn` to `box-sizing: border-box`, `max-width:100%`, and added `overflow: hidden` on `.price-buttons` to prevent decorative or layout artifacts from spilling outside the card.
+
+Files changed:
+ - `src/compact-cards.css` — mobile box-sizing, max-width and overflow safety.
+
 
