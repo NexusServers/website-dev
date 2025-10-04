@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#000000">
-    <meta name="description" content="Affordable Minecraft server hosting plans from Nexus Servers. Premium Ryzen 9 9950X or budget-friendly EPYC options with NVMe storage, DDoS protection, and 24/7 support.">
-    <meta name="keywords" content="minecraft server plans, terraria server hosting, rust dedicated server, ark survival evolved hosting, satisfactory multiplayer server, valheim dedicated server, game server pricing, affordable game hosting, ryzen 9 hosting, premium server hosting, NVMe game hosting, EPYC server hosting, modded server plans, gaming community servers, low latency game hosting">
+  <meta name="description" content="Affordable game and application server hosting from Nexus Servers — NVMe storage, DDoS protection, instant setup, and locations in Reno, NV and Warsaw, Poland.">
+  <meta name="keywords" content="game server plans, minecraft hosting, terraria hosting, rust hosting, ark hosting, satisfactory hosting, NVMe SSD, DDoS protection, low latency hosting, premium CPU families">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Game Server Hosting Plans & Pricing - Nexus Servers">
     <meta property="og:description" content="Choose from Premium (Ryzen 9 9950X) or Eco (EPYC 7551P) plans. All include NVMe storage, DDoS protection, instant setup, and are located in Reno, Nevada.">
@@ -83,7 +83,7 @@
                   "@context": "https://schema.org",
                   "@type": "Product",
                   "name": "Game Server Hosting Plans",
-                  "description": "Game server hosting plans with premium Ryzen 9 or budget-friendly EPYC options. All include NVMe storage, DDoS protection and 24/7 support.",
+                  "description": "Game server hosting plans with premium and eco CPU families. All include NVMe storage, DDoS protection and 24/7 support.",
                   "brand": { "@type": "Brand", "name": "Nexus Servers" },
                   "offers": {
                     "@type": "AggregateOffer",
@@ -369,7 +369,7 @@
                           // show the 'right' CPU with $1.00/GB as requested
                           premium: { title: 'Premium CPU', sub: 'AMD Ryzen 9 9950X', price: '$2.00 / GB', desc: 'Best for heavy mods and generation' },
                           // Warsaw EU CPU rendered using the same format and marked Premium visually
-                          'eco-eu': { title: 'Eco CPU', sub: 'Intel Core i7 7700k', price: '$1.00 / GB', desc: 'Great for lightweight servers' }
+                          'eco-eu': { title: 'Eco CPU', sub: 'AMD EPYC 7451', price: '$1.00 / GB', desc: 'Great for lightweight servers' }
                         };
 
                         const state = { cpu: 'eco', game: 'minecraft' };
@@ -568,18 +568,55 @@
                       })();
                     </script>
 
-                    <p><a class="back" href="index.html">← Back to Home</a></p>
+                    <p class="return-wrap"><a class="return-home" href="index.html">← Back to Home</a></p>
+
+                    <!-- SEO: styled human-readable hardware information (not a product listing) -->
+                    <section id="seo-hardware" class="seo-info card" aria-hidden="false">
+                      <div class="seo-inner">
+                        <h3>Hardware & performance</h3>
+                        <p class="lead">Nexus Servers uses modern, performance-oriented hardware tuned for game hosting. We combine fast NVMe storage, quality networking, and premium CPUs to deliver low latency and consistent performance for both small and heavily-modded servers.</p>
+                        <ul class="seo-list">
+                          <li><strong>Optimized storage:</strong> NVMe SSDs for fast world load and low I/O latency.</li>
+                          <li><strong>Performance CPUs:</strong> Premium CPU families are used on higher-tier plans to support mods and larger player counts.</li>
+                          <li><strong>Custom requests:</strong> Need a specific CPU family? Contact sales — we can often accommodate inventory-based requests or advise on the best-fit plan.</li>
+                        </ul>
+                        <div class="seo-cta">
+                          <a class="btn alt" href="mailto:sales@nexuservers.com">Contact sales</a>
+                        </div>
+                      </div>
+                    </section>
+
+                    <script type="application/ld+json">
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "FAQPage",
+                      "mainEntity": [
+                        {
+                          "@type": "Question",
+                          "name": "Do you offer Ryzen 9 (9950X) based hosting?",
+                          "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We offer high-performance CPU families for premium plans; availability varies by location and inventory. Contact sales for specific CPU requests such as Ryzen 9 (9950X)."
+                          }
+                        }
+                      ]
+                    }
+                    </script>
                   </div>
                 </main>
 
                 <footer class="site-footer">
                   <div class="container">
+                    <div class="footer-inner">
                     <div class="footer-content">
                       <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
                       <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
                       <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+                      <a href="hardware.html"><img src="assets/icons/plans.svg" alt="Hardware">Hardware</a>
+                      <a href="testimonials.html">Testimonials</a>
                       <span class="footer-divider">·</span>
                       <span class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</span>
+                    </div>
                     </div>
                   </div>
                 </footer>

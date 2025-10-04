@@ -50,8 +50,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(107, 63, 255, 0.08), transparent 60%);
+    /* soften the base bubble glow for testimonials and other content */
+    background: radial-gradient(circle at 30% 20%, rgba(107, 63, 255, 0.04), transparent 60%);
     pointer-events: none;
+    z-index: 0; /* place the subtle bubble background behind inner elements */
 }
 
 /* Heading styles inside bubble boxes */
@@ -119,55 +121,104 @@
     border-left-color: #9b59b6; /* Terraria purple */
 }
 
-/* Testimonial bubble style */
+/* Testimonial bubble style: quote centered, author below */
 .testimonial-bubble {
     font-style: italic;
-    position: relative;
-    padding-top: 36px;
-}
-
-.testimonial-bubble {
-    font-style: italic;
-    position: relative;
+    position: relative; /* establish local stacking context */
+    z-index: 2; /* bring testimonial above the bubble base background */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    min-height: 140px; /* give room for the oversized quote mark */
+    padding: 28px;
+    padding-bottom: 56px; /* leave room for anchored author */
+    min-height: 160px; /* room for decorative quote */
     box-sizing: border-box;
-}
-.testimonial-bubble::before {
-    content: '"';
-    position: absolute;
-    top: 0; /* align to top-left like before */
-    left: 4px; /* nudge the quote slightly to the right for better alignment with text */
-    font-size: 60px;
-    line-height: 1;
-    color: rgba(79, 33, 183, 0.18);
-    font-family: Georgia, serif;
-    pointer-events: none;
+    text-align: center;
+    gap: 12px;
+    overflow: visible; /* allow soft aura and quote to breathe inside the bubble */
 }
 
-/* translucent overlay to the left of the bubble so the decorative quote appears to have an extended highlight */
+.testimonial-bubble p {
+    margin: 0;
+    z-index: 2; /* keep text above decorative quote */
+    max-width: 760px;
+}
+
+.testimonial-bubble .quote-text {
+    margin: 0 0 18px 0;
+    font-style: italic;
+    z-index: 2;
+    color: var(--white);
+    max-width: 760px;
+    text-align: center;
+    display: block;
+    font-size: 15px;
+    line-height: 1.45;
+    hyphens: auto;
+    word-break: break-word;
+}
+
+.testimonial-bubble::before {
+    /* decorative quote: firmly place at the top-left inside the bubble */
+    content: '"';
+    position: absolute;
+    top: 10px; /* use fixed offset for consistent placement */
+    left: 8px; /* nudge slightly left to better align with aura */
+    transform: none;
+    font-size: 84px; /* slightly reduced so it's less dominant */
+    line-height: 1;
+    /* lower glyph opacity so it's decorative, not distracting */
+    color: rgba(79, 33, 183, 0.03);
+    font-family: Georgia, serif;
+    pointer-events: none;
+    z-index: 1; /* sit above aura but below the main text */
+}
+
+/* Inner purple aura that sits behind the decorative quote and content but within the bubble */
+.testimonial-bubble .aura {
+    position: absolute;
+    inset: -6px; /* extend slightly under the bubble border so glow reaches the rounded corner */
+    /* soften the aura: lower opacities and move the focal point further left */
+    background: radial-gradient(circle at 4% 12%, rgba(107,63,255,0.08), rgba(107,63,255,0.04) 30%, rgba(107,63,255,0.01) 55%, transparent 78%);
+    filter: blur(28px);
+    z-index: 0; /* sit behind the decorative quote but above the bubble background */
+    pointer-events: none;
+    border-radius: 16px; /* match .bubble-box radius to avoid a visible ring */
+}
+
+/* Allow the glow to extend slightly beyond the inner content without being clipped
+   while keeping the bubble border-radius. This relaxes the global overflow:hidden
+   applied to generic .bubble-box but only for testimonial bubbles. */
+.bubble-box.testimonial-bubble {
+    overflow: visible !important;
+    background-clip: padding-box; /* ensure background doesn't paint under border */
+    border-radius: 16px;
+}
+
+/* subtle top overlay for visual depth (keeps decorative quote readable) */
 .testimonial-bubble::after {
     content: "";
     position: absolute;
     top: 0;
-    left: -40px; /* extend overlay past the left edge of the bubble */
-    bottom: 0;
-    width: 40px;
-    background: linear-gradient(90deg, rgba(79,33,183,0.06), rgba(79,33,183,0.00));
+    left: 0;
+    right: 0;
+    height: 28px;
+    /* make the subtle top overlay even softer to avoid an obvious band */
+    background: linear-gradient(180deg, rgba(79,33,183,0.02), rgba(79,33,183,0));
     pointer-events: none;
+    z-index: 2; /* keep a subtle overlay above the aura but below text */
 }
+
 .testimonial-bubble .author {
     font-style: normal;
     display: block;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 8px;
     font-weight: 700;
     font-size: 13px;
     color: var(--accent-purple-light);
+    z-index: 4; /* ensure author floats above decorative elements */
 }
 
 

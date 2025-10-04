@@ -219,15 +219,6 @@ body {
   mix-blend-mode: screen;
   opacity: 0;
   animation: moveLinesAlt2 22s linear infinite, linesFade 16s ease-in-out infinite 4s;
-.testimonial-bubble {
-  text-align: center;
-}
-.testimonial-bubble .author {
-  display: block;
-  margin-top: 8px;
-  opacity: 0.9;
-  font-size: 0.9rem;
-}
   pointer-events: none;
 }
 
@@ -421,25 +412,24 @@ body {
 /* hero and CTA already present */
 
 /* top nav (shared) */
-.top-nav{position:fixed;top:12px;left:0;right:0;display:flex;justify-content:center;z-index:60;padding:4px 12px;background:transparent}
-.nav-links{position:relative;display:flex;gap:12px;padding:8px 12px;border-radius:999px;justify-content:center;background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 28px rgba(0,0,0,0.18);align-items:center;backdrop-filter:blur(8px);max-width:1100px;width:calc(100% - 48px);box-sizing:border-box}
+.top-nav{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:center;z-index:60;padding:2px 8px;background:transparent}
+.nav-links{position:relative;display:flex;gap:10px;padding:6px 22px 6px 10px;border-radius:999px;justify-content:center;background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 20px rgba(0,0,0,0.16);align-items:center;backdrop-filter:blur(6px);max-width:980px;width:auto;box-sizing:border-box}
 .nav-logo {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
+  /* participate in the nav flex flow so centering is accurate */
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 4px;
+  margin-right: 6px;
   border: none;
   background: none;
   box-shadow: none;
   border-radius: 8px;
-  transition: background-color .18s ease;
+  transition: background-color .14s ease;
 }
 .nav-logo img {
-  height: 38px;
+  height: 32px;
   width: auto;
   display: block;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
@@ -455,13 +445,36 @@ body {
   filter: drop-shadow(0 4px 12px rgba(107,63,255,0.2));
 }
 .nav-center{
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.6fr auto 0.6fr; /* tighten left/right columns so edge links sit next to center */
+  align-items: center;
   gap: 12px;
   margin: 0 auto;
-  align-items: center;
-  padding-left: 56px; /* Increased padding to offset the logo position */
-  padding-right: 36px; /* Balance the padding */
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  max-width: 720px; /* constrain center area for neat alignment */
 }
+
+/* Move logo to the right side of the nav by increasing its order in the flex flow */
+.nav-logo { margin-right: 6px; margin-left: 0; }
+
+/* ensure the first link sits left, the middle link centers, and the last link sits right */
+.nav-center > a:first-child { justify-self: start; }
+.nav-center > a:nth-child(2) { justify-self: center; }
+.nav-center > a:last-child { justify-self: end; }
+
+/* Responsive: on small screens switch back to inline flow */
+@media (max-width: 700px) {
+  .nav-center{ display: flex; flex-direction: row; justify-content: center; gap: 8px; max-width: none }
+  .nav-center > a { justify-self: auto }
+  /* ensure logo spacing on small screens */
+  .nav-logo { margin-right: 6px; margin-left: 0 }
+}
+
+/* Ensure nav links don't get pushed off-center when logo is present */
+.nav-links { align-items: center; justify-content: center; }
+.nav-links .nav-center { margin: 0 auto; }
 
 /* Plans configurator: CPU option cards */
 .options-row[aria-label="CPU"] { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start }
@@ -577,14 +590,15 @@ body {
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
+  width: 44px;
   height: 32px;
   opacity: 0;
   pointer-events: none;
 }
 
-.nav-links a:not(.nav-logo){display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;color:var(--white);text-decoration:none;font-size:14px;border:1px solid transparent;transition:all .22s ease}
-.nav-links a:not(.nav-logo) img{width:16px;height:16px;filter:invert(1)}
+.nav-links a:not(.nav-logo){display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;color:var(--white);text-decoration:none;font-size:14px;border:1px solid transparent;transition:all .22s ease}
+.nav-links a:not(.nav-logo){white-space:nowrap}
+.nav-links a:not(.nav-logo) img{width:18px;height:18px;display:block;flex-shrink:0;filter:invert(1);margin:0}
 .nav-links a:not(.nav-logo) {
   transform: translate3d(0,0,0);
   -webkit-transform: translate3d(0,0,0);
@@ -604,8 +618,8 @@ body {
 
 /* ensure main content clears the fixed nav and fills space */
 main {
-  padding-top: 110px;
-  max-width: 1200px;
+  padding-top: 88px; /* reduced to compact header area */
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
   flex-grow: 1;
@@ -659,6 +673,10 @@ p.lead {
 /* hero CTA */
 .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 0 6px}
 .hero-buttons{display:flex;gap:12px;justify-content:center;max-width:1024px;padding:0 32px;box-sizing:border-box}
+
+/* Hero title & subtitle refinements */
+.hero h1 { margin: 0; font-size: 2rem; line-height: 1.02; }
+.hero-subtitle { margin: 6px 0 10px; font-size: 1.02rem; color: var(--muted); text-align:center; max-width: 900px; }
 .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;background:var(--accent-gradient);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(79,33,183,0.16);transition:transform .18s ease,box-shadow .18s ease;}
 .btn:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(79,33,183,0.18)}
 .btn.alt{background:rgba(255,255,255,0.06);color:var(--white);border:1px solid rgba(255,255,255,0.08);box-shadow:none}
@@ -686,11 +704,14 @@ p.lead {
   flex-shrink: 0;
   margin-top: auto;
   background: transparent;
+  /* subtle separator */
+  border-top: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(4px);
 }
 
 .site-footer .container {
   position: relative;
-  padding: 24px 32px;
+  padding: 12px 20px; /* tightened */
   text-align: center;
 }
 
@@ -726,6 +747,73 @@ p.lead {
   opacity: 0.9;
 }
 
+/* Footer normalization to ensure identical appearance site-wide */
+.site-footer {
+  background: transparent;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 12px;
+}
+.site-footer .container { max-width: 1100px; margin: 0 auto; padding: 20px 32px; }
+.site-footer .footer-inner { display: flex; justify-content: center; align-items: center; }
+.site-footer .footer-content { gap: 12px; align-items: center; justify-content: center; }
+.site-footer .footer-content a { color: rgba(255,255,255,0.9); padding:4px 6px }
+.site-footer .footer-copy { color: rgba(255,255,255,0.7); margin-left: 8px; }
+
+/* Normalize any unexpected block children inside footer content (e.g., stray <p>)
+  so all footers render with tight, consistent spacing like the homepage. */
+.site-footer .footer-content > * { margin: 0 !important; }
+.site-footer .footer-content p, .site-footer .footer-content div, .site-footer .footer-content span { margin: 0 !important; padding: 0 !important; }
+.site-footer .footer-content p[style] { margin: 0 !important; padding: 0 !important; }
+.site-footer .footer-content .return-home { display: inline-block; margin: 0 6px 0 0 !important; color: var(--white); text-decoration: none; }
+
+/* If a page accidentally places a Back link inside the footer using a <p> with inline styles,
+   hide that <p> visually (it will be moved into the main content by template-level edits).
+   This prevents a single stray inline-styled <p> from creating extra footer height. */
+.site-footer .footer-content p.return-home-inline { display: none !important; }
+
+/* Ensure footer links and icons are vertically centered and don't introduce extra height */
+.site-footer .footer-content img { vertical-align: middle; display: inline-block; }
+
+/* Slightly reduce container bottom padding for a compact footer */
+.site-footer .container { padding-bottom: 10px; }
+
+/* Make footer compact and resistant to stray block children or inline styles */
+.site-footer { padding-top: 8px !important; padding-bottom: 8px !important; }
+.site-footer .container { padding-top: 8px !important; padding-bottom: 8px !important; }
+.site-footer .footer-content > * { display: inline-flex !important; align-items: center !important; line-height: 1 !important; }
+.site-footer .footer-content a, .site-footer .footer-content span { margin: 0 !important; padding: 4px 6px !important; }
+
+/* Neutralize legacy .back helper which previously added top margin on some pages */
+.back { margin-top: 0 !important; display: inline-block; }
+
+/* Prevent a visible inner strip near the bubble edge by aligning background painting
+   and border so the aura reaches the rounded corners cleanly */
+.bubble-box {
+  background-clip: padding-box; /* avoid background showing under border */
+}
+
+.bubble-box.testimonial-bubble {
+  border: 1px solid rgba(255,255,255,0.01); /* reduce stroke even further so aura edge blends */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+  overflow: visible !important; /* allow aura to render beyond inner padding */
+}
+
+/* subtle rule above the footer content on larger screens */
+.site-footer { padding-top: 0 !important; padding-bottom: 10px !important; border-top: none !important; }
+.site-footer::before { display: none !important; }
+
+/* Global inline divider: place the clean-cut 1px bar inside the container so it sits
+   directly above the footer content across all pages (compact, consistent look). */
+.site-footer .container::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 0 0 4px 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  box-shadow: 0 1px 0 rgba(255,255,255,0.01) inset;
+}
+
 .footer-copy {
   color: rgba(255,255,255,0.6);
   font-size: 13px;
@@ -748,6 +836,13 @@ p.lead {
   .site-footer .footer-content {
     justify-content: center;
   }
+}
+
+.site-footer .footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* responsive tweaks */
@@ -780,6 +875,22 @@ p.lead {
     box-sizing: border-box;
   }
 
+  /* Mobile-friendly footer: stack links and increase tap targets */
+  .site-footer .footer-content {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .site-footer .footer-content a {
+    padding: 10px 12px;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+  }
+
+  .site-footer .footer-divider { display: none; }
+
   /* neutralize any stray margins that could shift content horizontally */
   header, main, .container, .nav-links, .nav-center, .plans-list {
     margin-left: 0 !important;
@@ -806,6 +917,33 @@ p.lead {
   border-radius: 14px;
   box-shadow: 0 12px 36px rgba(2,6,23,0.28);
 }
+
+/* Hardware page specific spacing to match other pages */
+.hardware .hardware-list.card {
+  padding: 20px 22px;
+}
+.hardware .hardware-list.card ul { list-style: none; margin: 0; padding: 0; }
+.hardware .hardware-list.card li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.02); }
+.hardware .hardware-list.card li:last-child { border-bottom: none; }
+.hardware .hardware-list.card strong { display: block; font-size: 16px; margin-bottom: 6px; }
+.hardware .hardware-list.card .small { margin: 0; }
+
+/* Styled SEO info block used on Plans page */
+.seo-info.card {
+  display: block;
+  padding: 18px 20px;
+  border-left: 6px solid var(--accent-purple-mid);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--white);
+  margin: 18px 0;
+}
+.seo-info .seo-inner { max-width: 980px; margin: 0 auto; }
+.seo-info h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.seo-info .lead { margin: 0 0 10px; color: var(--muted); }
+.seo-info .seo-list { margin: 0 0 12px 0; padding-left: 18px; color: var(--white); }
+.seo-info .seo-list li { margin: 6px 0; }
+.seo-info .seo-cta { text-align: left; }
+.seo-info .seo-cta .btn { padding: 8px 12px; }
 .comparison-section { padding: 24px; margin: 0 auto; }
 .small { font-size: 13px; color: var(--muted); }
 
@@ -983,8 +1121,9 @@ p.lead {
 /* About page tweaks */
 .about .container {
   max-width: 1100px;
-  margin: 120px auto 48px;
+  margin: 120px auto 0px;
   padding: 20px;
+  padding-bottom: 8px; /* reduce bottom padding so footer sits closer for about page */
 }
 
 /* About sections */
@@ -1061,7 +1200,8 @@ p.lead {
 
 /* Moved page-specific rules from inline <style> blocks */
 /* Plans page: typography and small helpers */
-.plans .container{margin:120px auto 48px;padding:20px}
+.plans .container{margin:120px auto 0px;padding:20px}
+.plans .container { padding-bottom: 8px; /* reduce bottom padding so footer sits closer for plans page */ }
 .plans h1{font-size:32px;margin:0 0 8px}
 .plans .p-lead{color:rgba(255,255,255,0.85);margin:0 0 24px}
 .plans .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -1258,16 +1398,9 @@ p.lead {
 /* Keep table fitting on desktop without horizontal slider */
 @media (max-width: 1200px) {
   .comparison-inner {
-    overflow-x: auto;
-    margin: 0 -8px;
+    display: none; /* hide logo on very small screens to preserve centering */
     width: calc(100% + 16px);
   }
-  .comparison-table { min-width: 820px; }
-}
-
-.plan-card.featured {
-  transform: translateY(0);
-  transition: transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s;
 }
 
 .plan-card.featured:hover {
@@ -1300,8 +1433,9 @@ p.lead {
 /* ===== Final overrides to match Index across pages ===== */
 /* Ensure consistent top spacing and header sizes regardless of earlier rules */
 .about main .container,
-.plans main .container {
-  margin: 0 auto 48px !important;
+.plans main .container,
+.hardware main .container {
+  margin: 0 auto 0px !important;
   padding: 28px 32px !important;
 }
 
@@ -1447,3 +1581,140 @@ p.lead {
   .plans .plan-card { padding: 16px; }
   .plans .plan-card .price { font-size: 20px }
 }
+
+/* --- Force testimonial bubble layout parity (high-specificity override) --- */
+.bubble-box.testimonial-bubble {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 28px !important;
+  min-height: 160px !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+.bubble-box.testimonial-bubble p,
+.bubble-box.testimonial-bubble .quote-text {
+  margin: 0 !important;
+  z-index: 2 !important;
+  max-width: 760px !important;
+}
+.bubble-box.testimonial-bubble .author {
+  font-style: normal !important;
+  display: block !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+  font-weight: 600 !important;
+  font-size: 12px !important; /* slightly smaller */
+  color: var(--accent-purple-light) !important;
+  z-index: 5 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+/* Testimonials page spacing and bubble adjustments */
+.testimonials-list.card {
+  padding: 20px 22px;
+  margin: 18px 0;
+}
+.testimonials-list .bubble-grid {
+  margin: 18px 0;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.testimonials-list .bubble-box { padding: 20px; }
+
+
+/* CPU info button and panel on hardware page */
+.cpu-info-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  font-weight: 700;
+}
+.cpu-info-btn[aria-expanded="true"] { background: var(--accent-gradient); color: #000; }
+.cpu-info-panel {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  max-width: 420px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.36);
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.cpu-score { font-size: 14px; color: var(--muted); margin: 4px 0; }
+.cpu-score .label { color: var(--white); font-weight:700; margin-right:6px }
+
+/* CPU spec lines: base/boost clocks and core/thread counts */
+.cpu-spec { font-size: 14px; color: var(--muted); margin: 4px 0; }
+.cpu-spec .label { color: var(--white); font-weight:700; margin-right:6px }
+
+/* Return-to-home link used on non-index pages */
+.return-home {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Page-specific main padding to remove extra space above the footer for compact pages */
+.about main, .plans main { padding-bottom: 8px !important; }
+
+/* Prevent the main on these pages from growing to full viewport height which causes a visual gap
+  with the footer when content is short. Make content flow naturally so the footer sits after content. */
+.about main, .plans main { flex: 0 0 auto !important; min-height: auto !important; }
+
+/* Ensure the inner container doesn't flex to fill available space on these pages */
+.about .container, .plans .container { flex: 0 0 auto !important; }
+
+/* Scope return-home spacing to paragraphs inside containers so it aligns consistently */
+.container > p > .return-home { margin-top: 12px; display: inline-block; }
+.return-home:hover { text-decoration: underline; }
+
+/* Helper to center the back link and give consistent top spacing */
+.return-wrap { text-align: center; margin: 12px 0 0; }
+.return-wrap .return-home { display: inline-block; }
+
+/* Compact footer for About and Plans: remove top padding, hide the absolute
+   pseudo-divider and inject a linear 1px divider inside the container so the
+   line sits directly above the footer content with no extra gap. */
+.about .site-footer, .plans .site-footer {
+  padding-top: 0 !important; /* container will host the divider */
+  padding-bottom: 14px !important; /* small breathing room below footer */
+  border-top: none !important; /* avoid double lines */
+}
+
+/* Hide the global absolute pseudo divider on these pages */
+.about .site-footer::before, .plans .site-footer::before { display: none !important; }
+
+/* Create an inline divider inside the container so it aligns with content flow */
+.about .site-footer .container::before, .plans .site-footer .container::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 0 0 4px 0; /* small gap between the line and the footer items */
+  /* stronger, more visible divider — matches index/testimonials */
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  box-shadow: 0 1px 0 rgba(255,255,255,0.01) inset;
+}
+
+/* Keep the container padding tight so the line and items sit close together */
+.about .site-footer .container, .plans .site-footer .container {
+  padding-top: 0 !important;
+  padding-bottom: 10px !important;
+}
+
+/* Force inner/footer children to have zero top margin/padding */
+.about .site-footer .footer-inner, .plans .site-footer .footer-inner { margin-top: 0 !important; padding-top: 0 !important; }
+.about .site-footer .footer-content > *, .plans .site-footer .footer-content > * { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* Slightly tighten link vertical padding for visual parity */
+.about .site-footer .footer-content a, .plans .site-footer .footer-content a { padding-top: 4px !important; padding-bottom: 4px !important; }

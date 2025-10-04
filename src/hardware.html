@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebSite">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Inventory and hardware options at Nexus Servers. See the CPU families and model-level options that we reference for Premium and Eco tiers. Availability varies by location and inventory; contact sales for specific requests.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://nexuservers.com/hardware.html">
+    <meta property="og:title" content="Nexus Servers | Hardware & Inventory">
+    <meta property="og:description" content="Model-level CPU inventory and availability for Nexus Servers. Contact sales to confirm availability.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexuservers.com/hardware.html">
+    <meta property="og:image" content="https://nexuservers.com/assets/images/nexuslogo.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexus Servers | Hardware & Inventory">
+    <link rel="icon" type="image/png" href="assets/images/nexuslogo.png">
+    <title>Hardware & Inventory — Nexus Servers</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bubble-box.css">
+    <link rel="stylesheet" href="compact.css">
+    <link rel="stylesheet" href="compact-cards.css">
+    <link rel="stylesheet" href="aurora.css">
+    <link rel="stylesheet" href="low-performance.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <script>
+      // Apply low-performance mode immediately to prevent flash.
+      (function() {
+        try {
+          const saved = localStorage.getItem('nexus-low-performance');
+          if (saved !== 'false') {
+            document.documentElement.classList.add('low-performance');
+            if (document.body) document.body.classList.add('low-performance');
+            else document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+          }
+        } catch (e) {
+          document.documentElement.classList.add('low-performance');
+          document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+        }
+      })();
+    </script>
+
+    <script src="scripts.js" defer></script>
+    <script src="aurora.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Nexus Servers",
+      "url": "https://nexuservers.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nexuservers.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nexus Servers",
+      "url": "https://nexuservers.com",
+      "logo": "https://nexuservers.com/assets/images/nexuslogo.png",
+      "sameAs": ["https://discord.gg/ksMEH3uheK"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@nexuservers.com",
+        "contactType": "customer service",
+        "availableLanguage": "English"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Reno",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+  </head>
+  <body class="hardware">
+    <div class="aurora-container"></div>
+    <div class="pattern-container">
+      <div class="noise-pattern"></div>
+      <div class="glow-spheres"></div>
+      <div class="diagonal-lines"></div>
+    </div>
+    <div class="aurora-borealis">
+      <div class="aurora-band"></div>
+      <div class="aurora-band"></div>
+      <div class="aurora-band"></div>
+      <div class="aurora-band"></div>
+      <div class="aurora-glow"></div>
+      <div class="aurora-glow"></div>
+      <div class="aurora-glow"></div>
+    </div>
+
+    <nav class="top-nav">
+      <div class="nav-links">
+        <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo - Premium Hosting"></a>
+        <div class="nav-center">
+          <a href="index.html"><img src="assets/icons/home.svg" alt="Home Icon">Home</a>
+          <a href="plans.html"><img src="assets/icons/plans.svg" alt="Pricing Plans Icon">Plans</a>
+          <a href="about.html"><img src="assets/icons/email.svg" alt="About Us Icon">About Us</a>
+        </div>
+        <div class="nav-placeholder"></div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <header class="hero" role="banner">
+          <h1>Hardware & Inventory</h1>
+          <p class="hero-subtitle">Model-level CPU inventory, families and availability across locations.</p>
+          <div class="hero-buttons">
+            <a class="btn buy" href="plans.html">View Plans</a>
+            <a class="btn alt" href="mailto:sales@nexuservers.com">Contact Sales</a>
+          </div>
+        </header>
+
+        <section class="hardware-list card">
+          <h2>CPU Models & Families</h2>
+          <ul>
+            <li id="premium">
+              <strong>Premium</strong>
+              <p class="small">CPU: AMD Ryzen 9 9950X · RAM: DDR5 @ 5600 MT/s · Storage: NVMe</p>
+              <button class="cpu-info-btn" aria-expanded="false" aria-controls="cpu-panel-premium">View CPU info</button>
+              <div id="cpu-panel-premium" class="cpu-info-panel" hidden>
+                <div class="cpu-spec"><span class="label">Base clock:</span> <span class="value">4.3 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Boost clock:</span> <span class="value">Up to 5.7 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Cores / Threads:</span> <span class="value">16 / 32</span></div>
+                <div class="cpu-score"><span class="label">Single Core:</span> <span class="value">4735</span></div>
+                <div class="cpu-score"><span class="label">Multi Core:</span> <span class="value">65958</span></div>
+              </div>
+            </li>
+            <li id="eco">
+              <strong>Eco</strong>
+              <p class="small">CPU: AMD EPYC 7551P · RAM: DDR4 @ 2133 MT/s · Storage: NVMe</p>
+              <button class="cpu-info-btn" aria-expanded="false" aria-controls="cpu-panel-eco">View CPU info</button>
+              <div id="cpu-panel-eco" class="cpu-info-panel" hidden>
+                <div class="cpu-spec"><span class="label">Base clock:</span> <span class="value">2.0 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Boost clock:</span> <span class="value">Up to 3.0 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Cores / Threads:</span> <span class="value">32 / 64</span></div>
+                <div class="cpu-score"><span class="label">Single Core:</span> <span class="value">1773</span></div>
+                <div class="cpu-score"><span class="label">Multi Core:</span> <span class="value">38236</span></div>
+              </div>
+            </li>
+            <li id="minecraft-eu">
+              <strong>Eco - EU</strong>
+              <p class="small">CPU: AMD EPYC 7451 · RAM: DDR4 @ 2400 MT/s · Storage: NVMe</p>
+              <button class="cpu-info-btn" aria-expanded="false" aria-controls="cpu-panel-minecraft-eu">View CPU info</button>
+              <div id="cpu-panel-minecraft-eu" class="cpu-info-panel" hidden>
+                <div class="cpu-spec"><span class="label">Base clock:</span> <span class="value">2.3 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Boost clock:</span> <span class="value">Up to 3.2 GHz</span></div>
+                <div class="cpu-spec"><span class="label">Cores / Threads:</span> <span class="value">24 / 48</span></div>
+                <div class="cpu-score"><span class="label">Single Core:</span> <span class="value">1943</span></div>
+                <div class="cpu-score"><span class="label">Multi Core:</span> <span class="value">24059</span></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Product",
+              "name": "AMD Ryzen 9 9950X",
+              "brand": { "@type": "Brand", "name": "AMD" },
+              "description": "Premium - CPU: AMD Ryzen 9 9950X; RAM: DDR5 @ 5600 MT/s; Storage: NVMe.",
+              "sku": "9950X",
+              "mpn": "9950X"
+            },
+            {
+              "@type": "Product",
+              "name": "AMD EPYC 7551P",
+              "brand": { "@type": "Brand", "name": "AMD" },
+              "description": "Eco - CPU: AMD EPYC 7551P; RAM: DDR4 @ 2133 MT/s; Storage: NVMe.",
+              "sku": "EPYC-7551P",
+              "mpn": "7551P"
+            },
+            {
+              "@type": "Product",
+              "name": "AMD EPYC 7451",
+              "brand": { "@type": "Brand", "name": "AMD" },
+              "description": "Minecraft Eco Servers - EU - CPU: AMD EPYC 7451; RAM: DDR4 @ 2400 MT/s; Storage: NVMe.",
+              "sku": "EPYC-7451",
+              "mpn": "7451"
+            }
+          ]
+        }
+        </script>
+        <!-- Enhanced SEO: Breadcrumbs, FAQ, and ItemList for Google rich results -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nexuservers.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Hardware & Inventory", "item": "https://nexuservers.com/hardware.html" }
+          ]
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Hardware & Inventory - Nexus Servers",
+          "url": "https://nexuservers.com/hardware.html",
+          "description": "Model-level CPU inventory, families and availability across locations. Contact sales to confirm availability.",
+          "mainEntity": {
+            "@type": "ItemList",
+            "name": "Nexus CPU Models",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "url": "https://nexuservers.com/hardware.html#premium", "name": "AMD Ryzen 9 9950X" },
+              { "@type": "ListItem", "position": 2, "url": "https://nexuservers.com/hardware.html#eco", "name": "AMD EPYC 7551P" },
+              { "@type": "ListItem", "position": 3, "url": "https://nexuservers.com/hardware.html#minecraft-eu", "name": "AMD EPYC 7451" }
+            ]
+          }
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are these exact CPU SKUs guaranteed for every server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No — availability varies by location and inventory. These model-level listings represent the families we reference for plan tiers. Contact sales to confirm SKU-level availability for your location."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I request a specific CPU model for my plan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Open a sales request via mailto:sales@nexuservers.com or use the contact form. Provide your preferred SKU and location; we'll confirm inventory and options."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do EU Minecraft servers use different memory speeds?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Some EU inventory is configured with DDR4 @ 2400 MT/s for specific density-optimized servers. See the 'Minecraft Eco Servers - EU' spec block for details."
+              }
+            }
+          ]
+        }
+        </script>
+      </div>
+  <p class="return-wrap"><a class="return-home" href="index.html">← Back to Home</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-content">
+            <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
+            <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
+            <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+            <a href="hardware.html"><img src="assets/icons/plans.svg" alt="Hardware">Hardware</a>
+            <a href="testimonials.html">Testimonials</a>
+            <span class="footer-divider">·</span>
+            <span class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script>
+  // CPU info toggle handlers for hardware page
+  (function(){
+    document.querySelectorAll('.cpu-info-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (panel) {
+          panel.hidden = expanded; // if was expanded, hide; else show
+        }
+      });
+    });
+  })();
+</script>

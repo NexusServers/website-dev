@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Customer testimonials for Nexus Servers — full, unabridged feedback from real customers about performance, pricing, and support.">
+  <link rel="canonical" href="https://nexuservers.com/testimonials.html">
+  <meta name="theme-color" content="#000000">
+  <title>Testimonials — Nexus Servers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bubble-box.css">
+  <link rel="stylesheet" href="compact.css">
+  <link rel="stylesheet" href="aurora.css">
+  <link rel="stylesheet" href="low-performance.css">
+  <link rel="stylesheet" href="responsive.css">
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('nexus-low-performance');
+        if (saved !== 'false') {
+          document.documentElement.classList.add('low-performance');
+          if (document.body) document.body.classList.add('low-performance');
+          else document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+        }
+      } catch (e) {
+        document.documentElement.classList.add('low-performance');
+        document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('low-performance'); });
+      }
+    })();
+  </script>
+  <script src="scripts.js" defer></script>
+  <script src="aurora.js" defer></script>
+</head>
+<body class="testimonials">
+  <div class="aurora-container"></div>
+  <div class="pattern-container">
+    <div class="noise-pattern"></div>
+    <div class="glow-spheres"></div>
+    <div class="diagonal-lines"></div>
+  </div>
+  <div class="aurora-borealis">
+    <div class="aurora-band"></div>
+    <div class="aurora-band"></div>
+    <div class="aurora-band"></div>
+    <div class="aurora-glow"></div>
+  </div>
+
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a class="nav-logo" href="index.html"><img src="assets/images/nexuslogo.png" alt="Nexus Servers Logo"></a>
+      <div class="nav-center">
+        <a href="index.html"><img src="assets/icons/home.svg" alt="Home Icon">Home</a>
+        <a href="plans.html"><img src="assets/icons/plans.svg" alt="Plans Icon">Plans</a>
+        <a href="about.html"><img src="assets/icons/email.svg" alt="About Icon">About Us</a>
+      </div>
+      <div class="nav-placeholder"></div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <header class="hero">
+        <h1>Customer Testimonials</h1>
+        <p class="hero-subtitle">Full, unabridged feedback from our customers about performance, pricing, and support.</p>
+      </header>
+
+      <section class="testimonials-list card">
+        <h2>What our customers say — full entries</h2>
+        <div class="bubble-grid">
+          <div class="bubble-box testimonial-bubble">
+            <div class="aura"></div>
+            <blockquote class="quote-text">Waiting for some testimonies and working on improving the site every day! If you are a customer and would like to submit a testimony send me a message anytime at justoastyt!</blockquote>
+            <div class="author">Toast - COO/Site Developer</div>
+          </div>
+
+          <div class="bubble-box testimonial-bubble">
+            <div class="aura"></div>
+            <blockquote class="quote-text">Nexus Servers has provided me with an amazing server providing experience. I am currently an owner of a heavily modded Minecraft server. I am able to have a large group of people (so far anywhere from 5-10) active on the server at the same time, and it still runs well! I have been very happy with the pricing as well, feeling satisfied that I've definitely been putting money towards an experience that's actually worth it. Any possible issues that have occurred or changes needed have been resolved in great times and in good service. There is a lot of transparency in what is and isn't possible, and the owners have put in a lot of time and research to help accommodate me. They are extremely reliable, and I definitely recommend using Nexus Servers to host and provide your servers!</blockquote>
+            <div class="author">Biuski1347 - Nexus Premium Customer</div>
+          </div>
+
+          <!-- Additional full testimonials can be added here in the same format -->
+        </div>
+      </section>
+
+  <p><a class="return-home" href="index.html">← Back to Home</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-content">
+          <a href="mailto:support@nexuservers.com"><img src="assets/icons/email.svg" alt="Email">support@nexuservers.com</a>
+          <a href="https://discord.gg/ksMEH3uheK" target="_blank" rel="noopener"><img src="assets/icons/discord.svg" alt="Discord">Discord</a>
+          <a href="https://status.nexuservers.com/" target="_blank" rel="noopener"><img src="assets/icons/status.svg" alt="Status">Status</a>
+          <a href="hardware.html"><img src="assets/icons/plans.svg" alt="Hardware">Hardware</a>
+          <a href="testimonials.html">Testimonials</a>
+          <span class="footer-divider">·</span>
+          <span class="footer-copy">© 2025 Nexus Servers · Built with Pterodactyl · All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
